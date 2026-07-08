@@ -2,8 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dhkurefhxmt6c" path="res://Resources/Temp_Assets/ScrapAttack_Temp_Logo.png" id="1_28flt"]
 [ext_resource type="Theme" uid="uid://b1c40887d4ita" path="res://Resources/menu_theme.tres" id="1_48xlc"]
+[ext_resource type="Script" uid="uid://unpjjvpv8hog" path="res://Scripts/main_menu/main_menu.gd" id="1_n45e2"]
+[ext_resource type="Script" uid="uid://d4hqhmf4cy2td" path="res://Scripts/main_menu/quit_button.gd" id="3_1ehe0"]
 
 [node name="Node" type="Node" unique_id=1454955950]
+script = ExtResource("1_n45e2")
 
 [node name="MenuBackground" type="Panel" parent="." unique_id=275862009]
 anchors_preset = 8
@@ -79,3 +82,4 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(500, 0)
 offset_transform_visual_only = false
 text = "Quit Game"
+script = ExtResource("3_1ehe0")
