@@ -11,8 +11,8 @@ func _ready():
 	smile_button.pressed.connect(_Kitty_Time)
 	kitty.texture = load("res://Resources/Temp_Assets/cat.jpg")
 	dimensions = kitty.texture.get_size()
-	kitty.position.x = window_dimensions[0]/2 + dimensions[0]/4
-	kitty.position.y = window_dimensions[1]/2
+	kitty.position.x = window_dimensions[0]/2 - dimensions[0]/2
+	kitty.position.y = window_dimensions[1]/2 - dimensions[1]/2
 	kitty_timer.timeout.connect(_kitty_time_over)
 	add_child(kitty_timer)
 	

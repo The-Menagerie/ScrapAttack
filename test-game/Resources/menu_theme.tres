@@ -2,6 +2,6 @@
 
 [resource]
 Button/font_sizes/font_size = 64
-MarginContainer/constants/margin_bottom = 50
-MarginContainer/constants/margin_top = 50
+MarginContainer/constants/margin_bottom = 25
+MarginContainer/constants/margin_top = 25
 VBoxContainer/constants/separation = 32
