@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://b1c40887d4ita" path="res://Resources/menu_theme.tres" id="1_48xlc"]
 [ext_resource type="Script" uid="uid://unpjjvpv8hog" path="res://Scripts/main_menu/main_menu.gd" id="1_n45e2"]
 [ext_resource type="Script" uid="uid://d4hqhmf4cy2td" path="res://Scripts/main_menu/quit_button.gd" id="3_1ehe0"]
+[ext_resource type="Script" uid="uid://4j5wbidpl6ms" path="res://Scenes/start_game_button.gd" id="4_n45e2"]
 
 [node name="Node" type="Node" unique_id=1454955950]
 script = ExtResource("1_n45e2")
@@ -58,6 +59,7 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(250, 0)
 offset_transform_visual_only = false
 text = "Start Game"
+script = ExtResource("4_n45e2")
 
 [node name="OptionsButton" type="Button" parent="MenuContainer/VboxContainer" unique_id=1632342232]
 custom_maximum_size = Vector2(500, 100)
