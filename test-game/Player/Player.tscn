@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cqns2ekd1t78t"]
 
-[ext_resource type="Texture2D" uid="uid://cf68rhticr4lf" path="res://Character/16x16 Walk-Sheet.png" id="1_vx5l7"]
-[ext_resource type="Script" uid="uid://cysqqa04ixn0l" path="res://Character/player.gd" id="2_ptld2"]
+[ext_resource type="Texture2D" uid="uid://cf68rhticr4lf" path="res://Player/16x16 Walk-Sheet.png" id="1_vx5l7"]
+[ext_resource type="Script" uid="uid://cysqqa04ixn0l" path="res://Player/player.gd" id="2_ptld2"]
 
 [sub_resource type="Animation" id="Animation_ptld2"]
 length = 0.001
@@ -637,7 +637,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v5ib"]
 
-[node name="Character" type="CharacterBody2D" unique_id=3829449]
+[node name="Player" type="CharacterBody2D" unique_id=3829449]
 script = ExtResource("2_ptld2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1180147637]

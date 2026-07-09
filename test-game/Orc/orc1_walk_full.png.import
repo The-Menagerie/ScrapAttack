@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6fdf8ihsonig"
-path="res://.godot/imported/16x16 All Animations-Sheet.png-fb9b4560c51bca6f13349c9726126fa4.ctex"
+uid="uid://d0krge7rwjc8o"
+path="res://.godot/imported/orc1_walk_full.png-27c6836bed4da1396a4e4bb86645ec2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character/16x16 All Animations-Sheet.png"
-dest_files=["res://.godot/imported/16x16 All Animations-Sheet.png-fb9b4560c51bca6f13349c9726126fa4.ctex"]
+source_file="res://Orc/orc1_walk_full.png"
+dest_files=["res://.godot/imported/orc1_walk_full.png-27c6836bed4da1396a4e4bb86645ec2a.ctex"]
 
 [params]
 

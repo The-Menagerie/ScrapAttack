@@ -1,7 +1,17 @@
 [gd_scene format=3 uid="uid://3w7x63rr2afv"]
 
-[ext_resource type="PackedScene" uid="uid://cqns2ekd1t78t" path="res://Character/Character.tscn" id="1_2llne"]
+[ext_resource type="PackedScene" uid="uid://cqns2ekd1t78t" path="res://Player/Player.tscn" id="1_2llne"]
+[ext_resource type="PackedScene" uid="uid://x2k7ot164jgh" path="res://Orc/Orc.tscn" id="2_q12u6"]
 
 [node name="Level1" type="Node2D" unique_id=717163609]
 
-[node name="Character" parent="." unique_id=1575956433 instance=ExtResource("1_2llne")]
+[node name="Player" parent="." unique_id=1575956433 instance=ExtResource("1_2llne")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=1549433265]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=957079436]
+zoom = Vector2(4, 4)
+
+[node name="Orc" parent="." unique_id=1670870033 instance=ExtResource("2_q12u6")]
+position = Vector2(229, -117)

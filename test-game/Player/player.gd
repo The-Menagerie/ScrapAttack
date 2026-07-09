@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var state_machine = animation_tree.get("parameters/playback")
 
 func _ready():
+	add_to_group("Player")
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta):
@@ -33,3 +34,8 @@ func pick_new_state():
 			state_machine.travel("Walk")
 		else:
 			state_machine.travel("Idle")
+
+# DELETE ME LATER
+func _input(event):
+	if event is InputEventKey and event.keycode == KEY_ESCAPE and event.pressed:
+		get_tree().quit()
