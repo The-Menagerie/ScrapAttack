@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b381hvy3rb4hw"
-path="res://.godot/imported/16x16 Rotate-Sheet.png-8b5cd14890c9c04936303bdb83a4930f.ctex"
+uid="uid://dwmib8epb710f"
+path="res://.godot/imported/16x16 Interact-Sheet.png-7e0a77f22bb9c91ab7ce2b5ad1ce5d56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character/16x16 Rotate-Sheet.png"
-dest_files=["res://.godot/imported/16x16 Rotate-Sheet.png-8b5cd14890c9c04936303bdb83a4930f.ctex"]
+source_file="res://Player/16x16 Interact-Sheet.png"
+dest_files=["res://.godot/imported/16x16 Interact-Sheet.png-7e0a77f22bb9c91ab7ce2b5ad1ce5d56.ctex"]
 
 [params]
 

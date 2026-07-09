@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cf68rhticr4lf"
-path="res://.godot/imported/16x16 Walk-Sheet.png-1bf8ee88987139377f08a0a58b750a4d.ctex"
+path="res://.godot/imported/16x16 Walk-Sheet.png-62ab2051a031c5818abb047c21712fff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character/16x16 Walk-Sheet.png"
-dest_files=["res://.godot/imported/16x16 Walk-Sheet.png-1bf8ee88987139377f08a0a58b750a4d.ctex"]
+source_file="res://Player/16x16 Walk-Sheet.png"
+dest_files=["res://.godot/imported/16x16 Walk-Sheet.png-62ab2051a031c5818abb047c21712fff.ctex"]
 
 [params]
 
