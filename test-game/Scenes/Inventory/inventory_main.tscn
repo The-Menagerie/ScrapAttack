@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cu860tidxjtji" path="res://Scripts/Inventory/inventory_grid.gd" id="2_u3snc"]
 [ext_resource type="PackedScene" uid="uid://ct4j1u215gblu" path="res://Scenes/Inventory/inventory_slot.tscn" id="3_qqsdq"]
 
-[node name="InventoryMain" type="Control" unique_id=49084733]
+[node name="InventoryCombatMain" type="Control" unique_id=49084733]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
