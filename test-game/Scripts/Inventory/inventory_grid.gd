@@ -1,6 +1,6 @@
 extends GridContainer
 
-const SLOT_SIZE: int = 32
+const SLOT_SIZE: int = 64
 
 @export var inventory_slot_scene: PackedScene
 @export var dimensions: Vector2i

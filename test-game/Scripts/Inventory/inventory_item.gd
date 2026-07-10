@@ -6,7 +6,7 @@ var data: ItemData = null
 var is_picked: bool = false
 var size: Vector2:
 	get():
-		return Vector2(data.dimensions.x, data.dimensions.y) * 16
+		return Vector2(data.dimensions.x, data.dimensions.y) * 64
 
 var anchor_point: Vector2:
 	get():
