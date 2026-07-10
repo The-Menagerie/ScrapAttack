@@ -1,0 +1,48 @@
+[gd_resource type="TileSet" format=3 uid="uid://cr11p72hgtco3"]
+
+[ext_resource type="Texture2D" uid="uid://ddr7jtspnvtpj" path="res://Resources/Temp_Assets/test_tileset.png" id="1_oyn1x"]
+[ext_resource type="Texture2D" uid="uid://d03ea5kr72p0o" path="res://Resources/Temp_Assets/hover_select.png" id="2_q5wqo"]
+[ext_resource type="Texture2D" uid="uid://bss2ls3ltsyp" path="res://Resources/Temp_Assets/chasm.png" id="3_swei1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yv4wn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_voksf"]
+texture = ExtResource("1_oyn1x")
+1:1/0 = 0
+2:2/0 = 0
+3:3/0 = 0
+3:3/0/z_index = 2
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_swei1"]
+texture = ExtResource("2_q5wqo")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6gp2c"]
+texture = ExtResource("3_swei1")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.518713, -4.9452934, 2.994524, -2.811207, 2.9669743, 4.8308716, 3.8941536, 5.8375225, 5.091487, 8, -2.9834309, 8, -2.9120665, 1.16166, -1.9869719, -1.8944569)
+0:0/0/custom_data_0 = true
+1:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.0376263, -8, 5.0541954, -1.9220023, 5.980732, -1.9147061, 6.079482, 5.995313, 5.068776, 6.011882, 5.068776, 8, -2.9505987, 8, -1.9730301, 7.0060196, -1.9239845, 1.0292647, -0.9795542, 0.15110993, -1.9902611, -0.9590101, -3.045373, -1.9385672, -3.936119, -4.956767, -4.0030575, -8)
+0:1/0/custom_data_0 = true
+1:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.9921513, -8, 4.0828342, -5.903122, 4.0109158, -0.90105104, 3.0809307, -0.90105104, 3.057787, 4.1117673, 0.47449875, 6.0337334, -1.9434576, 3.0164533, -2.9222136, 1.1308609, -2.9809065, -8)
+0:2/0/custom_data_0 = true
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_yv4wn")
+custom_data_layer_0/name = "Chasm"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_voksf")
+sources/1 = SubResource("TileSetAtlasSource_swei1")
+sources/2 = SubResource("TileSetAtlasSource_6gp2c")

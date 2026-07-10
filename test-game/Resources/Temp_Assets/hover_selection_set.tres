@@ -1,0 +1,11 @@
+[gd_resource type="TileSet" format=3 uid="uid://dn8nrdblswfk8"]
+
+[ext_resource type="Texture2D" uid="uid://d03ea5kr72p0o" path="res://Resources/Temp_Assets/hover_select.png" id="1_shqkh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71sbn"]
+resource_name = "Hover Selection"
+texture = ExtResource("1_shqkh")
+0:0/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_71sbn")

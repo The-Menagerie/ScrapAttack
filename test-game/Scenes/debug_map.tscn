@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://coo0sbcmjcwif"]
+
+[ext_resource type="PackedScene" uid="uid://d02q43jtdwo7f" path="res://Scenes/debug_terrain.tscn" id="1_ngmhs"]
+
+[node name="Game" type="Node2D" unique_id=408274446]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1909387718]
+z_index = 20
+zoom = Vector2(3, 3)
+
+[node name="debug_map" parent="." unique_id=1428059447 instance=ExtResource("1_ngmhs")]

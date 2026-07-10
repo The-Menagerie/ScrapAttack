@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b1dr48y0qwd2a"]
+
+[ext_resource type="Script" uid="uid://bfsuthvukcpwa" path="res://Scripts/procedural_tile_map_testing/tile_map_generator.gd" id="1_14jui"]
+[ext_resource type="TileSet" uid="uid://cr11p72hgtco3" path="res://Resources/Temp_Assets/temp_tileset.tres" id="2_mmjj3"]
+
+[node name="TileMap_Anchor" type="Node2D" unique_id=1211817143]
+script = ExtResource("1_14jui")
+
+[node name="TileMapTest" type="TileMapLayer" parent="." unique_id=87410803]
+tile_set = ExtResource("2_mmjj3")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=74694712]
+position = Vector2(960, 540)
