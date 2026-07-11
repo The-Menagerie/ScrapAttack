@@ -7,25 +7,30 @@
 [node name="Game" type="Node2D" unique_id=408274446]
 y_sort_enabled = true
 
-[node name="debug_map" parent="." unique_id=1428059447 instance=ExtResource("1_ngmhs")]
-
-[node name="Player" parent="debug_map" unique_id=3829449 instance=ExtResource("2_o67dp")]
+[node name="Player" parent="." unique_id=3829449 instance=ExtResource("2_o67dp")]
+z_index = 0
 position = Vector2(-83, 29)
 
-[node name="Orc" parent="debug_map" unique_id=1670870033 instance=ExtResource("3_6mob1")]
-position = Vector2(180, 85)
+[node name="Orc" parent="." unique_id=1670870033 instance=ExtResource("3_6mob1")]
+z_index = 0
+position = Vector2(168, 82)
 
-[node name="Orc2" parent="debug_map" unique_id=366294763 instance=ExtResource("3_6mob1")]
+[node name="Orc2" parent="." unique_id=366294763 instance=ExtResource("3_6mob1")]
+z_index = 0
 position = Vector2(4, 392)
 
-[node name="Orc3" parent="debug_map" unique_id=677679605 instance=ExtResource("3_6mob1")]
+[node name="Orc3" parent="." unique_id=677679605 instance=ExtResource("3_6mob1")]
+z_index = 0
 position = Vector2(-184, 239)
 
-[node name="Orc4" parent="debug_map" unique_id=1625870789 instance=ExtResource("3_6mob1")]
+[node name="Orc4" parent="." unique_id=1625870789 instance=ExtResource("3_6mob1")]
 position = Vector2(-38, 284)
 
-[node name="Orc5" parent="debug_map" unique_id=1972087898 instance=ExtResource("3_6mob1")]
+[node name="Orc5" parent="." unique_id=1972087898 instance=ExtResource("3_6mob1")]
+z_index = 0
 position = Vector2(-154, 351)
+
+[node name="debug_map" parent="." unique_id=1428059447 instance=ExtResource("1_ngmhs")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1909387718]
 z_index = 20

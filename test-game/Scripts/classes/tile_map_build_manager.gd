@@ -1,5 +1,5 @@
 ##A class for managing tilemaps underneath for build mode. Enables hovered tiles and editing of tiles.
-class_name build_manager extends Node
+class_name build_manager extends Node2D
 
 @export var tilemaps: Array[Node] ##Array of tilemaps to be affected. Should be ordered in a stack, 0 is the highest.
 @export var hovermap: Node ##The tilemap setup for hover selected tiles. Make sure that the icon you use for hovering is on source ID 0 and atlas coordinates (0,0) in the tile set for this map

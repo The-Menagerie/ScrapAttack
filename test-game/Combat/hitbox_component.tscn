@@ -4,5 +4,3 @@
 
 [node name="HitboxComponent" type="Area2D" unique_id=907885426]
 script = ExtResource("1_hebpo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1612479389]
