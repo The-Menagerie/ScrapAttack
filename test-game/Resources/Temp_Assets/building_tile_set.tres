@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" format=3 uid="uid://ccovfdxsg62uk"]
+
+[ext_resource type="Texture2D" uid="uid://b2aulxmryfbw6" path="res://Resources/Temp_Assets/building_layer_tiles.png" id="1_u4ueh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8xju"]
+texture = ExtResource("1_u4ueh")
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+1:0/0 = 0
+3:0/0 = 0
+
+[resource]
+custom_data_layer_0/name = "Buildable"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_b8xju")

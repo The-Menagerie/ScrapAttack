@@ -1,0 +1,15 @@
+{
+    "chicken_coop": {
+            "name": "Chicken Coop:",
+            "gridspace": [[1,1],[1,1]],
+            "sprite": "Chicken_Coop.png"
+
+    }
+
+
+
+
+
+
+
+}

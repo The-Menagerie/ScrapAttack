@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var state_machine = animation_tree.get("parameters/playback")
 
 var is_dashing = false
+var in_noclip = false
 
 func _ready():
 	add_to_group("Player")
@@ -54,3 +55,13 @@ func pick_new_state():
 func _input(event):
 	if event is InputEventKey and event.keycode == KEY_ESCAPE and event.pressed:
 		get_tree().quit()
+	elif Input.is_action_just_pressed("noclip"):
+		if in_noclip == false:
+			in_noclip = true
+			for i in range(1,33):
+				set_collision_mask_value(i, false)
+		elif in_noclip == true:
+			in_noclip = false
+			set_collision_mask_value(1, true)
+			set_collision_mask_value(2, true)
+		

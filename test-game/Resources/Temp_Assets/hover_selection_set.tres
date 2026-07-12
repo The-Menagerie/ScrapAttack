@@ -6,6 +6,7 @@
 resource_name = "Hover Selection"
 texture = ExtResource("1_shqkh")
 0:0/0 = 0
+1:0/0 = 0
 
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_71sbn")
