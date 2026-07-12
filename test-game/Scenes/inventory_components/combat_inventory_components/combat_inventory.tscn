@@ -23,13 +23,34 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_0fvou")
 
+[node name="InventoryBackground" type="PanelContainer" parent="." unique_id=1311815242]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -290.0
+offset_right = 576.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeightLabel" type="Label" parent="InventoryBackground" unique_id=112375477]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Weight: "
+
 [node name="Inventory" type="PanelContainer" parent="." unique_id=141701961]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 384.0
-offset_top = 246.0
-offset_right = 1536.0
-offset_bottom = 826.0
+offset_top = 250.0
+offset_right = 384.0
+offset_bottom = 250.0
 script = ExtResource("2_duybw")
 items = Array[ExtResource("3_5enj4")]([SubResource("Resource_0fvou")])
 inventory_item_scene = ExtResource("3_0fvou")
@@ -42,10 +63,3 @@ theme_override_constants/v_separation = 0
 script = ExtResource("4_bpmhi")
 inventory_slot_scene = ExtResource("5_0fvou")
 dimensions = Vector2i(8, 8)
-
-[node name="WeightLabel" type="Label" parent="Inventory" unique_id=112375477]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 32
-text = "Weight: "
