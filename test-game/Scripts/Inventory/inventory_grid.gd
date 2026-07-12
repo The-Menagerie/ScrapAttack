@@ -64,14 +64,14 @@ func remove_item_from_slot_data(item: Node) -> void:
 			slot_data[i] = null
 
 func add_item_to_slot_data(index: int, item: Node) -> void:
-	for x in item.data.dimensions.x:
-		for y in item.data.dimensions.y:
+	for y in item.data.dimensions.y:
+		for x in item.data.dimensions.x:
 			slot_data[index + x + y * columns] = item
 
 func items_in_area(index: int, item_dimensions: Vector2i) -> Array:
 	var items: Dictionary = {}
-	for x in item_dimensions.x:
-		for y in item_dimensions.y:
+	for y in item_dimensions.y:
+		for x in item_dimensions.x:
 			var slot_index = index + x + y * columns
 			var item = slot_data[slot_index]
 			if !item:
@@ -94,8 +94,8 @@ func attempt_to_add_item_data(item: Node) -> bool:
 	if slot_index >= slot_data.size():
 		return false
 	
-	for x in item.data.dimensions.x:
-		for y in item.data.dimensions.y:
+	for y in item.data.dimensions.y:
+		for x in item.data.dimensions.x:
 			slot_data[slot_index + x + y * columns] = item
 	
 	item.set_init_position(get_coords_from_slot_index(slot_index))
@@ -103,8 +103,8 @@ func attempt_to_add_item_data(item: Node) -> bool:
 	return true
 
 func item_fits(index: int, dimensions: Vector2i) -> bool:
-	for x in dimensions.x:
-		for y in dimensions.y:
+	for y in dimensions.y:
+		for x in dimensions.x:
 			var curr_index = index + x + y * columns
 			
 			if curr_index >= slot_data.size():
