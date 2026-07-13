@@ -5,6 +5,8 @@ const SLOT_SIZE: int = 64
 @export var inventory_slot_scene: PackedScene
 @export var dimensions: Vector2i
 
+signal remove_item(item_data: ItemData)
+
 var slot_data: Array[Node] = []
 var held_item_intersects: bool = false
 
@@ -54,11 +56,12 @@ func _gui_input(event: InputEvent) -> void:
 func _input(event):
 	if event.is_action_pressed("drop_item"):
 		if get_tree().paused:
-			var held_item = get_tree().get_first_node_in_group("held_item")
-			if !held_item:
+			var slot_index = get_slot_index_from_coords(get_global_mouse_position())
+			var item = slot_data[slot_index]
+			if !item:
 				return
-			else:
-				held_item.get_dropped()
+			remove_item.emit(item.data, item)
+			remove_item_from_slot_data(item)
 
 func detect_held_item_intersection(held_item: Node) -> void:
 	var h_rect = Rect2(held_item.anchor_point, held_item.size)

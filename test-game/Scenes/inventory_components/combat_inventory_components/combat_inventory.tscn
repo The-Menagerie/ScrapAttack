@@ -56,6 +56,7 @@ offset_right = 576.0
 offset_bottom = 290.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="WeightLabel" type="Label" parent="InventoryBackground" unique_id=112375477]
 unique_name_in_owner = true
@@ -84,3 +85,5 @@ theme_override_constants/v_separation = 0
 script = ExtResource("4_bpmhi")
 inventory_slot_scene = ExtResource("5_0fvou")
 dimensions = Vector2i(10, 8)
+
+[connection signal="remove_item" from="Inventory/InventoryGrid" to="Inventory" method="remove_item"]
