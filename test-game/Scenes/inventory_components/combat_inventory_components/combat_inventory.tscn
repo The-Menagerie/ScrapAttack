@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://221k0is4a830"]
+
+[ext_resource type="Script" uid="uid://bk7gnw1sc8nva" path="res://Scripts/inventory/combat_inventory.gd" id="1_0fvou"]
+[ext_resource type="Script" uid="uid://leh8dx1rxpg5" path="res://Scripts/inventory/inventory.gd" id="2_duybw"]
+[ext_resource type="PackedScene" uid="uid://c06jfjrf1udqe" path="res://Scenes/inventory_components/combat_inventory_components/inventory_item.tscn" id="3_0fvou"]
+[ext_resource type="Script" uid="uid://cxsxebxcv43g2" path="res://Scripts/inventory/item_data.gd" id="3_5enj4"]
+[ext_resource type="Texture2D" uid="uid://d1r7hu3gn2tx1" path="res://Resources/Sprout Lands - Sprites - Basic pack/Objects/Egg_item.png" id="4_5enj4"]
+[ext_resource type="Script" uid="uid://cu860tidxjtji" path="res://Scripts/inventory/inventory_grid.gd" id="4_bpmhi"]
+[ext_resource type="PackedScene" uid="uid://dvgk62vyi7q8f" path="res://Scenes/inventory_components/combat_inventory_components/inventory_slot.tscn" id="5_0fvou"]
+[ext_resource type="Texture2D" uid="uid://dl1kd67afk1ov" path="res://Resources/Sprout Lands - Sprites - Basic pack/Objects/Simple Milk and grass item.png" id="5_amvrc"]
+
+[sub_resource type="Resource" id="Resource_0fvou"]
+script = ExtResource("3_5enj4")
+name = "Test1"
+texture = ExtResource("4_5enj4")
+dimensions = Vector2i(1, 1)
+weight = 0.5
+quantity = 2
+metadata/_custom_type_script = "uid://cxsxebxcv43g2"
+
+[sub_resource type="Resource" id="Resource_ccy0o"]
+script = ExtResource("3_5enj4")
+name = "Test2"
+texture = ExtResource("5_amvrc")
+dimensions = Vector2i(2, 1)
+weight = 3.0
+metadata/_custom_type_script = "uid://cxsxebxcv43g2"
+
+[sub_resource type="Resource" id="Resource_fitbf"]
+script = ExtResource("3_5enj4")
+name = "Test1"
+texture = ExtResource("4_5enj4")
+dimensions = Vector2i(1, 1)
+weight = 4.0
+metadata/_custom_type_script = "uid://cxsxebxcv43g2"
+
+[node name="CombatInventoryMain" type="Control" unique_id=2067008066]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_0fvou")
+
+[node name="InventoryBackground" type="PanelContainer" parent="." unique_id=1311815242]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -290.0
+offset_right = 576.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WeightLabel" type="Label" parent="InventoryBackground" unique_id=112375477]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Weight: "
+
+[node name="Inventory" type="PanelContainer" parent="." unique_id=141701961]
+unique_name_in_owner = true
+process_mode = 2
+layout_mode = 0
+offset_left = 384.0
+offset_top = 250.0
+offset_right = 384.0
+offset_bottom = 250.0
+script = ExtResource("2_duybw")
+items = Array[ExtResource("3_5enj4")]([SubResource("Resource_0fvou"), SubResource("Resource_ccy0o"), SubResource("Resource_fitbf")])
+inventory_item_scene = ExtResource("3_0fvou")
+
+[node name="InventoryGrid" type="GridContainer" parent="Inventory" unique_id=1459884599]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+script = ExtResource("4_bpmhi")
+inventory_slot_scene = ExtResource("5_0fvou")
+dimensions = Vector2i(10, 8)
+
+[connection signal="remove_item" from="Inventory/InventoryGrid" to="Inventory" method="remove_item"]
