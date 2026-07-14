@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://8byoy5kgkyp6"]
 
-[ext_resource type="PackedScene" uid="uid://c2n5ffr4wv25m" path="res://Combat/Weapons/weapon.tscn" id="1_s1v1i"]
+[ext_resource type="PackedScene" uid="uid://dbwts5v0o4l2c" path="res://Combat/Weapons/player/meleeWeapon.tscn" id="1_s1v1i"]
 [ext_resource type="Texture2D" uid="uid://ckq1oamo4htf7" path="res://Combat/Weapons/Slash.png" id="2_h6c36"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8g4oa"]
-radius = 6.2833223
-height = 28.610785
+radius = 10.917351
+height = 51.379814
 
 [sub_resource type="Animation" id="Animation_h6c36"]
 resource_name = "Attack"
@@ -36,8 +36,7 @@ attack_cooldown = 0.1
 stun_duration = 0.15
 
 [node name="Sprite2D" parent="." index="0" unique_id=1695758661]
-position = Vector2(-47, -58)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-93, -116)
 texture = ExtResource("2_h6c36")
 centered = false
 hframes = 4
@@ -48,7 +47,7 @@ collision_mask = 16
 
 [node name="CollisionShape2D" parent="AttackArea" index="0" unique_id=773213060]
 visible = false
-position = Vector2(12.000001, -5)
+position = Vector2(27, -9)
 rotation = 0.7557276
 skew = 0.18849556
 shape = SubResource("CapsuleShape2D_8g4oa")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://booml34yfm4ka"
-path="res://.godot/imported/orc1_idle_full.png-09f21c025ac4656a3c0bd36049cd7c30.ctex"
+uid="uid://d0krge7rwjc8o"
+path="res://.godot/imported/orc1_walk_full.png-7384d78eb26c8acaccc8e1d5d92aa6f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Orc/orc1_idle_full.png"
-dest_files=["res://.godot/imported/orc1_idle_full.png-09f21c025ac4656a3c0bd36049cd7c30.ctex"]
+source_file="res://Enemy/Orc/orc1_walk_full.png"
+dest_files=["res://.godot/imported/orc1_walk_full.png-7384d78eb26c8acaccc8e1d5d92aa6f0.ctex"]
 
 [params]
 

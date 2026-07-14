@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cysqqa04ixn0l" path="res://Player/player.gd" id="2_ptld2"]
 [ext_resource type="PackedScene" uid="uid://brfrfpncin1fy" path="res://Combat/hitbox_component.tscn" id="3_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://blbq24j6cp5vd" path="res://Combat/health_component.tscn" id="4_6ysni"]
-[ext_resource type="PackedScene" uid="uid://8byoy5kgkyp6" path="res://Combat/Weapons/sword.tscn" id="5_8g4oa"]
+[ext_resource type="PackedScene" uid="uid://8byoy5kgkyp6" path="res://Combat/Weapons/player/sword.tscn" id="5_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://b1qycipn7xfvv" path="res://Player/DashSmoke.tscn" id="6_6ysni"]
 
 [sub_resource type="Animation" id="Animation_ptld2"]
@@ -686,5 +686,8 @@ shape = SubResource("RectangleShape2D_fb7ps")
 debug_color = Color(0.98418385, 0.10309101, 0.18299195, 0.41960785)
 
 [node name="HealthComponent" parent="." unique_id=1642405860 instance=ExtResource("4_6ysni")]
+MAX_HEALTH = 100.0
+show_world_health_bar = true
+world_health_bar_offset = Vector2(0, -32)
 
 [node name="Sword" parent="." unique_id=397098870 instance=ExtResource("5_8g4oa")]

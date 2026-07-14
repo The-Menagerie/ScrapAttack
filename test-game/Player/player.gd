@@ -17,7 +17,7 @@ var knockback_velocity:= Vector2.ZERO
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
-@onready var weapon: Node2D = $Sword
+@onready var weapon: Weapon = $Sword
 @onready var hitbox: HitboxComponent = $HitboxComponent
 
 var is_dashing = false
@@ -34,6 +34,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("dash") and !is_dashing:
 		dash()
 	if Input.is_action_just_pressed("attack"):
+		weapon.set_aim_direction(aim_direction, weapon_rotation_offset)
 		weapon.attack()
 	var input_direction = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
@@ -74,14 +75,10 @@ func update_weapon_aim() -> void:
 		if mouse_direction.length_squared() > 0.0:
 			aim_direction = mouse_direction.normalized()
 
-	if aim_direction.x >= 0:
-		# Facing right
-		weapon.scale.y = 1
-		weapon.rotation = aim_direction.angle() + weapon_rotation_offset
-	else:
-		# Facing left
-		weapon.scale.y = -1
-		weapon.rotation = aim_direction.angle() + weapon_rotation_offset
+	if weapon.is_attacking:
+		return
+
+	weapon.set_aim_direction(aim_direction, weapon_rotation_offset)
 
 func dash():
 	is_dashing = true

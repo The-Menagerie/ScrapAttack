@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cxgaf56piafrx"]
+
+[ext_resource type="PackedScene" uid="uid://dfbmp87rc7wbc" path="res://Combat/Weapons/enemy/weaponEnemy.tscn" id="1_pqf5u"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pqf5u"]
+load_path = "res://.godot/imported/Slash.png-53afbb2baabc1d7e085794a4f3c1253d.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ubfvx"]
+radius = 15.613669
+height = 61.110725
+
+[sub_resource type="Animation" id="Animation_ubfvx"]
+resource_name = "Attack"
+length = 0.13333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10165344),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_n0rk5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_drmp3"]
+_data = {
+&"Attack": SubResource("Animation_ubfvx"),
+&"RESET": SubResource("Animation_n0rk5")
+}
+
+[node name="swordEnemy" unique_id=397098870 instance=ExtResource("1_pqf5u")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1695758661]
+position = Vector2(24, -8)
+scale = Vector2(1.5, 1.5)
+texture = SubResource("CompressedTexture2D_pqf5u")
+hframes = 4
+
+[node name="AttackArea" parent="." index="1" unique_id=95570106]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="AttackArea" index="0" unique_id=773213060]
+visible = false
+position = Vector2(37, -17)
+rotation = 0.72431165
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CapsuleShape2D_ubfvx")
+
+[node name="AnimationPlayer" parent="." index="4" unique_id=217388248]
+libraries/ = SubResource("AnimationLibrary_drmp3")
+speed_scale = 0.5

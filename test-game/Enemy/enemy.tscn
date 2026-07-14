@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dtx2nm2qu2g3p"]
+
+[ext_resource type="Script" uid="uid://b7o7qrsvx1t54" path="res://Enemy/enemy.gd" id="1_7y7d6"]
+[ext_resource type="PackedScene" uid="uid://blbq24j6cp5vd" path="res://Combat/health_component.tscn" id="2_q3w6c"]
+[ext_resource type="PackedScene" uid="uid://brfrfpncin1fy" path="res://Combat/hitbox_component.tscn" id="3_l7d8q"]
+[ext_resource type="PackedScene" uid="uid://cxgaf56piafrx" path="res://Combat/Weapons/enemy/swordEnemy.tscn" id="4_k8m1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_move"]
+size = Vector2(13, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hit"]
+size = Vector2(15, 27)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=232309484]
+z_index = 3
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_7y7d6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2074901193]
+
+[node name="CollisionMovement" type="CollisionShape2D" parent="." unique_id=568915233]
+visible = false
+y_sort_enabled = true
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_move")
+
+[node name="Timer" type="Timer" parent="." unique_id=1085426115]
+
+[node name="HealthComponent" parent="." unique_id=825035799 instance=ExtResource("2_q3w6c")]
+MAX_HEALTH = 80.0
+
+[node name="HitboxComponent" parent="." unique_id=1295468928 node_paths=PackedStringArray("health_component", "knockback_body", "damage_visual") instance=ExtResource("3_l7d8q")]
+visible = false
+collision_layer = 16
+collision_mask = 16
+health_component = NodePath("../HealthComponent")
+knockback_body = NodePath("..")
+damage_visual = NodePath("../Sprite2D")
+hit_cooldown = 0.4
+flash_duration = 0.1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent" unique_id=175250500]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_hit")
+debug_color = Color(0.98428386, 0.10750259, 0.16210434, 0.41960785)
+
+[node name="swordEnemy" parent="." unique_id=144564036 node_paths=PackedStringArray("enemy") instance=ExtResource("4_k8m1p")]
+attack_windup = 0.35
+enemy = NodePath("../Sprite2D")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

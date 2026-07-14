@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c2n5ffr4wv25m"]
+
+[ext_resource type="Script" uid="uid://b1fo04ov2evbb" path="res://Combat/Weapons/player/weapon.gd" id="1_3lykc"]
+
+[node name="Weapon" type="Node2D" unique_id=397098870]
+script = ExtResource("1_3lykc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1695758661]
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=95570106]
+collision_layer = 24
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=773213060]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1903029938]
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1316107423]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=217388248]
