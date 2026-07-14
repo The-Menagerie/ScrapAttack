@@ -12,4 +12,6 @@ texture = ExtResource("1_u4ueh")
 [resource]
 custom_data_layer_0/name = "Buildable"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = ""
+custom_data_layer_1/type = 0
 sources/0 = SubResource("TileSetAtlasSource_b8xju")

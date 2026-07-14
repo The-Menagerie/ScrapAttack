@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://ca4m1hc1oublw"]
 
+[ext_resource type="Theme" uid="uid://bp3sd234qbc7t" path="res://Scenes/ui_scenes/building_option.tres" id="1_b1ow6"]
+[ext_resource type="Script" uid="uid://ceg2payrbg76o" path="res://Scenes/ui_scenes/blueprint_list.gd" id="2_fai5a"]
+[ext_resource type="PackedScene" uid="uid://6bui3d4c5cd" path="res://Scenes/ui_scenes/building_option.tscn" id="2_kkg67"]
+
 [node name="Control" type="Control" unique_id=987986865]
 layout_mode = 3
 anchors_preset = 11
@@ -10,15 +14,24 @@ offset_left = -1920.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Container" type="ScrollContainer" parent="." unique_id=1485169774]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -400.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1210644093]
+layout_mode = 0
+offset_left = 1520.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_b1ow6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container" unique_id=1282696726]
+[node name="Container" type="ScrollContainer" parent="MarginContainer" unique_id=1485169774]
+layout_mode = 2
+
+[node name="BlueprintList" type="VBoxContainer" parent="MarginContainer/Container" unique_id=1282696726]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_b1ow6")
+script = ExtResource("2_fai5a")
+
+[node name="Building_option" parent="MarginContainer/Container/BlueprintList" unique_id=350403471 instance=ExtResource("2_kkg67")]
 layout_mode = 2
