@@ -23,6 +23,7 @@ var knockback_velocity:= Vector2.ZERO
 var is_dashing = false
 var aim_direction: Vector2 = Vector2.RIGHT
 var last_move_direction: Vector2 = Vector2.DOWN
+var dash_direction_override: Vector2 = Vector2.ZERO
 var weapons: Array[Weapon] = []
 var equipped_weapon_index: int = 0
 var weapon: Weapon = null
@@ -63,6 +64,8 @@ func _physics_process(_delta):
 	)
 	if weapon != null and weapon.prevents_movement():
 		input_direction = Vector2.ZERO
+	if is_dashing and dash_direction_override != Vector2.ZERO:
+		input_direction = dash_direction_override
 
 	if input_direction != Vector2.ZERO:
 		last_move_direction = input_direction.normalized()
@@ -166,34 +169,64 @@ func update_weapon_aim() -> void:
 
 	weapon.set_aim_direction(aim_direction, weapon_rotation_offset)
 
-func dash():
+func dash(
+	direction_override: Vector2 = Vector2.ZERO,
+	multiplier_override: float = -1.0,
+	duration_override: float = -1.0
+) -> void:
 	is_dashing = true
-	move_speed *= dash_multiplier
+	dash_direction_override = (
+		direction_override.normalized()
+		if direction_override.length_squared() > 0.0
+		else Vector2.ZERO
+	)
+	var resolved_multiplier: float = (
+		dash_multiplier
+		if multiplier_override <= 0.0
+		else multiplier_override
+	)
+	var resolved_duration: float = (
+		dash_duration
+		if duration_override <= 0.0
+		else duration_override
+	)
+	move_speed *= resolved_multiplier
 	hitbox.can_be_hit = false
-	
-	spawn_dash_smoke()
 
-	await get_tree().create_timer(dash_duration).timeout
+	var dash_visual_direction := dash_direction_override
+	if dash_visual_direction == Vector2.ZERO:
+		dash_visual_direction = last_move_direction
+	else:
+		last_move_direction = dash_visual_direction
 
-	move_speed /= dash_multiplier
+	spawn_dash_smoke(dash_visual_direction)
+
+	await get_tree().create_timer(resolved_duration).timeout
+
+	move_speed /= resolved_multiplier
 	is_dashing = false
+	dash_direction_override = Vector2.ZERO
 	hitbox.can_be_hit = true
 
-func spawn_dash_smoke() -> void:
+func spawn_dash_smoke(smoke_direction: Vector2 = Vector2.ZERO) -> void:
 	if dash_smoke_scene == null:
 		return
 
 	var smoke := dash_smoke_scene.instantiate() as Node2D
+	var resolved_direction := smoke_direction
+
+	if resolved_direction == Vector2.ZERO:
+		resolved_direction = last_move_direction
 
 	# Add it to the world rather than making it follow the player.
 	get_parent().add_child(smoke)
 
 	# Position it behind the direction the player is moving.
 	smoke.global_position = global_position - (
-		last_move_direction * dash_smoke_distance
+		resolved_direction * dash_smoke_distance
 	)
 
-	smoke.rotation = last_move_direction.angle()
+	smoke.rotation = resolved_direction.angle()
 
 func update_animation_parameters(move_input : Vector2):
 	if(move_input != Vector2.ZERO):

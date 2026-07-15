@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://d3l6q4iiomq7f"]
-
-[ext_resource type="PackedScene" path="res://Combat/Weapons/player/meleeWeapon.tscn" id="1_l2doe"]
-[ext_resource type="Script" path="res://Combat/Weapons/player/swordWeapon.gd" id="2_w5mb0"]
-
-[node name="SwordWeapon" instance=ExtResource("1_l2doe")]
-script = ExtResource("2_w5mb0")

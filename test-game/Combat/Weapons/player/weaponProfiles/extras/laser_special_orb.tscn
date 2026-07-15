@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b7r7ur7l8vp4b"]
 
-[ext_resource type="PackedScene" path="res://Combat/Weapons/player/lingeringProjectile.tscn" id="1_2w2ux"]
+[ext_resource type="PackedScene" path="res://Combat/Weapons/player/projectile.tscn" id="1_2w2ux"]
 [ext_resource type="Texture2D" uid="uid://dogjgte2fdvxa" path="res://Combat/Weapons/Projectile.png" id="2_6hrq5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3cp2k"]
@@ -45,6 +45,7 @@ _data = {
 }
 
 [node name="LaserSpecialOrb" instance=ExtResource("1_2w2ux")]
+lingers = true
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(1.2, 1.2)

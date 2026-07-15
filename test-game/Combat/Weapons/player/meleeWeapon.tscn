@@ -1,20 +1,7 @@
 [gd_scene format=3 uid="uid://dbwts5v0o4l2c"]
 
-[ext_resource type="Script" uid="uid://c0vv3cbrsqyi7" path="res://Combat/Weapons/player/meleeWeapon.gd" id="1_3lykc"]
+[ext_resource type="PackedScene" path="res://Combat/Weapons/player/weapon.tscn" id="1_3lykc"]
+[ext_resource type="Script" uid="uid://c0vv3cbrsqyi7" path="res://Combat/Weapons/player/meleeWeapon.gd" id="2_q8a7m"]
 
-[node name="MeleeWeapon" type="Node2D" unique_id=397098870]
-script = ExtResource("1_3lykc")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1695758661]
-
-[node name="AttackArea" type="Area2D" parent="." unique_id=95570106]
-collision_layer = 24
-collision_mask = 24
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=773213060]
-
-[node name="AttackTimer" type="Timer" parent="." unique_id=1903029938]
-
-[node name="CooldownTimer" type="Timer" parent="." unique_id=1316107423]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=217388248]
+[node name="MeleeWeapon" unique_id=397098870 instance=ExtResource("1_3lykc")]
+script = ExtResource("2_q8a7m")

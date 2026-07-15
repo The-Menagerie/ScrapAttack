@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://d3l6q4iiomq7f"]
+
+[ext_resource type="PackedScene" uid="uid://dbwts5v0o4l2c" path="res://Combat/Weapons/player/meleeWeapon.tscn" id="1_6tpeq"]
+[ext_resource type="Script" uid="uid://1rph06ame1b" path="res://Combat/Weapons/player/weaponProfiles/extras/swordWeapon.gd" id="2_k3n77"]
+[ext_resource type="Texture2D" uid="uid://ckq1oamo4htf7" path="res://Combat/Weapons/SlashSmall.png" id="3_8fkt8"]
+[ext_resource type="Texture2D" uid="uid://cb6c4ql1v6fdr" path="res://Combat/Weapons/SlashLarge.png" id="4_j07aq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xngbv"]
+radius = 8.0
+height = 26.0
+
+[sub_resource type="Animation" id="Animation_6tpeq"]
+resource_name = "AltAttack"
+length = 0.13333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AltAttack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_fmjhg"]
+resource_name = "Attack"
+length = 0.13333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.09887226),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_xngbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AltAttack:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dpa63"]
+_data = {
+&"AltAttack": SubResource("Animation_6tpeq"),
+&"Attack": SubResource("Animation_fmjhg"),
+&"RESET": SubResource("Animation_xngbv")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmjhg"]
+radius = 15.491962
+height = 52.886986
+
+[node name="SwordWeapon" unique_id=612162681 instance=ExtResource("1_6tpeq")]
+script = ExtResource("2_k3n77")
+block_damage_reduction = 0.7
+block_duration = 1.0
+parry_window = 0.2
+special_cooldown = 0.9
+parry_knockback_force = 400.0
+parry_stun_duration = 0.75
+block_flash_duration = 0.2
+attack_damage = 20.0
+knockback_force = 100.0
+attack_duration = 0.15
+stun_duration = 0.0
+alt_attack_damage = 35.0
+alt_attack_knockback_force = 260.0
+alt_attack_duration = 0.5
+alt_attack_cooldown = 1.0
+alt_attack_stun_duration = 0.35
+alt_attack_animation_speed_scale = 0.65
+
+[node name="Sprite2D" parent="." index="0" unique_id=1695758661]
+position = Vector2(8, -3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_8fkt8")
+hframes = 4
+
+[node name="AttackArea" parent="." index="1" unique_id=95570106]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="AttackArea" index="0" unique_id=773213060]
+visible = false
+position = Vector2(14, -0.99999976)
+rotation = 0.8185594
+skew = 0.48171088
+shape = SubResource("CapsuleShape2D_xngbv")
+
+[node name="AnimationPlayer" parent="." index="4" unique_id=217388248]
+libraries/ = SubResource("AnimationLibrary_dpa63")
+
+[node name="AltAttack" type="Sprite2D" parent="." index="5" unique_id=1289736758]
+position = Vector2(10, 1.000001)
+scale = Vector2(0.35, 0.4409091)
+texture = ExtResource("4_j07aq")
+hframes = 2
+vframes = 2
+
+[node name="AltAttackArea" type="Area2D" parent="." index="6" unique_id=1210064398]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AltAttackArea" index="0" unique_id=1413659741]
+visible = false
+position = Vector2(25.999992, -1.9999981)
+rotation = 2.073451
+skew = -0.567232
+shape = SubResource("CapsuleShape2D_fmjhg")

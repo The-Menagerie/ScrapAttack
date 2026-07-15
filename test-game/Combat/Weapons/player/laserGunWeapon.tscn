@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://dnc3j1s3wrr0d"]
-
-[ext_resource type="PackedScene" path="res://Combat/Weapons/player/rangedWeapon.tscn" id="1_7u9mn"]
-[ext_resource type="Script" path="res://Combat/Weapons/player/laserGunWeapon.gd" id="2_iql2u"]
-
-[node name="LaserGunWeapon" instance=ExtResource("1_7u9mn")]
-script = ExtResource("2_iql2u")
