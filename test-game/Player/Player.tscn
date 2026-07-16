@@ -6,10 +6,9 @@
 [ext_resource type="Shader" uid="uid://4fq6g38up1s8" path="res://Combat/flash_white.gdshader" id="3_s1rgi"]
 [ext_resource type="PackedScene" uid="uid://blbq24j6cp5vd" path="res://Combat/health_component.tscn" id="4_6ysni"]
 [ext_resource type="PackedScene" uid="uid://b1qycipn7xfvv" path="res://Player/DashSmoke.tscn" id="6_6ysni"]
-[ext_resource type="PackedScene" uid="uid://d3l6q4iiomq7f" path="res://Combat/Weapons/player/weaponProfiles/swordWeapon.tscn" id="7_vlldt"]
+[ext_resource type="PackedScene" uid="uid://d3l6q4iiomq7f" path="res://Combat/Weapons/player/weaponProfiles/sword&shieldWeapon.tscn" id="7_vlldt"]
 [ext_resource type="PackedScene" uid="uid://dnc3j1s3wrr0d" path="res://Combat/Weapons/player/weaponProfiles/laserGunWeapon.tscn" id="8_s1rgi"]
-[ext_resource type="PackedScene" path="res://Combat/Weapons/player/weaponProfiles/dualDaggersWeapon.tscn" id="9_a1k2m"]
-[ext_resource type="PackedScene" path="res://Combat/Weapons/player/weaponProfiles/fishWeapon.tscn" id="10_n1u4r"]
+[ext_resource type="PackedScene" uid="uid://d1f1m0s1b6w7k" path="res://Combat/Weapons/player/weaponProfiles/batWeapon.tscn" id="11_hu7v2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1rgi"]
 shader = ExtResource("3_s1rgi")
@@ -715,20 +714,7 @@ text = "LaserGun"
 horizontal_alignment = 2
 
 [node name="SwordWeapon" parent="." unique_id=612162681 instance=ExtResource("7_vlldt")]
-attack_damage = 10.0
-knockback_force = 100.0
-attack_duration = 0.15
-stun_duration = 0.0
-alt_attack_damage = 20.0
-alt_attack_knockback_force = 260.0
-alt_attack_duration = 0.5
-alt_attack_cooldown = 1.0
-alt_attack_stun_duration = 0.35
-alt_attack_animation_speed_scale = 0.65
+
+[node name="BatWeapon" parent="." unique_id=1808836637 instance=ExtResource("11_hu7v2")]
 
 [node name="LaserGunWeapon" parent="." unique_id=1086524227 instance=ExtResource("8_s1rgi")]
-stun_duration = 0.0
-
-[node name="DualDaggersWeapon" parent="." instance=ExtResource("9_a1k2m")]
-
-[node name="FishWeapon" parent="." instance=ExtResource("10_n1u4r")]

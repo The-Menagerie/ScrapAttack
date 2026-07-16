@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://6xkwdi2funq4"]
 
-[ext_resource type="PackedScene" path="res://Combat/Weapons/player/meleeWeapon.tscn" id="1_2c0mw"]
-[ext_resource type="Script" path="res://Combat/Weapons/player/weaponProfiles/extras/fishWeapon.gd" id="2_ysh0m"]
+[ext_resource type="PackedScene" uid="uid://dbwts5v0o4l2c" path="res://Combat/Weapons/player/meleeWeapon.tscn" id="1_2c0mw"]
+[ext_resource type="Script" uid="uid://bgt2mwcu46eyu" path="res://Combat/Weapons/player/weaponProfiles/extras/fishWeapon.gd" id="2_ysh0m"]
 [ext_resource type="Texture2D" uid="uid://ckq1oamo4htf7" path="res://Combat/Weapons/SlashSmall.png" id="3_8je6c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kxg3h"]
@@ -45,36 +45,27 @@ _data = {
 &"RESET": SubResource("Animation_9c1jj")
 }
 
-[node name="FishWeapon" instance=ExtResource("1_2c0mw")]
+[node name="FishWeapon" unique_id=1301478325 instance=ExtResource("1_2c0mw")]
 script = ExtResource("2_ysh0m")
 attack_damage = 1.0
 knockback_force = 1000.0
-attack_duration = 0.15
-stun_duration = 0.0
-alt_attack_damage = 1.0
-alt_attack_knockback_force = 1000.0
-alt_attack_duration = 0.15
-alt_attack_cooldown = 0.35
-alt_attack_stun_duration = 0.0
-alt_attack_animation_speed_scale = 1.0
 display_name = "Fish"
-attack_cooldown = 0.35
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0" unique_id=1695758661]
 position = Vector2(8, -3)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_8je6c")
 hframes = 4
 
-[node name="AttackArea" parent="." index="1"]
+[node name="AttackArea" parent="." index="1" unique_id=95570106]
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape2D" parent="AttackArea" index="0"]
+[node name="CollisionShape2D" parent="AttackArea" index="0" unique_id=773213060]
 position = Vector2(14, -1)
 rotation = 0.8185594
 skew = 0.48171088
 shape = SubResource("CapsuleShape2D_kxg3h")
 
-[node name="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" parent="." index="4" unique_id=217388248]
 libraries/ = SubResource("AnimationLibrary_1armp")

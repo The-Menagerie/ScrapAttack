@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://sxw1mp45vqpo"]
+
+[ext_resource type="PackedScene" uid="uid://bhl4txnhpno8p" path="res://Combat/Weapons/player/scrapUpgrade.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://bwnw5vg2abjji" path="res://Combat/Weapons/player/weaponProfiles/extras/sonicBoomUpgrade.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://dogjgte2fdvxa" path="res://Combat/Weapons/Projectile.png" id="3_q08on"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_boom"]
+radius = 37.0
+
+[sub_resource type="Animation" id="Animation_boom"]
+resource_name = "Attack"
+length = 0.2
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_boom"]
+_data = {
+&"Attack": SubResource("Animation_boom")
+}
+
+[node name="sonicBoom" unique_id=124474586 instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+attack_damage = 0.0
+knockback_force = 450.0
+stun_duration = 0.15
+attack_duration = 0.2
+cooldown = 0.9
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=1571121555]
+scale = Vector2(3.0833335, 3.0833335)
+texture = ExtResource("3_q08on")
+hframes = 12
+
+[node name="HitArea" type="Area2D" parent="." index="1" unique_id=1240078697]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" index="0" unique_id=678805547]
+shape = SubResource("CircleShape2D_boom")
+
+[node name="AttackTimer" type="Timer" parent="." index="2" unique_id=861869777]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=2033765264]
+libraries/ = SubResource("AnimationLibrary_boom")

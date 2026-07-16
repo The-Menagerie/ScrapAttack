@@ -1,117 +1,48 @@
 extends RangedWeapon
 class_name LaserGunWeapon
 
-@export_group("Charge Shot")
-@export var charge_time_max: float = 1.25
-@export var charged_projectile_scale_min: float = 1.0
-@export var charged_projectile_scale_max: float = 2.4
-@export var charged_damage_multiplier_min: float = 1.25
-@export var charged_damage_multiplier_max: float = 4.0
-@export var charged_knockback_multiplier: float = 1.0
-@export var charged_stun_bonus: float = 0.0
-@export var max_charge_flash_duration: float = 0.1
+@export var upgrade_scenes: Array[PackedScene] = []
 
-@export_group("Special Attack")
-@export var special_projectile_scene: PackedScene
-@export var special_projectile_speed: float = 90.0
-@export var special_projectile_range: float = 260.0
-@export var special_projectile_damage_per_tick: float = 2.0
-@export var special_projectile_knockback_force: float = 0.0
-@export var special_projectile_stun_duration: float = 0.0
-@export var special_projectile_scale: Vector2 = Vector2(2.0, 2.0)
-@export var special_projectile_tick_interval: float = 0.25
-@export var special_attack_cooldown: float = 1.4
-
-var is_charging_alt: bool = false
-var current_charge_time: float = 0.0
-var did_flash_max_charge: bool = false
+var alt_upgrade: RangedWeaponUpgrade
+var special_upgrade: RangedWeaponUpgrade
 
 @onready var owner_visual: CanvasItem = get_parent().get_node_or_null("Sprite2D") as CanvasItem
 
 func uses_hold_alt_attack() -> bool:
-	return true
+	return alt_upgrade != null and alt_upgrade.uses_hold_alt_attack()
 
 func begin_alt_attack() -> void:
-	if not can_attack or is_charging_alt:
-		return
-
-	can_attack = false
-	is_attacking = true
-	is_charging_alt = true
-	current_charge_time = 0.0
-	did_flash_max_charge = false
+	if alt_upgrade != null:
+		alt_upgrade.begin_alt_attack()
 
 func update_alt_attack(delta: float) -> void:
-	if not is_charging_alt:
-		return
-
-	current_charge_time = minf(current_charge_time + delta, charge_time_max)
-
-	if not did_flash_max_charge and current_charge_time >= charge_time_max:
-		did_flash_max_charge = true
-		flash_owner_white(max_charge_flash_duration)
+	if alt_upgrade != null:
+		alt_upgrade.update_alt_attack(delta)
 
 func release_alt_attack() -> void:
-	if not is_charging_alt:
-		return
+	if alt_upgrade != null:
+		alt_upgrade.release_alt_attack()
 
-	var charge_ratio := 1.0
-
-	if charge_time_max > 0.0:
-		charge_ratio = clampf(current_charge_time / charge_time_max, 0.0, 1.0)
-
-	var projectile_scale_value := lerpf(
-		charged_projectile_scale_min,
-		charged_projectile_scale_max,
-		charge_ratio
-	)
-	var damage_multiplier := lerpf(
-		charged_damage_multiplier_min,
-		charged_damage_multiplier_max,
-		charge_ratio
-	)
-
-	_spawn_projectile(
-		projectile_scene,
-		projectile_speed,
-		projectile_range,
-		attack_damage * damage_multiplier,
-		knockback_force * charged_knockback_multiplier,
-		stun_duration + charged_stun_bonus,
-		Vector2.ONE * projectile_scale_value
-	)
-
-	is_charging_alt = false
-	current_charge_time = 0.0
-	did_flash_max_charge = false
-	set_cooldown_override(attack_cooldown)
-	finish_attack()
+func alt_attack() -> void:
+	if alt_upgrade != null and not alt_upgrade.uses_hold_alt_attack():
+		alt_upgrade.alt_attack()
 
 func prevents_movement() -> bool:
-	return is_charging_alt
+	if alt_upgrade != null and alt_upgrade.prevents_movement():
+		return true
+
+	if special_upgrade != null and special_upgrade.prevents_movement():
+		return true
+
+	return false
 
 func special_attack() -> void:
-	if not can_attack or is_charging_alt:
-		return
+	if special_upgrade != null:
+		special_upgrade.special_attack()
 
-	can_attack = false
-	is_attacking = true
-
-	var projectile := _spawn_projectile(
-		special_projectile_scene,
-		special_projectile_speed,
-		special_projectile_range,
-		special_projectile_damage_per_tick,
-		special_projectile_knockback_force,
-		special_projectile_stun_duration,
-		special_projectile_scale
-	)
-
-	if projectile != null and projectile.has_method("configure_damage_over_time"):
-		projectile.configure_damage_over_time(special_projectile_tick_interval)
-
-	set_cooldown_override(special_attack_cooldown)
-	finish_attack()
+func _ready() -> void:
+	super._ready()
+	_apply_upgrades()
 
 func flash_owner_white(duration: float) -> void:
 	var shader_material := _get_owner_shader_material()
@@ -149,3 +80,35 @@ func _get_owner_shader_material() -> ShaderMaterial:
 		owner_node = owner_node.get_parent() as CanvasItem
 
 	return null
+
+func _apply_upgrades() -> void:
+	for upgrade_scene in upgrade_scenes:
+		var upgrade := _instantiate_upgrade_scene(upgrade_scene)
+
+		if upgrade == null:
+			continue
+
+		add_child(upgrade)
+		upgrade.setup(self)
+
+		match upgrade.upgrade_slot:
+			RangedWeaponUpgrade.UpgradeSlot.SPECIAL:
+				if special_upgrade != null:
+					special_upgrade.queue_free()
+				special_upgrade = upgrade
+			_:
+				if alt_upgrade != null:
+					alt_upgrade.queue_free()
+				alt_upgrade = upgrade
+
+func _instantiate_upgrade_scene(scene: PackedScene) -> RangedWeaponUpgrade:
+	if scene == null:
+		return null
+
+	var upgrade_instance := scene.instantiate()
+
+	if not (upgrade_instance is RangedWeaponUpgrade):
+		push_warning("Upgrade scene must inherit RangedWeaponUpgrade.")
+		return null
+
+	return upgrade_instance as RangedWeaponUpgrade

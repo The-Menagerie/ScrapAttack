@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bnh3gn2vonk1s"]
+
+[ext_resource type="PackedScene" uid="uid://bhl4txnhpno8p" path="res://Combat/Weapons/player/scrapUpgrade.tscn" id="1_mv202"]
+[ext_resource type="Script" uid="uid://b6w7cof5xir8r" path="res://Combat/Weapons/player/weaponProfiles/extras/blockUpgrade.gd" id="2_2may7"]
+
+[node name="blockUpgrade" unique_id=208632813 instance=ExtResource("1_mv202")]
+script = ExtResource("2_2may7")
+block_damage_reduction = 0.7
+block_duration = 1.0
+parry_window = 0.2
+parry_knockback_force = 400.0
+parry_stun_duration = 0.75
+block_flash_duration = 0.2
+upgrade_slot = 1
+cooldown = 0.9

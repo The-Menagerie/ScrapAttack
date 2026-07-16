@@ -3,14 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dbwts5v0o4l2c" path="res://Combat/Weapons/player/meleeWeapon.tscn" id="1_mr4db"]
 [ext_resource type="Script" uid="uid://ca3jk65ekqfvn" path="res://Combat/Weapons/player/weaponProfiles/extras/dualDaggersWeapon.gd" id="2_3p2gx"]
 [ext_resource type="Texture2D" uid="uid://ckq1oamo4htf7" path="res://Combat/Weapons/SlashSmall.png" id="3_7mx1s"]
-[ext_resource type="Texture2D" uid="uid://cb6c4ql1v6fdr" path="res://Combat/Weapons/SlashLarge.png" id="4_ryr0s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_small"]
 radius = 7.0
 height = 18.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_special"]
-height = 20.0
 
 [sub_resource type="Animation" id="Animation_primary"]
 resource_name = "Attack"
@@ -33,79 +29,11 @@ _data = {
 &"Attack": SubResource("Animation_primary")
 }
 
-[sub_resource type="Animation" id="Animation_alt"]
-resource_name = "AltAttack"
-length = 0.08
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AltAttack:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.04, 0.06),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_alt"]
-_data = {
-&"AltAttack": SubResource("Animation_alt")
-}
-
-[sub_resource type="Animation" id="Animation_special"]
-resource_name = "SpecialAttack"
-length = 0.13333334
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpecialAttackLeft:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpecialAttackRight:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_special"]
-_data = {
-&"SpecialAttack": SubResource("Animation_special")
-}
-
 [node name="DualDaggersWeapon" unique_id=1088026209 instance=ExtResource("1_mr4db")]
 script = ExtResource("2_3p2gx")
-special_attack_damage = 10.0
-special_knockback_force = 100.0
-special_attack_stun_duration = 0.06
-special_attack_duration = 0.08
-special_attack_cooldown = 0.45
-special_dash_multiplier = 3.2
-special_dash_duration = 0.1
-attack_damage = 10.0
 knockback_force = 50.0
 attack_duration = 0.08
 stun_duration = 0.04
-alt_attack_damage = 10.0
-alt_attack_knockback_force = 50.0
-alt_attack_duration = 0.08
-alt_attack_cooldown = 0.08
-alt_attack_stun_duration = 0.04
-alt_attack_animation_speed_scale = 1.0
 display_name = "Dual Daggers"
 attack_cooldown = 0.08
 
@@ -126,72 +54,5 @@ position = Vector2(8, -1.9999995)
 rotation = 0.7853982
 shape = SubResource("CapsuleShape2D_small")
 
-[node name="AltAttack" type="Sprite2D" parent="." index="5" unique_id=849979649]
-position = Vector2(-36.999996, 45.999996)
-scale = Vector2(0.4, -0.4)
-texture = ExtResource("3_7mx1s")
-centered = false
-hframes = 4
-
-[node name="AltAttackArea" type="Area2D" parent="." index="6" unique_id=1342356899]
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AltAttackArea" index="0" unique_id=1886195196]
-visible = false
-position = Vector2(8, 0.9999995)
-rotation = -0.7853982
-shape = SubResource("CapsuleShape2D_small")
-
-[node name="AltCooldownTimer" type="Timer" parent="." index="7" unique_id=165310098]
-
-[node name="AltAttackTimer" type="Timer" parent="." index="8" unique_id=1883357035]
-
-[node name="SpecialAttackLeft" type="Sprite2D" parent="." index="9" unique_id=1922804519]
-position = Vector2(1, -9)
-rotation = 4.712389
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("4_ryr0s")
-hframes = 2
-vframes = 2
-
-[node name="SpecialAttackRight" type="Sprite2D" parent="." index="10" unique_id=1053981449]
-position = Vector2(1, 9)
-rotation = 1.5707964
-scale = Vector2(0.3, -0.3)
-texture = ExtResource("4_ryr0s")
-hframes = 2
-vframes = 2
-
-[node name="SpecialAttackAreaLeft" type="Area2D" parent="." index="11" unique_id=1008063567]
-visible = false
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttackAreaLeft" index="0" unique_id=1087279671]
-visible = false
-position = Vector2(0, -10)
-shape = SubResource("CapsuleShape2D_special")
-
-[node name="SpecialAttackAreaRight" type="Area2D" parent="." index="12" unique_id=1509385560]
-visible = false
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialAttackAreaRight" index="0" unique_id=1505175864]
-visible = false
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_special")
-
-[node name="SpecialAttackTimer" type="Timer" parent="." index="13" unique_id=1401543358]
-
-[node name="SpecialCooldownTimer" type="Timer" parent="." index="14" unique_id=1510311873]
-
-[node name="PrimaryAnimationPlayer" type="AnimationPlayer" parent="." index="15" unique_id=1682386869]
+[node name="PrimaryAnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=1682386869]
 libraries/ = SubResource("AnimationLibrary_primary")
-
-[node name="AltAnimationPlayer" type="AnimationPlayer" parent="." index="16" unique_id=1081376979]
-libraries/ = SubResource("AnimationLibrary_alt")
-
-[node name="SpecialAnimationPlayer" type="AnimationPlayer" parent="." index="17" unique_id=226069147]
-libraries/ = SubResource("AnimationLibrary_special")

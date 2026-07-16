@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://d1f1m0s1b6w7k"]
+
+[ext_resource type="PackedScene" uid="uid://dbwts5v0o4l2c" path="res://Combat/Weapons/player/meleeWeapon.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://cb6c4ql1v6fdr" path="res://Combat/Weapons/SlashLarge.png" id="2_texture"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bat"]
+radius = 9.192389
+height = 38.183773
+
+[sub_resource type="Animation" id="Animation_bat"]
+resource_name = "Attack"
+length = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bat"]
+_data = {
+&"Attack": SubResource("Animation_bat")
+}
+
+[node name="BatWeapon" unique_id=845690511 instance=ExtResource("1_base")]
+attack_damage = 14.0
+knockback_force = 260.0
+attack_duration = 0.16
+stun_duration = 0.08
+display_name = "Bat"
+attack_cooldown = 0.28
+
+[node name="Sprite2D" parent="." index="0" unique_id=1695758661]
+position = Vector2(12, -4)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_texture")
+hframes = 2
+vframes = 2
+
+[node name="AttackArea" parent="." index="1" unique_id=95570106]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="AttackArea" index="0" unique_id=773213060]
+position = Vector2(14, -10)
+rotation = 0.7853982
+shape = SubResource("CapsuleShape2D_bat")
+
+[node name="AnimationPlayer" parent="." index="4" unique_id=217388248]
+libraries/ = SubResource("AnimationLibrary_bat")

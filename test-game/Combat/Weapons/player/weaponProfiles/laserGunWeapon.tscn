@@ -2,28 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://blyr56b7f5ojw" path="res://Combat/Weapons/player/rangedWeapon.tscn" id="1_7u9mn"]
 [ext_resource type="Script" uid="uid://bc8sjtkja74sn" path="res://Combat/Weapons/player/weaponProfiles/extras/laserGunWeapon.gd" id="2_iql2u"]
-[ext_resource type="PackedScene" uid="uid://b7r7ur7l8vp4b" path="res://Combat/Weapons/player/weaponProfiles/extras/laser_special_orb.tscn" id="3_u6gtm"]
 [ext_resource type="PackedScene" uid="uid://bg0cn3dfnwai2" path="res://Combat/Weapons/player/weaponProfiles/extras/laser_orb.tscn" id="4_3wgge"]
 
 [node name="LaserGunWeapon" unique_id=892520833 instance=ExtResource("1_7u9mn")]
 script = ExtResource("2_iql2u")
-charge_time_max = 1.25
-charged_projectile_scale_min = 0.5
-charged_projectile_scale_max = 2.0
-charged_damage_multiplier_min = 0.5
-charged_damage_multiplier_max = 4.0
-charged_knockback_multiplier = 0.0
-charged_stun_bonus = 1.0
-max_charge_flash_duration = 0.1
-special_projectile_scene = ExtResource("3_u6gtm")
-special_projectile_speed = 50.0
-special_projectile_range = 100.0
-special_projectile_damage_per_tick = 3.0
-special_projectile_knockback_force = 0.0
-special_projectile_stun_duration = 0.0
-special_projectile_scale = Vector2(1.6, 1.6)
-special_projectile_tick_interval = 0.25
-special_attack_cooldown = 1.4
+upgrade_scenes = Array[PackedScene]([])
 projectile_scene = ExtResource("4_3wgge")
 projectile_speed = 200.0
 projectile_range = 200.0

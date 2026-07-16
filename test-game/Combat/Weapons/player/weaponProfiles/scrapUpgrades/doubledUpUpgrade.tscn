@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://da7rtwko8s0j5"]
+
+[ext_resource type="PackedScene" uid="uid://bhl4txnhpno8p" path="res://Combat/Weapons/player/scrapUpgrade.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://dptbhhhr60fmq" path="res://Combat/Weapons/player/weaponProfiles/extras/doubledUpUpgrade.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://ckq1oamo4htf7" path="res://Combat/Weapons/SlashSmall.png" id="3_tex"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_small"]
+radius = 7.0
+height = 18.0
+
+[sub_resource type="Animation" id="Animation_alt"]
+resource_name = "Attack"
+length = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_alt"]
+_data = {
+&"Attack": SubResource("Animation_alt")
+}
+
+[node name="doubledUpUpgrade" unique_id=1365366504 instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+attack_damage = 10.0
+knockback_force = 50.0
+attack_duration = 0.08
+stun_duration = 0.04
+cooldown = 0.08
+
+[node name="AttackSprite" type="Sprite2D" parent="." index="0" unique_id=2050894163]
+position = Vector2(-36.999996, 45.999996)
+scale = Vector2(0.4, -0.4)
+texture = ExtResource("3_tex")
+centered = false
+hframes = 4
+
+[node name="HitArea" type="Area2D" parent="." index="1" unique_id=1125668128]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" index="0" unique_id=1497986637]
+visible = false
+position = Vector2(8, 0.9999995)
+rotation = -0.7853982
+shape = SubResource("CapsuleShape2D_small")
+
+[node name="AttackTimer" type="Timer" parent="." index="2" unique_id=1607681026]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1763755311]
+libraries/ = SubResource("AnimationLibrary_alt")
