@@ -26,6 +26,7 @@ metadata/_custom_type_script = "uid://dlyt2xh3be535"
 layout_mode = 0
 offset_right = 380.0
 offset_bottom = 250.0
+mouse_filter = 1
 theme = ExtResource("1_q2tnl")
 
 [node name="Name" type="RichTextLabel" parent="Panel" unique_id=1813817581]
