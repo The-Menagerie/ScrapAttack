@@ -32,7 +32,7 @@ script = ExtResource("3_5enj4")
 name = "Egg"
 texture = ExtResource("4_5enj4")
 dimensions = Vector2i(1, 1)
-weight = 4.0
+weight = 0.5
 max_stack_size = 15
 metadata/_custom_type_script = "uid://cxsxebxcv43g2"
 
@@ -86,4 +86,5 @@ script = ExtResource("4_bpmhi")
 inventory_slot_scene = ExtResource("5_0fvou")
 dimensions = Vector2i(10, 8)
 
+[connection signal="add_item" from="Inventory/InventoryGrid" to="Inventory" method="add_item"]
 [connection signal="remove_item" from="Inventory/InventoryGrid" to="Inventory" method="remove_item"]

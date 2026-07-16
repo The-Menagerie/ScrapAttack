@@ -6,6 +6,7 @@ const SLOT_SIZE: int = 64
 @export var dimensions: Vector2i
 
 signal remove_item(item_data: ItemData)
+signal add_item(item_data: ItemData)
 
 var slot_data: Array[Node] = []
 var held_item_intersects: bool = false
@@ -60,6 +61,18 @@ func _gui_input(event: InputEvent) -> void:
 					return
 				held_item.get_placed(get_coords_from_slot_index(index))
 				add_item_to_slot_data(index, held_item)
+		if event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed():
+			var held_item = get_tree().get_first_node_in_group("held_item")
+			if !held_item:
+				var slot_index = get_slot_index_from_coords(get_global_mouse_position())
+				var item = slot_data[slot_index]
+				if !item:
+					return
+				item.get_picked_up()
+				remove_item_from_slot_data(item)
+				var new_item: ItemData = item.split(item.data)
+				add_item.emit(new_item)
+				
 	if event is InputEventMouseMotion:
 		var held_item = get_tree().get_first_node_in_group("held_item")
 		if held_item:
