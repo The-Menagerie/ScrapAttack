@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://d02q43jtdwo7f" path="res://Scenes/debug_terrain.tscn" id="1_ngmhs"]
 [ext_resource type="PackedScene" uid="uid://cqns2ekd1t78t" path="res://Player/Player.tscn" id="2_o67dp"]
 [ext_resource type="PackedScene" uid="uid://x2k7ot164jgh" path="res://Orc/Orc.tscn" id="3_6mob1"]
+[ext_resource type="PackedScene" uid="uid://ca4m1hc1oublw" path="res://Scenes/ui_scenes/building_menu.tscn" id="4_6mob1"]
+[ext_resource type="PackedScene" uid="uid://chuy825ybb8gf" path="res://Scenes/ui_scenes/building_confirmation.tscn" id="5_gu212"]
 
 [node name="Game" type="Node2D" unique_id=408274446]
 y_sort_enabled = true
@@ -21,3 +23,10 @@ z_index = 0
 position = Vector2(168, 82)
 
 [node name="debug_map" parent="." unique_id=1428059447 instance=ExtResource("1_ngmhs")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=118655845]
+
+[node name="BuildingMenu" parent="CanvasLayer" unique_id=987986865 instance=ExtResource("4_6mob1")]
+offset_right = 0.0
+
+[node name="BuildingConfirmation" parent="CanvasLayer" unique_id=1863093831 instance=ExtResource("5_gu212")]

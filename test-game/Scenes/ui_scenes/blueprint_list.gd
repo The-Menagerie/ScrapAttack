@@ -12,11 +12,12 @@ func _ready():
 		build_DB = build_DB_json.data
 		print(build_DB["chicken_coop"])
 		var build_option_base = preload("res://Scenes/ui_scenes/building_option.tscn")
-		for i in build_DB:
-			var building = build_DB[i]
-			var building_op = build_option_base.instantiate()
-			building_op.initialize(building)
-			add_child(building_op)
+		for k in [1,2,3,4,5,6,7,8,9]:
+			for i in build_DB:
+				var building = build_DB[i]
+				var building_op = build_option_base.instantiate()
+				building_op.initialize(building)
+				add_child(building_op)
 			
 		
 	
