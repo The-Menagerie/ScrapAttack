@@ -13,6 +13,13 @@ y_sort_enabled = true
 z_index = 0
 position = Vector2(-83, 29)
 collision_mask = 3
+<<<<<<< HEAD
+=======
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1909387718]
+z_index = 20
+zoom = Vector2(3, 3)
+>>>>>>> 0e7e6706e7c86e3798edc43e583d75ff50f9e585
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1909387718]
 z_index = 20

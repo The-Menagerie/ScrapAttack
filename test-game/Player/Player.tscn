@@ -9,11 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://d3l6q4iiomq7f" path="res://Combat/Weapons/player/weaponProfiles/sword&shieldWeapon.tscn" id="7_vlldt"]
 [ext_resource type="PackedScene" uid="uid://dnc3j1s3wrr0d" path="res://Combat/Weapons/player/weaponProfiles/laserGunWeapon.tscn" id="8_s1rgi"]
 [ext_resource type="PackedScene" uid="uid://d1f1m0s1b6w7k" path="res://Combat/Weapons/player/weaponProfiles/batWeapon.tscn" id="11_hu7v2"]
+[ext_resource type="PackedScene" uid="uid://b0wdb47mr5ssh" path="res://Scenes/utility_scenes/player_interactor.tscn" id="5_8g4oa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1rgi"]
 shader = ExtResource("3_s1rgi")
 shader_parameter/flash_amount = 0.0
-[ext_resource type="PackedScene" uid="uid://b0wdb47mr5ssh" path="res://Scenes/utility_scenes/player_interactor.tscn" id="5_8g4oa"]
 
 [sub_resource type="Animation" id="Animation_ptld2"]
 length = 0.001

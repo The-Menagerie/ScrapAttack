@@ -456,6 +456,7 @@ texture = ExtResource("1_j41v7")
 8:1/0 = 0
 9:1/0 = 0
 0:2/0 = 0
+1:2/0 = 0
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -506,7 +507,6 @@ texture = ExtResource("1_j41v7")
 7:6/0 = 0
 8:6/0 = 0
 10:1/0 = 0
-1:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jrmx8"]
 resource_name = "Tiled Dirt 1"
