@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ce48ug13ttp6x"]
+
+[ext_resource type="PackedScene" path="res://Combat/Weapons/player/rangedUpgrade.tscn" id="1_77qnr"]
+[ext_resource type="Script" uid="uid://bc1mn3f6eobll" path="res://Combat/Weapons/player/weaponProfiles/extras/laserSpecialUpgrade.gd" id="2_4ru46"]
+[ext_resource type="PackedScene" uid="uid://b7r7ur7l8vp4b" path="res://Combat/Weapons/player/weaponProfiles/extras/laser_special_orb.tscn" id="3_c0me1"]
+[ext_resource type="Texture2D" path="res://Combat/Weapons/player/weaponProfiles/extras/THEORBIcon.png" id="4_icon"]
+
+[node name="theORBUpgrade" unique_id=840454484 instance=ExtResource("1_77qnr")]
+script = ExtResource("2_4ru46")
+hud_icon = ExtResource("4_icon")
+projectile_scene = ExtResource("3_c0me1")
+projectile_speed = 50.0
+projectile_range = 100.0
+projectile_damage_per_tick = 3.0
+projectile_knockback_force = 0.0
+projectile_stun_duration = 0.0
+projectile_scale = Vector2(1.6, 1.6)
+projectile_tick_interval = 0.25
+cooldown = 1.4
+upgrade_slot = 1

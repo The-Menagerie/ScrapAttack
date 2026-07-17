@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://blyr56b7f5ojw"]
+
+[ext_resource type="PackedScene" path="res://Combat/Weapons/player/weapon.tscn" id="1_4k7qf"]
+[ext_resource type="Script" path="res://Combat/Weapons/player/rangedWeapon.gd" id="2_t9q2m"]
+[ext_resource type="PackedScene" path="res://Combat/Weapons/player/projectile.tscn" id="3_biqlx"]
+
+[node name="RangedWeapon" unique_id=397098870 instance=ExtResource("1_4k7qf")]
+script = ExtResource("2_t9q2m")
+projectile_scene = ExtResource("3_biqlx")

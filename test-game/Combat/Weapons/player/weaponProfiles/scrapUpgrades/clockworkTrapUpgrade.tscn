@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b50knb18boy58"]
+
+[ext_resource type="PackedScene" uid="uid://bhl4txnhpno8p" path="res://Combat/Weapons/player/scrapUpgrade.tscn" id="1_base"]
+[ext_resource type="Script" path="res://Combat/Weapons/player/weaponProfiles/extras/clockworkTrapUpgrade.gd" id="2_script"]
+[ext_resource type="PackedScene" uid="uid://dmapju6acnfvv" path="res://Combat/Weapons/player/weaponProfiles/extras/clockworkTrap.tscn" id="3_projectile"]
+[ext_resource type="Texture2D" path="res://Combat/Weapons/player/weaponProfiles/extras/ClockworkTrapIcon.png" id="4_icon"]
+
+[node name="clockworkTrapUpgrade" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+hud_icon = ExtResource("4_icon")
+projectile_scene = ExtResource("3_projectile")
+trap_duration = 3.0
+trap_spawn_distance = 22.0
+trap_damage = 0.0
+trap_knockback_force = 0.0
+trap_stun_duration = 0.75
+trap_tick_interval = 0.35
+trap_scale = Vector2(1, 1)
+upgrade_slot = 1
+cooldown = 1.25

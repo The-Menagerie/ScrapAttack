@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dfbmp87rc7wbc"]
+
+[ext_resource type="Script" uid="uid://d1vkmw52l3udh" path="res://Combat/Weapons/enemy/weaponEnemy.gd" id="1_b3uvi"]
+
+[node name="WeaponEnemy" type="Node2D" unique_id=397098870]
+script = ExtResource("1_b3uvi")
+attack_windup = 0.25
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1695758661]
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=95570106]
+collision_layer = 24
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=773213060]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1903029938]
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1316107423]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=217388248]

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://blbq24j6cp5vd"]
+
+[ext_resource type="Script" uid="uid://cepw6y6px4d1v" path="res://Combat/HealthComponent.gd" id="1_b2ebj"]
+[ext_resource type="PackedScene" uid="uid://dt8l2rhy3g7nh" path="res://Combat/world_health_bar.tscn" id="2_f4luu"]
+
+[node name="HealthComponent" type="Node2D" unique_id=1642405860]
+script = ExtResource("1_b2ebj")
+
+[node name="WorldHealthBar" parent="." unique_id=985301648 node_paths=PackedStringArray("health_component") instance=ExtResource("2_f4luu")]
+health_component = NodePath("..")
+show_at_full_health = false

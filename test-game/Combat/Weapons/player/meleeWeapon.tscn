@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dbwts5v0o4l2c"]
+
+[ext_resource type="PackedScene" uid="uid://c2n5ffr4wv25m" path="res://Combat/Weapons/player/weapon.tscn" id="1_3lykc"]
+[ext_resource type="Script" uid="uid://c0vv3cbrsqyi7" path="res://Combat/Weapons/player/meleeWeapon.gd" id="2_q8a7m"]
+
+[node name="MeleeWeapon" unique_id=397098870 instance=ExtResource("1_3lykc")]
+script = ExtResource("2_q8a7m")
+attack_damage = 10.0
+knockback_force = 100.0
+attack_duration = 0.15
+stun_duration = 0.0
+special_attack_scene = null
+upgrade_scenes = Array[PackedScene]([])

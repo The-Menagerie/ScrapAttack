@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c6la1n5faqtj3"]
+
+[ext_resource type="PackedScene" uid="uid://bhl4txnhpno8p" path="res://Combat/Weapons/player/scrapUpgrade.tscn" id="1_20aya"]
+[ext_resource type="Script" uid="uid://64265pmdh4sq" path="res://Combat/Weapons/player/weaponProfiles/extras/heavyHandUpgrade.gd" id="2_o2h0d"]
+[ext_resource type="Texture2D" uid="uid://cb6c4ql1v6fdr" path="res://Combat/Weapons/SlashLarge.png" id="3_wpw7v"]
+[ext_resource type="Texture2D" path="res://Combat/Weapons/player/weaponProfiles/extras/HeavyHandedIcon.png" id="4_icon"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmjhg"]
+radius = 15.491962
+height = 52.886986
+
+[sub_resource type="Animation" id="Animation_6tpeq"]
+resource_name = "Attack"
+length = 0.13333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dpa63"]
+_data = {
+&"Attack": SubResource("Animation_6tpeq")
+}
+
+[node name="heavyHandUpgrade" unique_id=208632813 instance=ExtResource("1_20aya")]
+script = ExtResource("2_o2h0d")
+hud_icon = ExtResource("4_icon")
+attack_damage = 35.0
+knockback_force = 260.0
+attack_duration = 0.5
+stun_duration = 0.35
+animation_speed_scale = 0.65
+cooldown = 1.0
+
+[node name="AttackSprite" type="Sprite2D" parent="." index="0" unique_id=1221721404]
+position = Vector2(10, 1.000001)
+scale = Vector2(0.35, 0.4409091)
+texture = ExtResource("3_wpw7v")
+hframes = 2
+vframes = 2
+
+[node name="HitArea" type="Area2D" parent="." index="1" unique_id=568212977]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" index="0" unique_id=979497134]
+visible = false
+position = Vector2(25.999992, -1.9999981)
+rotation = 2.073451
+skew = -0.567232
+shape = SubResource("CapsuleShape2D_fmjhg")
+
+[node name="AttackTimer" type="Timer" parent="." index="2" unique_id=716715174]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1912944937]
+libraries/ = SubResource("AnimationLibrary_dpa63")

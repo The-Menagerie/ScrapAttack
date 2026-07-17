@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dsvxq41g1s2pt"]
+
+[ext_resource type="PackedScene" uid="uid://bhl4txnhpno8p" path="res://Combat/Weapons/player/scrapUpgrade.tscn" id="1_base"]
+[ext_resource type="Script" path="res://Combat/Weapons/player/weaponProfiles/extras/clockworkSpinUpgrade.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://dogjgte2fdvxa" path="res://Combat/Weapons/Projectile.png" id="3_texture"]
+[ext_resource type="Texture2D" path="res://Combat/Weapons/player/weaponProfiles/extras/ClockworkSpinIcon.png" id="4_icon"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_spin"]
+radius = 28.0
+
+[sub_resource type="Animation" id="Animation_spin"]
+resource_name = "Attack"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.175, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.2831855, 12.566371]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.6, 1.6), Vector2(2.0, 2.0), Vector2(1.6, 1.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_spin"]
+_data = {
+&"Attack": SubResource("Animation_spin")
+}
+
+[node name="clockworkSpinUpgrade" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+hud_icon = ExtResource("4_icon")
+attack_damage = 6.0
+knockback_force = 220.0
+stun_duration = 0.2
+attack_duration = 0.35
+upgrade_slot = 0
+cooldown = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+visible = false
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_texture")
+hframes = 12
+frame = 3
+
+[node name="HitArea" type="Area2D" parent="." index="1"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" index="0"]
+shape = SubResource("CircleShape2D_spin")
+
+[node name="AttackTimer" type="Timer" parent="." index="2"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries/ = SubResource("AnimationLibrary_spin")

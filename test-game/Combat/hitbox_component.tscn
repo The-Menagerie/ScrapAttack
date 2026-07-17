@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://brfrfpncin1fy"]
+
+[ext_resource type="Script" uid="uid://cgytxbgujcn8b" path="res://Combat/HitboxComponent.gd" id="1_hebpo"]
+[ext_resource type="PackedScene" uid="uid://blbq24j6cp5vd" path="res://Combat/health_component.tscn" id="2_q78ui"]
+
+[node name="HitboxComponent" type="Area2D" unique_id=907885426 node_paths=PackedStringArray("health_component")]
+collision_layer = 24
+collision_mask = 24
+script = ExtResource("1_hebpo")
+health_component = NodePath("HealthComponent")
+hit_cooldown = null
+flash_duration = null
+
+[node name="HealthComponent" parent="." unique_id=1642405860 instance=ExtResource("2_q78ui")]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cgy4v5i1j6v2r"]
+
+[ext_resource type="PackedScene" uid="uid://dqcfinx6k3uhw" path="res://Combat/Weapons/player/projectile.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://dogjgte2fdvxa" path="res://Combat/Weapons/Projectile.png" id="2_evqdc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_evqdc"]
+radius = 13.44
+
+[node name="SonicProjectile" unique_id=1871241955 instance=ExtResource("1_base")]
+attack_damage = 20.0
+lingers = true
+damage_tick_interval = 0.0
+
+[node name="Sprite2D" parent="." index="0" unique_id=1235838479]
+texture = ExtResource("2_evqdc")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1596552665]
+shape = SubResource("CircleShape2D_evqdc")

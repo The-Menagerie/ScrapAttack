@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bhl4txnhpno8p"]
+
+[ext_resource type="Script" uid="uid://15h7oie8yyhg" path="res://Combat/Weapons/player/scrapUpgrade.gd" id="1_hlnmi"]
+
+[node name="ScrapUpgrade" type="Node2D" unique_id=208632813]
+script = ExtResource("1_hlnmi")

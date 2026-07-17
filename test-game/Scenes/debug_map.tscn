@@ -1,11 +1,38 @@
 [gd_scene format=3 uid="uid://coo0sbcmjcwif"]
 
 [ext_resource type="PackedScene" uid="uid://d02q43jtdwo7f" path="res://Scenes/debug_terrain.tscn" id="1_ngmhs"]
+[ext_resource type="PackedScene" uid="uid://cqns2ekd1t78t" path="res://Player/Player.tscn" id="2_o67dp"]
+[ext_resource type="PackedScene" uid="uid://x2k7ot164jgh" path="res://Enemy/Orc/Orc.tscn" id="3_6mob1"]
 
 [node name="Game" type="Node2D" unique_id=408274446]
+y_sort_enabled = true
+
+[node name="Player" parent="." unique_id=3829449 instance=ExtResource("2_o67dp")]
+z_index = 0
+position = Vector2(-83, 29)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=560338213]
+remote_path = NodePath("../../Camera2D")
+
+[node name="debug_map" parent="." unique_id=1428059447 instance=ExtResource("1_ngmhs")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1909387718]
 z_index = 20
+position = Vector2(-83, 29)
 zoom = Vector2(3, 3)
+limit_enabled = false
 
-[node name="debug_map" parent="." unique_id=1428059447 instance=ExtResource("1_ngmhs")]
+[node name="Orc" parent="." unique_id=1822812796 instance=ExtResource("3_6mob1")]
+position = Vector2(-176, 214)
+
+[node name="Orc2" parent="." unique_id=1174630439 instance=ExtResource("3_6mob1")]
+position = Vector2(-1, 280)
+
+[node name="Orc3" parent="." unique_id=1210346156 instance=ExtResource("3_6mob1")]
+position = Vector2(-143, 317)
+
+[node name="Orc4" parent="." unique_id=1195720720 instance=ExtResource("3_6mob1")]
+position = Vector2(-35, 401)
+
+[node name="Orc5" parent="." unique_id=286456920 instance=ExtResource("3_6mob1")]
+position = Vector2(224, 77)
