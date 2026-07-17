@@ -1,11 +1,10 @@
 extends ScrapUpgrade
-class_name HeavyUpgrade
+class_name DualWieldingUpgrade
 
-@export var attack_damage: float = 35.0
-@export var knockback_force: float = 260.0
-@export var attack_duration: float = 0.5
-@export var stun_duration: float = 0.35
-@export var animation_speed_scale: float = 0.65
+@export var attack_damage: float = 10.0
+@export var knockback_force: float = 50.0
+@export var attack_duration: float = 0.08
+@export var stun_duration: float = 0.04
 
 @onready var attack_sprite: Sprite2D = $AttackSprite
 @onready var hit_area: Area2D = $HitArea
@@ -36,7 +35,6 @@ func execute() -> bool:
 	attack_sprite.scale = default_sprite_scale
 	hit_shape.scale = default_hitbox_scale
 	hit_shape.set_deferred("disabled", false)
-	animation_player.speed_scale = animation_speed_scale
 	animation_player.play("Attack")
 	attack_timer.start(attack_duration)
 	return true
@@ -47,7 +45,6 @@ func _on_attack_timer_timeout() -> void:
 	attack_sprite.scale = default_sprite_scale
 	hit_shape.scale = default_hitbox_scale
 	animation_player.stop()
-	animation_player.speed_scale = 1.0
 	is_action_active = false
 
 	if weapon != null:

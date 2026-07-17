@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://blyr56b7f5ojw" path="res://Combat/Weapons/player/rangedWeapon.tscn" id="1_7u9mn"]
 [ext_resource type="Script" uid="uid://bc8sjtkja74sn" path="res://Combat/Weapons/player/weaponProfiles/extras/laserGunWeapon.gd" id="2_iql2u"]
+[ext_resource type="Texture2D" uid="uid://cn0ym8fgbk673" path="res://Combat/Weapons/player/weaponProfiles/extras/LaserGunIcon.png" id="3_icon"]
 [ext_resource type="PackedScene" uid="uid://bg0cn3dfnwai2" path="res://Combat/Weapons/player/weaponProfiles/extras/laser_orb.tscn" id="4_3wgge"]
 
 [node name="LaserGunWeapon" unique_id=892520833 instance=ExtResource("1_7u9mn")]
@@ -15,3 +16,4 @@ attack_damage = 5.0
 knockback_force = 0.0
 stun_duration = 0.0
 display_name = "Laser Gun"
+hud_icon = ExtResource("3_icon")

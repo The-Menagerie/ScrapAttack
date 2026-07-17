@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://c6la1n5faqtj3"]
 
 [ext_resource type="PackedScene" uid="uid://bhl4txnhpno8p" path="res://Combat/Weapons/player/scrapUpgrade.tscn" id="1_20aya"]
-[ext_resource type="Script" uid="uid://64265pmdh4sq" path="res://Combat/Weapons/player/weaponProfiles/extras/heavyUpgrade.gd" id="2_o2h0d"]
+[ext_resource type="Script" uid="uid://64265pmdh4sq" path="res://Combat/Weapons/player/weaponProfiles/extras/heavyHandUpgrade.gd" id="2_o2h0d"]
 [ext_resource type="Texture2D" uid="uid://cb6c4ql1v6fdr" path="res://Combat/Weapons/SlashLarge.png" id="3_wpw7v"]
+[ext_resource type="Texture2D" path="res://Combat/Weapons/player/weaponProfiles/extras/HeavyHandedIcon.png" id="4_icon"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmjhg"]
 radius = 15.491962
@@ -29,8 +30,9 @@ _data = {
 &"Attack": SubResource("Animation_6tpeq")
 }
 
-[node name="heavyUpgrade" unique_id=208632813 instance=ExtResource("1_20aya")]
+[node name="heavyHandUpgrade" unique_id=208632813 instance=ExtResource("1_20aya")]
 script = ExtResource("2_o2h0d")
+hud_icon = ExtResource("4_icon")
 attack_damage = 35.0
 knockback_force = 260.0
 attack_duration = 0.5

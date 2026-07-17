@@ -1,5 +1,5 @@
 extends ScrapUpgrade
-class_name DualDaggersDashUpgrade
+class_name springLaunchUpgrade
 
 @export var attack_damage: float = 10.0
 @export var knockback_force: float = 100.0

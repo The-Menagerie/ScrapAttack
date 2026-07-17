@@ -13,6 +13,7 @@ func uses_hold_alt_attack() -> bool:
 
 func begin_alt_attack() -> void:
 	if alt_upgrade != null:
+		set_pending_hud_cooldown_slot(HudCooldownSlot.ALT)
 		alt_upgrade.begin_alt_attack()
 
 func update_alt_attack(delta: float) -> void:
@@ -25,6 +26,7 @@ func release_alt_attack() -> void:
 
 func alt_attack() -> void:
 	if alt_upgrade != null and not alt_upgrade.uses_hold_alt_attack():
+		set_pending_hud_cooldown_slot(HudCooldownSlot.ALT)
 		alt_upgrade.alt_attack()
 
 func prevents_movement() -> bool:
@@ -38,6 +40,7 @@ func prevents_movement() -> bool:
 
 func special_attack() -> void:
 	if special_upgrade != null:
+		set_pending_hud_cooldown_slot(HudCooldownSlot.SPECIAL)
 		special_upgrade.special_attack()
 
 func _ready() -> void:
@@ -112,3 +115,29 @@ func _instantiate_upgrade_scene(scene: PackedScene) -> RangedWeaponUpgrade:
 		return null
 
 	return upgrade_instance as RangedWeaponUpgrade
+
+func get_upgrade_hud_icons() -> Array[Texture2D]:
+	var icons: Array[Texture2D] = []
+
+	if alt_upgrade != null:
+		var alt_icon := alt_upgrade.get_hud_icon()
+		if alt_icon != null:
+			icons.append(alt_icon)
+
+	if special_upgrade != null:
+		var special_icon := special_upgrade.get_hud_icon()
+		if special_icon != null:
+			icons.append(special_icon)
+
+	return icons
+
+func get_upgrade_hud_cooldown_progresses() -> Array[float]:
+	var progresses: Array[float] = []
+
+	if alt_upgrade != null:
+		progresses.append(get_slot_hud_cooldown_progress(HudCooldownSlot.ALT))
+
+	if special_upgrade != null:
+		progresses.append(get_slot_hud_cooldown_progress(HudCooldownSlot.SPECIAL))
+
+	return progresses

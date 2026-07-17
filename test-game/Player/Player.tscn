@@ -701,17 +701,63 @@ world_health_bar_offset = Vector2(0, -32)
 
 [node name="WeaponHud" type="CanvasLayer" parent="." unique_id=968116067]
 
-[node name="WeaponNameLabel" type="Label" parent="WeaponHud" unique_id=1594626273]
+[node name="WeaponIcon" type="TextureRect" parent="WeaponHud" unique_id=1594626273]
+clip_contents = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -216.0
-offset_top = 16.0
+offset_left = -144.0
+offset_top = 8.0
 offset_right = -16.0
-offset_bottom = 39.0
-theme_override_font_sizes/font_size = 20
-text = "LaserGun"
-horizontal_alignment = 2
+offset_bottom = 136.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CooldownOverlay" type="ColorRect" parent="WeaponHud/WeaponIcon" unique_id=1581912693]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.75)
+
+[node name="UpgradeIconRow" type="HBoxContainer" parent="WeaponHud" unique_id=1410451557]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_top = 144.0
+offset_right = -16.0
+offset_bottom = 200.0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="UpgradeIcon1" type="TextureRect" parent="WeaponHud/UpgradeIconRow" unique_id=1175783406]
+custom_minimum_size = Vector2(48, 48)
+clip_contents = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CooldownOverlay" type="ColorRect" parent="WeaponHud/UpgradeIconRow/UpgradeIcon1" unique_id=1267902838]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.75)
+
+[node name="UpgradeIcon2" type="TextureRect" parent="WeaponHud/UpgradeIconRow" unique_id=654132348]
+custom_minimum_size = Vector2(48, 48)
+clip_contents = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CooldownOverlay" type="ColorRect" parent="WeaponHud/UpgradeIconRow/UpgradeIcon2" unique_id=1325056329]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.75)
 
 [node name="SwordWeapon" parent="." unique_id=612162681 instance=ExtResource("7_vlldt")]
 

@@ -41,16 +41,17 @@ func attack() -> void:
 	if not can_attack:
 		return
 
+	set_pending_hud_cooldown_slot(HudCooldownSlot.PRIMARY)
 	can_attack = false
 	is_attacking = true
 	set_cooldown_override(attack_cooldown)
 	_begin_attack()
 
 func alt_attack() -> void:
-	_try_execute_action(alt_attack_action)
+	_try_execute_action(alt_attack_action, HudCooldownSlot.ALT)
 
 func special_attack() -> void:
-	_try_execute_action(special_attack_action)
+	_try_execute_action(special_attack_action, HudCooldownSlot.SPECIAL)
 
 func _begin_attack() -> void:
 	active_attack_damage = attack_damage
@@ -129,10 +130,11 @@ func _instantiate_action_scene(scene: PackedScene) -> MeleeWeaponAction:
 	action.setup(self)
 	return action
 
-func _try_execute_action(action: MeleeWeaponAction) -> bool:
+func _try_execute_action(action: MeleeWeaponAction, slot: HudCooldownSlot) -> bool:
 	if action == null or not can_attack:
 		return false
 
+	set_pending_hud_cooldown_slot(slot)
 	can_attack = false
 	is_attacking = true
 
@@ -174,3 +176,29 @@ func _instantiate_upgrade_scene(scene: PackedScene) -> ScrapUpgrade:
 		return null
 
 	return upgrade_instance as ScrapUpgrade
+
+func get_upgrade_hud_icons() -> Array[Texture2D]:
+	var icons: Array[Texture2D] = []
+
+	if alt_attack_action is ScrapUpgrade:
+		var alt_icon := (alt_attack_action as ScrapUpgrade).get_hud_icon()
+		if alt_icon != null:
+			icons.append(alt_icon)
+
+	if special_attack_action is ScrapUpgrade:
+		var special_icon := (special_attack_action as ScrapUpgrade).get_hud_icon()
+		if special_icon != null:
+			icons.append(special_icon)
+
+	return icons
+
+func get_upgrade_hud_cooldown_progresses() -> Array[float]:
+	var progresses: Array[float] = []
+
+	if alt_attack_action is ScrapUpgrade:
+		progresses.append(get_slot_hud_cooldown_progress(HudCooldownSlot.ALT))
+
+	if special_attack_action is ScrapUpgrade:
+		progresses.append(get_slot_hud_cooldown_progress(HudCooldownSlot.SPECIAL))
+
+	return progresses

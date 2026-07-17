@@ -1,5 +1,5 @@
 extends ScrapUpgrade
-class_name BlockUpgrade
+class_name SonicShieldUpgrade
 
 @export_range(0.0, 1.0, 0.05) var block_damage_reduction: float = 0.7
 @export var block_duration: float = 1.0

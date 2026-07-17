@@ -18,7 +18,16 @@ var knockback_velocity:= Vector2.ZERO
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var hitbox: HitboxComponent = $HitboxComponent
-@onready var weapon_name_label: Label = $WeaponHud/WeaponNameLabel
+@onready var weapon_icon_rect: TextureRect = $WeaponHud/WeaponIcon
+@onready var upgrade_icon_rects: Array[TextureRect] = [
+	$WeaponHud/UpgradeIconRow/UpgradeIcon1,
+	$WeaponHud/UpgradeIconRow/UpgradeIcon2
+]
+@onready var weapon_cooldown_overlay: ColorRect = $WeaponHud/WeaponIcon/CooldownOverlay
+@onready var upgrade_cooldown_overlays: Array[ColorRect] = [
+	$WeaponHud/UpgradeIconRow/UpgradeIcon1/CooldownOverlay,
+	$WeaponHud/UpgradeIconRow/UpgradeIcon2/CooldownOverlay
+]
 
 var is_dashing = false
 var aim_direction: Vector2 = Vector2.RIGHT
@@ -33,6 +42,7 @@ func _ready():
 	_refresh_weapons()
 	last_move_direction = starting_direction.normalized()
 	update_animation_parameters(starting_direction)
+	_update_weapon_hud()
 
 func _physics_process(_delta):
 	update_weapon_aim()
@@ -81,6 +91,7 @@ func _physics_process(_delta):
 	velocity = movement_velocity + knockback_velocity
 	move_and_slide()
 	pick_new_state()
+	_update_weapon_cooldown_overlays()
 
 func apply_knockback(direction: Vector2, force: float) -> void:
 	knockback_velocity = direction.normalized() * force
@@ -95,6 +106,7 @@ func _refresh_weapons() -> void:
 	if weapons.is_empty():
 		weapon = null
 		equipped_weapon_index = 0
+		_update_weapon_hud()
 		return
 
 	equipped_weapon_index = clampi(equipped_weapon_index, 0, weapons.size() - 1)
@@ -104,7 +116,7 @@ func _equip_weapon(index: int) -> void:
 	if weapons.is_empty():
 		weapon = null
 		equipped_weapon_index = 0
-		_update_weapon_name_label()
+		_update_weapon_hud()
 		return
 
 	equipped_weapon_index = posmod(index, weapons.size())
@@ -117,7 +129,7 @@ func _equip_weapon(index: int) -> void:
 	if weapon != null:
 		weapon.set_aim_direction(aim_direction, weapon_rotation_offset)
 
-	_update_weapon_name_label()
+	_update_weapon_hud()
 
 func swap_to_next_weapon() -> void:
 	if weapons.size() <= 1:
@@ -128,15 +140,72 @@ func swap_to_next_weapon() -> void:
 
 	_equip_weapon(equipped_weapon_index + 1)
 
-func _update_weapon_name_label() -> void:
-	if weapon_name_label == null:
+func _update_weapon_hud() -> void:
+	if weapon_icon_rect == null:
 		return
 
 	if weapon == null:
-		weapon_name_label.text = ""
+		weapon_icon_rect.texture = null
+		weapon_icon_rect.visible = false
+		for icon_rect in upgrade_icon_rects:
+			icon_rect.texture = null
+			icon_rect.visible = false
+		_set_overlay_progress(weapon_icon_rect, weapon_cooldown_overlay, 0.0)
+		for overlay in upgrade_cooldown_overlays:
+			_set_overlay_progress(null, overlay, 0.0)
 		return
 
-	weapon_name_label.text = weapon.get_display_name()
+	weapon_icon_rect.texture = weapon.get_hud_icon()
+	weapon_icon_rect.visible = weapon_icon_rect.texture != null
+
+	var upgrade_icons := weapon.get_upgrade_hud_icons()
+	for i in range(upgrade_icon_rects.size()):
+		var icon_rect := upgrade_icon_rects[i]
+		var icon := upgrade_icons[i] if i < upgrade_icons.size() else null
+		icon_rect.texture = icon
+		icon_rect.visible = icon != null
+
+	_update_weapon_cooldown_overlays()
+
+func _update_weapon_cooldown_overlays() -> void:
+	if weapon == null:
+		_set_overlay_progress(weapon_icon_rect, weapon_cooldown_overlay, 0.0)
+		for overlay in upgrade_cooldown_overlays:
+			_set_overlay_progress(null, overlay, 0.0)
+		return
+
+	_set_overlay_progress(
+		weapon_icon_rect,
+		weapon_cooldown_overlay,
+		weapon.get_hud_cooldown_progress()
+	)
+
+	var upgrade_progresses := weapon.get_upgrade_hud_cooldown_progresses()
+	for i in range(upgrade_icon_rects.size()):
+		var progress := upgrade_progresses[i] if i < upgrade_progresses.size() else 0.0
+		_set_overlay_progress(upgrade_icon_rects[i], upgrade_cooldown_overlays[i], progress)
+
+func _set_overlay_progress(icon_rect: TextureRect, overlay: ColorRect, progress: float) -> void:
+	if overlay == null:
+		return
+
+	var clamped_progress := clampf(progress, 0.0, 1.0)
+	overlay.visible = clamped_progress > 0.0
+
+	if not overlay.visible or icon_rect == null:
+		return
+
+	var inset_left := 1.0
+	var inset_right := 1.0
+	var inset_top := 1.0
+	var inset_bottom := 1.0
+	var usable_width := maxf(icon_rect.size.x - inset_left - inset_right, 0.0)
+	var usable_height := maxf(icon_rect.size.y - inset_top - inset_bottom, 0.0)
+	overlay.size = Vector2(usable_width, usable_height)
+	overlay.position = Vector2(
+		inset_left,
+		inset_top + ((1.0 - clamped_progress) * usable_height)
+	)
 
 func handle_incoming_attack(attack: Attack) -> bool:
 	if weapon == null:

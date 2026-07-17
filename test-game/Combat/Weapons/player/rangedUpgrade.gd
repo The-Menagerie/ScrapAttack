@@ -7,6 +7,7 @@ enum UpgradeSlot {
 }
 
 @export var upgrade_slot: UpgradeSlot = UpgradeSlot.ALT
+@export var hud_icon: Texture2D
 
 var weapon: LaserGunWeapon
 
@@ -33,3 +34,6 @@ func special_attack() -> void:
 
 func prevents_movement() -> bool:
 	return false
+
+func get_hud_icon() -> Texture2D:
+	return hud_icon

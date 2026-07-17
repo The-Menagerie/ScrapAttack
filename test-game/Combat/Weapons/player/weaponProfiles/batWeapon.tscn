@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://d1f1m0s1b6w7k"]
 
 [ext_resource type="PackedScene" uid="uid://dbwts5v0o4l2c" path="res://Combat/Weapons/player/meleeWeapon.tscn" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://ce48ug13ttp6x" path="res://Combat/Weapons/player/weaponProfiles/scrapUpgrades/theORBUpgrade.tscn" id="2_s7ebt"]
 [ext_resource type="Texture2D" uid="uid://cb6c4ql1v6fdr" path="res://Combat/Weapons/SlashLarge.png" id="2_texture"]
+[ext_resource type="Texture2D" uid="uid://b42eyyerg0tko" path="res://Combat/Weapons/player/weaponProfiles/extras/BaseballBatIcon.png" id="3_icon"]
+[ext_resource type="PackedScene" uid="uid://ch1cas67olkc1" path="res://Combat/Weapons/player/weaponProfiles/scrapUpgrades/chargedShotUpgrade.tscn" id="3_m7utb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bat"]
 radius = 9.192389
@@ -33,7 +36,9 @@ attack_damage = 14.0
 knockback_force = 260.0
 attack_duration = 0.16
 stun_duration = 0.08
+upgrade_scenes = Array[PackedScene]([ExtResource("2_s7ebt"), ExtResource("3_m7utb")])
 display_name = "Bat"
+hud_icon = ExtResource("3_icon")
 attack_cooldown = 0.28
 
 [node name="Sprite2D" parent="." index="0" unique_id=1695758661]
