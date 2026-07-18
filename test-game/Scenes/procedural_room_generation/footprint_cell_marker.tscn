@@ -1,6 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cpldudhlvi2i0"]
 
-[ext_resource type="Script" path="res://Scripts/procedural_room_generation/procedural_room_cell_marker.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://1dof5y7x7kgl" path="res://Scripts/procedural_room_generation/procedural_room_cell_marker.gd" id="1_script"]
 
-[node name="FootprintCellMarker" type="Node2D"]
+[node name="FootprintCellMarker" type="Node2D" unique_id=1537238983]
+scale = Vector2(3, 3)
 script = ExtResource("1_script")
+grid_cell_size = null

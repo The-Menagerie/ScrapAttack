@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://lq2oyylijkrg"]
 
 [ext_resource type="Script" uid="uid://dkdo7jcoqgsx5" path="res://Scripts/procedural_room_generation/procedural_room.gd" id="1_room"]
-[ext_resource type="PackedScene" path="res://Scenes/procedural_room_generation/footprint_cell_marker.tscn" id="2_cell"]
+[ext_resource type="PackedScene" uid="uid://cpldudhlvi2i0" path="res://Scenes/procedural_room_generation/footprint_cell_marker.tscn" id="2_cell"]
 [ext_resource type="PackedScene" uid="uid://hie4yi1h3xfy" path="res://Scenes/procedural_room_generation/doorway_marker.tscn" id="2_marker"]
 
 [node name="CornerLRoom" type="Node2D" unique_id=1547693359]
@@ -10,22 +10,39 @@ room_id = "corner_l_room"
 debug_fill_color = Color(0.69, 0.37, 0.83, 0.22)
 debug_outline_color = Color(0.86, 0.58, 0.97, 1)
 
-[node name="FootprintCellMarker" parent="." unique_id=789004722 instance=ExtResource("2_cell")]
-position = Vector2(80, 80)
+[node name="FootprintCellMarker11" parent="." unique_id=409748900 instance=ExtResource("2_cell")]
+position = Vector2(240, 240)
+cell = Vector2i(1, 1)
+grid_cell_size = Vector2(160, 160)
+debug_fill_color = Color(0.69, 0.37, 0.83, 0.22)
+debug_outline_color = Color(0.86, 0.58, 0.97, 1)
 
-[node name="FootprintCellMarker2" parent="." unique_id=1397794364 instance=ExtResource("2_cell")]
-position = Vector2(240, 80)
-cell = Vector2i(1, 0)
+[node name="FootprintCellMarker7" parent="." unique_id=717261574 instance=ExtResource("2_cell")]
+position = Vector2(240, 720)
+cell = Vector2i(1, 4)
+grid_cell_size = Vector2(160, 160)
+debug_fill_color = Color(0.69, 0.37, 0.83, 0.22)
+debug_outline_color = Color(0.86, 0.58, 0.97, 1)
 
-[node name="FootprintCellMarker3" parent="." unique_id=868119068 instance=ExtResource("2_cell")]
-position = Vector2(80, 240)
-cell = Vector2i(0, 1)
+[node name="FootprintCellMarker12" parent="." unique_id=143029394 instance=ExtResource("2_cell")]
+position = Vector2(720, 240)
+cell = Vector2i(4, 1)
+grid_cell_size = Vector2(160, 160)
+debug_fill_color = Color(0.69, 0.37, 0.83, 0.22)
+debug_outline_color = Color(0.86, 0.58, 0.97, 1)
 
 [node name="DoorwayMarker" parent="." unique_id=1141738213 instance=ExtResource("2_marker")]
-position = Vector2(160, 240)
-cell = Vector2i(0, 1)
+position = Vector2(480, 1200)
+cell = Vector2i(2, 7)
 
 [node name="DoorwayMarker2" parent="." unique_id=1983694781 instance=ExtResource("2_marker")]
-position = Vector2(240, 0)
-cell = Vector2i(1, 0)
+position = Vector2(720, 0)
+cell = Vector2i(4, 0)
 direction = Vector2i(1, -2)
+
+[node name="FootprintCellMarker13" parent="." unique_id=1537238983 instance=ExtResource("2_cell")]
+position = Vector2(240, 1200)
+cell = Vector2i(1, 7)
+grid_cell_size = Vector2(160, 160)
+debug_fill_color = Color(0.69, 0.37, 0.83, 0.22)
+debug_outline_color = Color(0.86, 0.58, 0.97, 1)
