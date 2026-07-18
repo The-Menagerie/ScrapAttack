@@ -7,9 +7,18 @@ class_name SonicShieldUpgrade
 @export var parry_knockback_force: float = 400.0
 @export var parry_stun_duration: float = 0.75
 @export var block_flash_duration: float = 0.2
+@export var block_animation_name: StringName = &"Block"
+@export var reset_animation_name: StringName = &"RESET"
 
 var is_parry_window_active: bool = false
 var owner_visual: CanvasItem
+
+@onready var block_sprite: Sprite2D = $BlockSprite
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+func _ready() -> void:
+	if is_instance_valid(block_sprite):
+		block_sprite.visible = false
 
 func execute() -> bool:
 	if weapon == null or not can_execute():
@@ -19,6 +28,7 @@ func execute() -> bool:
 	is_parry_window_active = true
 	weapon.set_cooldown_override(cooldown)
 	flash_owner_white(block_flash_duration)
+	_play_block_animation()
 	_start_block_timers()
 	return true
 
@@ -33,7 +43,7 @@ func handle_incoming_attack(attack: Attack) -> bool:
 		attack.knockback_force = 0.0
 		attack.stun_duration = 0.0
 		_parry_source(attack.source_node)
-		_end_block()
+		_end_parry_window()
 		return false
 
 	attack.attack_damage *= maxf(0.0, 1.0 - block_damage_reduction)
@@ -58,6 +68,7 @@ func _end_block() -> void:
 
 	is_action_active = false
 	is_parry_window_active = false
+	_stop_block_animation()
 
 	if weapon != null:
 		weapon.finish_attack()
@@ -113,3 +124,42 @@ func _get_owner_shader_material() -> ShaderMaterial:
 		owner_node = owner_node.get_parent() as CanvasItem
 
 	return null
+
+func _play_block_animation() -> void:
+	if is_instance_valid(block_sprite):
+		block_sprite.visible = true
+
+	if not is_instance_valid(animation_player):
+		return
+
+	if animation_player.has_animation(reset_animation_name):
+		animation_player.play(reset_animation_name)
+		animation_player.seek(0.0, true)
+		animation_player.stop()
+
+	if not animation_player.has_animation(block_animation_name):
+		return
+
+	var block_animation := animation_player.get_animation(block_animation_name)
+
+	if block_animation == null:
+		return
+
+	var animation_length := maxf(block_animation.length, 0.001)
+	var target_duration := maxf(block_duration, 0.001)
+
+	animation_player.speed_scale = animation_length / target_duration
+	animation_player.play(block_animation_name)
+
+func _stop_block_animation() -> void:
+	if is_instance_valid(animation_player):
+		animation_player.stop()
+		animation_player.speed_scale = 1.0
+
+		if animation_player.has_animation(reset_animation_name):
+			animation_player.play(reset_animation_name)
+			animation_player.seek(0.0, true)
+			animation_player.stop()
+
+	if is_instance_valid(block_sprite):
+		block_sprite.visible = false

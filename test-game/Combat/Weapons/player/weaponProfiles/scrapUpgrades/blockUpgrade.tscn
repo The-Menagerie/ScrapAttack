@@ -2,16 +2,63 @@
 
 [ext_resource type="PackedScene" uid="uid://bhl4txnhpno8p" path="res://Combat/Weapons/player/scrapUpgrade.tscn" id="1_mv202"]
 [ext_resource type="Script" uid="uid://b6w7cof5xir8r" path="res://Combat/Weapons/player/weaponProfiles/extras/sonicShieldUpgrade.gd" id="2_2may7"]
-[ext_resource type="Texture2D" path="res://Combat/Weapons/player/weaponProfiles/extras/SonicShieldIcon.png" id="3_icon"]
+[ext_resource type="Texture2D" uid="uid://3n28m54oibtn" path="res://Combat/Weapons/player/weaponProfiles/extras/SonicShieldIcon.png" id="3_icon"]
+[ext_resource type="Texture2D" uid="uid://dqhnmw64cc1ao" path="res://Combat/Weapons/player/weaponProfiles/extras/SonicShield.png" id="4_acscl"]
+
+[sub_resource type="Animation" id="Animation_8p6hu"]
+resource_name = "Block"
+length = 0.23333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlockSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_sqqr7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlockSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pebwy"]
+_data = {
+&"Block": SubResource("Animation_8p6hu"),
+&"RESET": SubResource("Animation_sqqr7")
+}
 
 [node name="sonicShieldUpgrade" unique_id=208632813 instance=ExtResource("1_mv202")]
 script = ExtResource("2_2may7")
-hud_icon = ExtResource("3_icon")
 block_damage_reduction = 0.7
 block_duration = 1.0
 parry_window = 0.2
 parry_knockback_force = 400.0
 parry_stun_duration = 0.75
 block_flash_duration = 0.2
+block_animation_name = &"Block"
+reset_animation_name = &"RESET"
 upgrade_slot = 1
+hud_icon = ExtResource("3_icon")
 cooldown = 0.9
+
+[node name="BlockSprite" type="Sprite2D" parent="." index="0" unique_id=1689154423]
+texture = ExtResource("4_acscl")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1252812734]
+libraries/ = SubResource("AnimationLibrary_pebwy")

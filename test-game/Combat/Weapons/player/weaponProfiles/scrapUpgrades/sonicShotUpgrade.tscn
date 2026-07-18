@@ -3,11 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://bhl4txnhpno8p" path="res://Combat/Weapons/player/scrapUpgrade.tscn" id="1_base"]
 [ext_resource type="Script" uid="uid://us7rx1v6qh4h" path="res://Combat/Weapons/player/weaponProfiles/extras/sonicShotUpgrade.gd" id="2_script"]
 [ext_resource type="PackedScene" uid="uid://cgy4v5i1j6v2r" path="res://Combat/Weapons/player/weaponProfiles/extras/sonicProjectile.tscn" id="3_projectile"]
-[ext_resource type="Texture2D" path="res://Combat/Weapons/player/weaponProfiles/extras/SonicShotIcon.png" id="4_icon"]
+[ext_resource type="Texture2D" uid="uid://b32rxyv0rmox1" path="res://Combat/Weapons/player/weaponProfiles/extras/SonicShotIcon.png" id="4_icon"]
 
 [node name="sonicShotUpgrade" unique_id=462390251 instance=ExtResource("1_base")]
 script = ExtResource("2_script")
-hud_icon = ExtResource("4_icon")
 projectile_scene = ExtResource("3_projectile")
 projectile_speed = 300.0
 projectile_range = 50.0
@@ -16,4 +15,6 @@ projectile_damage = 10.0
 projectile_knockback_force = 150.0
 projectile_stun_duration = 0.0
 projectile_scale = Vector2(0.75, 0.75)
+upgrade_slot = 1
+hud_icon = ExtResource("4_icon")
 cooldown = 0.55

@@ -1,10 +1,47 @@
 [gd_scene format=3 uid="uid://cgy4v5i1j6v2r"]
 
 [ext_resource type="PackedScene" uid="uid://dqcfinx6k3uhw" path="res://Combat/Weapons/player/projectile.tscn" id="1_base"]
-[ext_resource type="Texture2D" uid="uid://dogjgte2fdvxa" path="res://Combat/Weapons/Projectile.png" id="2_evqdc"]
+[ext_resource type="Texture2D" uid="uid://cpnp0dob6idbk" path="res://Combat/Weapons/player/weaponProfiles/extras/SonicShot.png" id="2_evqdc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_evqdc"]
-radius = 13.44
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_sxpki"]
+points = PackedVector2Array(-13.000001, 30, -1.4424758e-06, 33, 12.999999, 28, 23, 19.000002, 1.0000001, -4, -25, 15.999999)
+
+[sub_resource type="Animation" id="Animation_vaeql"]
+resource_name = "Attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_0rfn0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_524rl"]
+_data = {
+&"Attack": SubResource("Animation_vaeql"),
+&"RESET": SubResource("Animation_0rfn0")
+}
 
 [node name="SonicProjectile" unique_id=1871241955 instance=ExtResource("1_base")]
 attack_damage = 20.0
@@ -12,7 +49,13 @@ lingers = true
 damage_tick_interval = 0.0
 
 [node name="Sprite2D" parent="." index="0" unique_id=1235838479]
+rotation = -0.6492625
 texture = ExtResource("2_evqdc")
+hframes = 16
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1596552665]
-shape = SubResource("CircleShape2D_evqdc")
+rotation = -1.5707964
+shape = SubResource("ConvexPolygonShape2D_sxpki")
+
+[node name="AnimationPlayer" parent="." index="2" unique_id=1161279749]
+libraries/ = SubResource("AnimationLibrary_524rl")

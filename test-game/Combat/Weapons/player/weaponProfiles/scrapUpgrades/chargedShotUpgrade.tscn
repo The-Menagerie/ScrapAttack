@@ -2,16 +2,20 @@
 
 [ext_resource type="PackedScene" path="res://Combat/Weapons/player/rangedUpgrade.tscn" id="1_base"]
 [ext_resource type="Script" uid="uid://cgwifc5ugdkpu" path="res://Combat/Weapons/player/weaponProfiles/extras/laserChargeUpgrade.gd" id="2_script"]
-[ext_resource type="Texture2D" path="res://Combat/Weapons/player/weaponProfiles/extras/ChargeShotIcon.png" id="3_icon"]
+[ext_resource type="PackedScene" uid="uid://fkstylaxdlbj" path="res://Combat/Weapons/player/weaponProfiles/extras/chargeShotProjectile.tscn" id="3_dqftx"]
+[ext_resource type="Texture2D" uid="uid://q8iynax02ch5" path="res://Combat/Weapons/player/weaponProfiles/extras/ChargeShotIcon.png" id="3_icon"]
+[ext_resource type="PackedScene" uid="uid://cj7r6ak4a6p0d" path="res://Combat/Weapons/player/weaponProfiles/extras/chargeShotChargeEffect.tscn" id="4_effect"]
 
 [node name="chargeShotUpgrade" unique_id=1663657660 instance=ExtResource("1_base")]
 script = ExtResource("2_script")
-hud_icon = ExtResource("3_icon")
+projectile_scene = ExtResource("3_dqftx")
+charge_effect_scene = ExtResource("4_effect")
 charge_time_max = 1.25
 charged_projectile_scale_min = 0.5
-charged_projectile_scale_max = 5.0
+charged_projectile_scale_max = 3.0
 charged_damage_multiplier_min = 0.5
 charged_damage_multiplier_max = 10.0
 charged_knockback_multiplier = 0.0
 charged_stun_bonus = 1.0
 max_charge_flash_duration = 0.1
+hud_icon = ExtResource("3_icon")
