@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://brfrfpncin1fy" path="res://Combat/hitbox_component.tscn" id="3_8g4oa"]
 [ext_resource type="Shader" uid="uid://4fq6g38up1s8" path="res://Combat/flash_white.gdshader" id="3_s1rgi"]
 [ext_resource type="PackedScene" uid="uid://blbq24j6cp5vd" path="res://Combat/health_component.tscn" id="4_6ysni"]
+[ext_resource type="PackedScene" uid="uid://b0wdb47mr5ssh" path="res://Scenes/utility_scenes/player_interactor.tscn" id="5_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://b1qycipn7xfvv" path="res://Player/DashSmoke.tscn" id="6_6ysni"]
 [ext_resource type="PackedScene" uid="uid://d3l6q4iiomq7f" path="res://Combat/Weapons/player/weaponProfiles/sword&shieldWeapon.tscn" id="7_vlldt"]
 [ext_resource type="PackedScene" uid="uid://dnc3j1s3wrr0d" path="res://Combat/Weapons/player/weaponProfiles/laserGunWeapon.tscn" id="8_s1rgi"]
@@ -764,3 +765,5 @@ color = Color(1, 1, 1, 0.75)
 [node name="BatWeapon" parent="." unique_id=1808836637 instance=ExtResource("11_hu7v2")]
 
 [node name="LaserGunWeapon" parent="." unique_id=1086524227 instance=ExtResource("8_s1rgi")]
+
+[node name="Player_Interactor" parent="." unique_id=950506813 instance=ExtResource("5_8g4oa")]

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b0wdb47mr5ssh"]
+
+[ext_resource type="Script" uid="uid://c0idojsqm3qg7" path="res://Scripts/player_interactor.gd" id="1_oxqt0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_40fn5"]
+radius = 2.0
+
+[node name="Player_Interactor" type="Node2D" unique_id=950506813]
+script = ExtResource("1_oxqt0")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=264138249]
+position = Vector2(25, 0)
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=864783581]
+shape = SubResource("CircleShape2D_40fn5")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=73890306]
+visible = false
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = 2.0
+color = Color(0, 1, 1, 1)

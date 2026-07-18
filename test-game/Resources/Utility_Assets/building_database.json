@@ -1,0 +1,10 @@
+{
+    "chicken_coop": {
+            "name": "Chicken Coop",
+            "gridspace": [[1,1,1],[1,1,1],[1,1,1]],
+            "sprite": "Chicken_Coop.png",
+            "building_scene": "ChickenCoop.tscn",
+            "tile_id_coords": [3,0]
+
+    }
+}

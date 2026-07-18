@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bflsq268hri2j"]
+
+[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/building_scene_scripts/interaction_zone.gd" id="1_h8q65"]
+
+[node name="BaseBuilding" type="Node2D" unique_id=261174353]
+
+[node name="BuildingSprite" type="Sprite2D" parent="." unique_id=1558555881]
+
+[node name="CollisionObject" type="StaticBody2D" parent="." unique_id=636548435]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="CollisionObject" unique_id=1693266252]
+
+[node name="InteractionZone" type="Area2D" parent="." unique_id=747749469 node_paths=PackedStringArray("parent_building")]
+collision_layer = 536870912
+collision_mask = 536870912
+script = ExtResource("1_h8q65")
+parent_building = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=1603202102]
+debug_color = Color(0.827451, 0.38431373, 0.27450982, 0.14509805)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1654882210]

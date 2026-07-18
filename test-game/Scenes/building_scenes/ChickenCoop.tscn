@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bmlfjmtiirwo1"]
+
+[ext_resource type="Script" uid="uid://dcyr0f0thuj2j" path="res://Scripts/building_scene_scripts/chicken_coop.gd" id="1_fny4c"]
+[ext_resource type="Texture2D" uid="uid://372kjpw5pd86" path="res://Resources/Sprout Lands - Sprites - Basic pack/Objects/Chicken_Coop.png" id="1_p4jj1"]
+[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/building_scene_scripts/interaction_zone.gd" id="2_fny4c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4pgv"]
+size = Vector2(29, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40fn5"]
+size = Vector2(8, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oii3g"]
+size = Vector2(48, 48)
+
+[node name="ChickenCoop" type="Node2D" unique_id=261174353]
+script = ExtResource("1_fny4c")
+
+[node name="Displacement" type="Node2D" parent="." unique_id=1627672869]
+position = Vector2(24, 24)
+
+[node name="BuildingSprite" type="Sprite2D" parent="Displacement" unique_id=1558555881]
+texture = ExtResource("1_p4jj1")
+
+[node name="CollisionObject" type="StaticBody2D" parent="Displacement" unique_id=636548435]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Displacement/CollisionObject" unique_id=1693266252]
+position = Vector2(-0.5, 8)
+shape = SubResource("RectangleShape2D_h4pgv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Displacement/CollisionObject" unique_id=1877688824]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_40fn5")
+
+[node name="InteractionZone" type="Area2D" parent="Displacement" unique_id=747749469 node_paths=PackedStringArray("parent_building")]
+collision_layer = 536870912
+collision_mask = 536870912
+script = ExtResource("2_fny4c")
+parent_building = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Displacement/InteractionZone" unique_id=1603202102]
+shape = SubResource("RectangleShape2D_oii3g")
+debug_color = Color(0.827451, 0.38431373, 0.27450982, 0.14509805)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Displacement" unique_id=1654882210]
+root_node = NodePath("../..")

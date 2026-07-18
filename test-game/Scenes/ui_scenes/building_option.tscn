@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://6bui3d4c5cd"]
+
+[ext_resource type="Script" uid="uid://dlyt2xh3be535" path="res://Scripts/ui_scripts/building_option.gd" id="1_fdn6c"]
+[ext_resource type="Theme" uid="uid://bp3sd234qbc7t" path="res://Scenes/ui_scenes/building_option.tres" id="1_q2tnl"]
+
+[node name="Building_option" type="Control" unique_id=1070794698 node_paths=PackedStringArray("name_label", "blueprint_image", "tile_print_grid")]
+custom_minimum_size = Vector2(380, 250)
+custom_maximum_size = Vector2(380, 250)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -1530.0
+offset_bottom = -830.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_fdn6c")
+name_label = NodePath("Panel/Name")
+blueprint_image = NodePath("Panel/Blueprint")
+tile_print_grid = NodePath("Panel/Tile_Print/MarginContainer/GridContainer")
+metadata/_custom_type_script = "uid://dlyt2xh3be535"
+
+[node name="Panel" type="Panel" parent="." unique_id=860584791]
+layout_mode = 0
+offset_right = 380.0
+offset_bottom = 250.0
+mouse_filter = 1
+theme = ExtResource("1_q2tnl")
+
+[node name="Name" type="RichTextLabel" parent="Panel" unique_id=1813817581]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Pizza"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Blueprint" type="Sprite2D" parent="Panel" unique_id=119853009]
+position = Vector2(188, 118)
+scale = Vector2(3.5, 3.5)
+
+[node name="Tile_Print" type="Panel" parent="Panel" unique_id=2110916030]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 140.0
+offset_right = 369.0
+offset_bottom = 240.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Tile_Print" unique_id=2063623295]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+theme = ExtResource("1_q2tnl")
+
+[node name="GridContainer" type="GridContainer" parent="Panel/Tile_Print/MarginContainer" unique_id=250132119]
+layout_mode = 2
+columns = 2

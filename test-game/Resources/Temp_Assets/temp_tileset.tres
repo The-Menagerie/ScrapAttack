@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" format=3 uid="uid://cr11p72hgtco3"]
 
 [ext_resource type="Texture2D" uid="uid://ddr7jtspnvtpj" path="res://Resources/Temp_Assets/test_tileset.png" id="1_oyn1x"]
-[ext_resource type="Texture2D" uid="uid://d03ea5kr72p0o" path="res://Resources/Temp_Assets/hover_select.png" id="2_q5wqo"]
+[ext_resource type="Texture2D" uid="uid://d03ea5kr72p0o" path="res://Resources/Utility_Assets/hover_select.png" id="2_q5wqo"]
 [ext_resource type="Texture2D" uid="uid://bss2ls3ltsyp" path="res://Resources/Temp_Assets/chasm.png" id="3_swei1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yv4wn"]

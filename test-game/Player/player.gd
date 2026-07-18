@@ -37,6 +37,8 @@ var weapons: Array[Weapon] = []
 var equipped_weapon_index: int = 0
 var weapon: Weapon = null
 
+var in_noclip = false
+
 func _ready():
 	add_to_group("Player")
 	_refresh_weapons()
@@ -313,3 +315,13 @@ func pick_new_state():
 func _input(event):
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
+	elif Input.is_action_just_pressed("noclip"):
+		if in_noclip == false:
+			in_noclip = true
+			for i in range(1,33):
+				set_collision_mask_value(i, false)
+		elif in_noclip == true:
+			in_noclip = false
+			set_collision_mask_value(1, true)
+			set_collision_mask_value(2, true)
+		
