@@ -8,16 +8,18 @@ extends PanelContainer
 var current_weight: float ##Stores the current weight of every item in the inventory.
 
 func _ready() -> void:
+	var split_bool: bool = false
 	for i in items:
-		add_item(i)
+		add_item(i, split_bool)
 	##Adds any items that are in the inventory on start up.
 
-func add_item(item_data: ItemData) -> void: ##This func adds items, item's data, and the item's weight to the inventory. Does not pickup from the world.
+func add_item(item_data: ItemData, split_bool: bool) -> void: ##This func adds items, item's data, and the item's weight to the inventory. Does not pickup from the world.
 	var inventory_item = inventory_item_scene.instantiate()
 	inventory_item.data = item_data
 	add_child(inventory_item)
 	var success = item_grid.attempt_to_add_item_data(inventory_item)
-	add_weight(inventory_item.data)
+	if split_bool == false:
+		add_weight(inventory_item.data)
 
 func remove_item(item_data: ItemData, item: Node) -> void: ##This func removes items, item's data, and the item's weight from the inventory. Does not drop into the world.
 	subtract_weight(item_data)

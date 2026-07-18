@@ -52,11 +52,14 @@ func stack(item_stack: int) -> void:
 	update_quantity_label()
 
 func split(item: ItemData) -> ItemData:
-	var temp_item = item.duplicate()
-	temp_item.quantity /= 2
-	item.quantity -= temp_item.quantity
-	update_quantity_label()
-	return temp_item
+	if item.quantity > 1:
+		var temp_item = item.duplicate()
+		temp_item.quantity /= 2
+		item.quantity -= temp_item.quantity
+		update_quantity_label()
+		return temp_item
+	else:
+		return null
 
 func remove_item_in_hand(item: Node) -> void:
 	is_picked = false
