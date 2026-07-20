@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c06jfjrf1udqe"]
 
-[ext_resource type="Script" uid="uid://tmfqiyfafvdv" path="res://Scripts/inventory/inventory_item.gd" id="1_fovgl"]
+[ext_resource type="Script" uid="uid://tmfqiyfafvdv" path="res://Scripts/inventory/combat_inventory/inventory_item.gd" id="1_fovgl"]
 
 [node name="InventoryItem" type="Sprite2D" unique_id=1859538929]
 script = ExtResource("1_fovgl")

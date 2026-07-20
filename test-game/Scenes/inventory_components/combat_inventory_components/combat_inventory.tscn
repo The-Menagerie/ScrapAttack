@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://221k0is4a830"]
 
-[ext_resource type="Script" uid="uid://bk7gnw1sc8nva" path="res://Scripts/inventory/combat_inventory.gd" id="1_0fvou"]
-[ext_resource type="Script" uid="uid://leh8dx1rxpg5" path="res://Scripts/inventory/inventory.gd" id="2_duybw"]
+[ext_resource type="Script" uid="uid://bk7gnw1sc8nva" path="res://Scripts/inventory/combat_inventory/combat_inventory.gd" id="1_0fvou"]
+[ext_resource type="Script" uid="uid://leh8dx1rxpg5" path="res://Scripts/inventory/combat_inventory/inventory.gd" id="2_duybw"]
 [ext_resource type="PackedScene" uid="uid://c06jfjrf1udqe" path="res://Scenes/inventory_components/combat_inventory_components/inventory_item.tscn" id="3_0fvou"]
 [ext_resource type="Script" uid="uid://cxsxebxcv43g2" path="res://Scripts/inventory/item_data.gd" id="3_5enj4"]
 [ext_resource type="Texture2D" uid="uid://d1r7hu3gn2tx1" path="res://Resources/Sprout Lands - Sprites - Basic pack/Objects/Egg_item.png" id="4_5enj4"]
-[ext_resource type="Script" uid="uid://cu860tidxjtji" path="res://Scripts/inventory/inventory_grid.gd" id="4_bpmhi"]
+[ext_resource type="Script" uid="uid://cu860tidxjtji" path="res://Scripts/inventory/combat_inventory/inventory_grid.gd" id="4_bpmhi"]
 [ext_resource type="PackedScene" uid="uid://dvgk62vyi7q8f" path="res://Scenes/inventory_components/combat_inventory_components/inventory_slot.tscn" id="5_0fvou"]
 [ext_resource type="Texture2D" uid="uid://dl1kd67afk1ov" path="res://Resources/Sprout Lands - Sprites - Basic pack/Objects/Simple Milk and grass item.png" id="5_amvrc"]
 

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bsjhpgojhhbwi"]
+
+[ext_resource type="Script" uid="uid://4s88lodit687" path="res://Scripts/inventory/town_inventory/item_scroll.gd" id="1_005x5"]
+[ext_resource type="Script" uid="uid://dy546i7tksedq" path="res://Scripts/inventory/town_inventory/town_inventory.gd" id="1_j3k5p"]
+
+[node name="TownInventory" type="Control" unique_id=660443647]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -660.0
+offset_top = -350.0
+offset_right = -660.0
+offset_bottom = -350.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j3k5p")
+
+[node name="TownInventoryBackground" type="PanelContainer" parent="." unique_id=1959563190]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1152.0
+offset_bottom = 580.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CategoryScroll" type="ScrollContainer" parent="." unique_id=1259728422]
+process_mode = 2
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 304.0
+offset_bottom = 54.0
+vertical_scroll_mode = 0
+scroll_horizontal_by_default = true
+
+[node name="CategoryConatiner" type="HBoxContainer" parent="CategoryScroll" unique_id=1958380902]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemScroll" type="ScrollContainer" parent="." unique_id=827562520]
+process_mode = 2
+layout_mode = 0
+offset_left = 4.0
+offset_top = 56.0
+offset_right = 304.0
+offset_bottom = 574.0
+script = ExtResource("1_005x5")
+
+[node name="ItemContainer" type="VBoxContainer" parent="ItemScroll" unique_id=305530856]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NameLabel" type="Label" parent="." unique_id=469673632]
+process_mode = 2
+layout_mode = 0
+offset_left = 310.0
+offset_top = 4.0
+offset_right = 361.0
+offset_bottom = 27.0
+text = "Name:"
+
+[node name="ItemWeightLabel" type="Label" parent="." unique_id=960983701]
+process_mode = 2
+layout_mode = 0
+offset_left = 310.0
+offset_top = 30.0
+offset_right = 369.0
+offset_bottom = 53.0
+text = "Weight:"

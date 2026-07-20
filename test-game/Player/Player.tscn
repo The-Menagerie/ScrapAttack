@@ -13,7 +13,9 @@
 [ext_resource type="AudioStream" uid="uid://c783ovyv8qm70" path="res://Player/PlayerHurt.wav" id="12_player_hurt"]
 [ext_resource type="PackedScene" uid="uid://br0w4k4sy0ww5" path="res://Combat/player_health_bar.tscn" id="13_player_health_bar"]
 [ext_resource type="AudioStream" path="res://Player/Dash.wav" id="14_dash_audio"]
+[ext_resource type="Script" uid="uid://wdtahrq5uok4" path="res://Scripts/inventory/inventory_layer.gd" id="11_p7tob"]
 [ext_resource type="PackedScene" uid="uid://221k0is4a830" path="res://Scenes/inventory_components/combat_inventory_components/combat_inventory.tscn" id="11_v0k0e"]
+[ext_resource type="PackedScene" uid="uid://bsjhpgojhhbwi" path="res://Scenes/inventory_components/town_inventory_components/town_inventory.tscn" id="12_5wa8t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1rgi"]
 shader = ExtResource("3_s1rgi")
@@ -782,5 +784,16 @@ position = Vector2(4, 5)
 [node name="Player_Interactor" parent="." unique_id=950506813 instance=ExtResource("5_8g4oa")]
 
 [node name="InventoryLayer" type="CanvasLayer" parent="." unique_id=1782693256]
+process_mode = 3
+script = ExtResource("11_p7tob")
 
 [node name="CombatInventoryMain" parent="InventoryLayer" unique_id=2067008066 instance=ExtResource("11_v0k0e")]
+
+[node name="TownInventory" parent="InventoryLayer" unique_id=660443647 instance=ExtResource("12_5wa8t")]
+
+[connection signal="comabt_inventory_close" from="InventoryLayer" to="InventoryLayer/CombatInventoryMain" method="close"]
+[connection signal="combat_inventory_open" from="InventoryLayer" to="InventoryLayer/CombatInventoryMain" method="open"]
+[connection signal="town_inventory_close" from="InventoryLayer" to="InventoryLayer/TownInventory" method="close"]
+[connection signal="town_inventory_open" from="InventoryLayer" to="InventoryLayer/TownInventory" method="open"]
+[connection signal="tc_inventory_close" from="InventoryLayer/TownInventory" to="InventoryLayer/CombatInventoryMain" method="close"]
+[connection signal="tc_inventory_open" from="InventoryLayer/TownInventory" to="InventoryLayer/CombatInventoryMain" method="open"]
