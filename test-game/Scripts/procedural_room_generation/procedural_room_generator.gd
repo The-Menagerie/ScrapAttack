@@ -128,9 +128,10 @@ func _fill_remaining_templates(
 	var failed_expansions := 0
 	while placements.size() < max(target_room_count, 1) and not open_doors.is_empty() and failed_expansions < max_failed_expansions:
 		var frontier_index := _rng.randi_range(0, open_doors.size() - 1)
-		var frontier := open_doors[frontier_index]
+		var frontier := open_doors
 		var remaining_slots: int = max(target_room_count, 1) - placements.size()
 		var place_required_now: bool = _should_place_required_room(required_templates.size(), remaining_slots)
+		print(place_required_now)
 		var placement: Dictionary = {}
 
 		if place_required_now and not required_templates.is_empty():
@@ -231,7 +232,7 @@ func _collect_open_doors(
 	return doors
 
 func _try_place_room(
-	frontier: Dictionary,
+	frontier: Array[Dictionary],
 	templates: Array[Dictionary],
 	occupied_cells: Dictionary,
 	frontier_index: int = -1
@@ -244,16 +245,19 @@ func _try_place_room(
 		_shuffle_array(candidate_doors)
 
 		for candidate_door in candidate_doors:
-			if candidate_door["direction"] != -frontier["direction"]:
-				continue
+			for i in frontier:
+				if candidate_door["direction"] != -i["direction"]:
+					print("no proper door direction")
+					continue
 
-			var candidate_origin: Vector2i = (frontier["world_cell"] + frontier["direction"]) - candidate_door["cell"]
-			if _can_place_template(template, candidate_origin, occupied_cells):
-				return {
-					"template": template,
-					"origin": candidate_origin,
-					"connected_door_index": template["doors"].find(candidate_door),
-					"frontier_index": frontier_index
+				var candidate_origin: Vector2i = (i["world_cell"] + i["direction"]) - candidate_door["cell"]
+				if _can_place_template(template, candidate_origin, occupied_cells):
+					var frontier_ind = frontier.find(i)
+					return {
+						"template": template,
+						"origin": candidate_origin,
+						"connected_door_index": template["doors"].find(candidate_door),
+						"frontier_index": frontier_ind
 				}
 
 	return {}
@@ -261,6 +265,7 @@ func _try_place_room(
 func _can_place_template(template: Dictionary, origin: Vector2i, occupied_cells: Dictionary) -> bool:
 	for local_cell: Vector2i in template["footprint"]:
 		if occupied_cells.has(origin + local_cell):
+			print("sorry, this don't work")
 			return false
 	return true
 
