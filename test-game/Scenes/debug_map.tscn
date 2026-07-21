@@ -6,13 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://hvhvb88gygwl" path="res://Enemy/MouthMushroom/MouthMushroom.tscn" id="5_gnyyd"]
 [ext_resource type="PackedScene" uid="uid://chuy825ybb8gf" path="res://Scenes/ui_scenes/building_confirmation.tscn" id="5_gu212"]
 [ext_resource type="PackedScene" uid="uid://ye27wjf527fq" path="res://Enemy/Pumpkin/PumpkinBoss.tscn" id="6_1on00"]
-[ext_resource type="Script" uid="uid://tj7fgkbr4yic" path="res://Scripts/leave_route.gd" id="6_ctkch"]
+[ext_resource type="Script" uid="uid://tj7fgkbr4yic" path="res://leave_route.gd" id="6_ctkch"]
 [ext_resource type="Texture2D" uid="uid://blssqekjjr8ts" path="res://Resources/Temp_Assets/Porbal.png" id="6_gnyyd"]
 [ext_resource type="Texture2D" uid="uid://dchy4kc4iwg44" path="res://Resources/Temp_Assets/shitty_motorbike.png" id="7_1on00"]
-[ext_resource type="Script" uid="uid://bap5lkryx2xvq" path="res://Scripts/town_motorbike.gd" id="7_60603"]
+[ext_resource type="Script" uid="uid://bap5lkryx2xvq" path="res://town_motorbike.gd" id="7_60603"]
 [ext_resource type="PackedScene" uid="uid://ca4m1hc1oublw" path="res://Scenes/ui_scenes/building_menu.tscn" id="8_44j6w"]
 [ext_resource type="PackedScene" uid="uid://1ivx3cwmbf28" path="res://Enemy/FlyTrap/FlyTrap.tscn" id="8_bxtru"]
-[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/interaction_zone.gd" id="9_ctkch"]
+[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://interaction_zone.gd" id="9_ctkch"]
+[ext_resource type="PackedScene" uid="uid://b0kqsfg86ppid" path="res://Scenes/utility_scenes/dropped_item.tscn" id="14_gip7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40fn5"]
 size = Vector2(78, 51)
@@ -99,5 +100,8 @@ shape = SubResource("RectangleShape2D_40fn5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="leave_route/preperation_zone" unique_id=2012526500]
 position = Vector2(-1, -6)
 shape = SubResource("RectangleShape2D_qd85e")
+
+[node name="dropped_item" parent="." unique_id=1957614983 instance=ExtResource("14_gip7s")]
+position = Vector2(0, -60)
 
 [connection signal="body_entered" from="leave_route/preperation_zone" to="leave_route" method="player_nears"]
