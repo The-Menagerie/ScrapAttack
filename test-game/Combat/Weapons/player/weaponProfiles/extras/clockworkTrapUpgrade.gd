@@ -41,6 +41,7 @@ func execute() -> bool:
 		projectile.configure_damage_over_time(trap_tick_interval)
 
 	play_upgrade_audio()
+	projectile_node.process_mode = Node.PROCESS_MODE_PAUSABLE
 	projectile_node.global_position = weapon.global_position + (direction * trap_spawn_distance)
 	projectile_node.scale = trap_scale
 

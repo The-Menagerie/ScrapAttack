@@ -58,7 +58,7 @@ func flash_owner_white(duration: float) -> void:
 	)
 
 	shader_material.set_shader_parameter("flash_amount", 1.0)
-	await get_tree().create_timer(duration).timeout
+	await get_tree().create_timer(duration, false).timeout
 
 	if not is_instance_valid(shader_material):
 		return

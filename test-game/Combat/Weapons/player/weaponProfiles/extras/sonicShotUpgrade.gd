@@ -43,6 +43,7 @@ func execute() -> bool:
 		)
 
 	_play_upgrade_audio_for_duration()
+	projectile_node.process_mode = Node.PROCESS_MODE_PAUSABLE
 	projectile_node.global_position = weapon.global_position + (direction * projectile_spawn_distance)
 	projectile_node.rotation = direction.angle()
 	projectile_node.scale = projectile_scale
@@ -73,10 +74,11 @@ func _play_upgrade_audio_for_duration() -> void:
 	temp_audio_player.pitch_scale = audio_player.pitch_scale
 	temp_audio_player.bus = audio_player.bus
 	temp_audio_player.max_polyphony = 1
+	temp_audio_player.process_mode = Node.PROCESS_MODE_PAUSABLE
 	scene_root.add_child(temp_audio_player)
 	temp_audio_player.play()
 
-	var timer := get_tree().create_timer(maxf(sound_duration, 0.0))
+	var timer := get_tree().create_timer(maxf(sound_duration, 0.0), false)
 	timer.timeout.connect(func() -> void:
 		if is_instance_valid(temp_audio_player):
 			temp_audio_player.stop()

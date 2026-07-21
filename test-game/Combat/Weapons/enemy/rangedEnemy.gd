@@ -69,6 +69,7 @@ func _spawn_projectile_in_direction(direction: Vector2) -> Node2D:
 		)
 
 	var projectile_node := projectile as Node2D
+	projectile_node.process_mode = Node.PROCESS_MODE_PAUSABLE
 	projectile_node.global_position = global_position + (direction * projectile_spawn_distance)
 	projectile_node.rotation = direction.angle()
 

@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://w6i0jejr3acb"]
+
+[ext_resource type="Script" uid="uid://br23g1exwmuve" path="res://Scripts/ui_scripts/pause_menu.gd" id="1_7n8m2"]
+
+[node name="PauseMenu" type="Control" unique_id=1924812073]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_7n8m2")
+
+[node name="Backdrop" type="ColorRect" parent="." unique_id=1049966489]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1428589424]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -170.0
+offset_right = 240.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=965988589]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1214954513]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1803649265]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Pause Menu"
+horizontal_alignment = 1
+
+[node name="MainButtons" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=330733104]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="OptionsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/MainButtons" unique_id=606645550]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/MainButtons" unique_id=1849448570]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "Quit Game"
+
+[node name="OptionsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=959761096]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="VolumeLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/OptionsContainer" unique_id=18648791]
+layout_mode = 2
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/OptionsContainer" unique_id=1472469282]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="VolumeValue" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/OptionsContainer" unique_id=727101058]
+layout_mode = 2
+text = "Volume: 100%"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/OptionsContainer" unique_id=1686319618]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "Back"

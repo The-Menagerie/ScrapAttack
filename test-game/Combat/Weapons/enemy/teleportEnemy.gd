@@ -23,7 +23,7 @@ func attack(target_position: Vector2) -> void:
 	aim_at(target_position)
 
 	flash_white()
-	await get_tree().create_timer(attack_windup).timeout
+	await get_tree().create_timer(attack_windup, false).timeout
 
 	if !is_inside_tree():
 		return
@@ -37,7 +37,7 @@ func attack(target_position: Vector2) -> void:
 	weapon_sprite.visible = false
 	is_attacking = false
 
-	await get_tree().create_timer(attack_cooldown).timeout
+	await get_tree().create_timer(attack_cooldown, false).timeout
 
 	if !is_inside_tree():
 		return
@@ -52,7 +52,7 @@ func _perform_teleport_attack(target_position: Vector2) -> void:
 	_set_owner_active(false)
 
 	if teleport_disappear_time > 0.0:
-		await get_tree().create_timer(teleport_disappear_time).timeout
+		await get_tree().create_timer(teleport_disappear_time, false).timeout
 
 	if not is_inside_tree() or not is_instance_valid(owner_enemy):
 		return
@@ -69,7 +69,7 @@ func _perform_teleport_attack(target_position: Vector2) -> void:
 	aim_at(target_position)
 
 	if teleport_reappear_delay > 0.0:
-		await get_tree().create_timer(teleport_reappear_delay).timeout
+		await get_tree().create_timer(teleport_reappear_delay, false).timeout
 
 	if not is_inside_tree():
 		return
@@ -77,7 +77,7 @@ func _perform_teleport_attack(target_position: Vector2) -> void:
 	_set_owner_active(true)
 
 	if teleport_reappear_damage_delay > 0.0:
-		await get_tree().create_timer(teleport_reappear_damage_delay).timeout
+		await get_tree().create_timer(teleport_reappear_damage_delay, false).timeout
 
 	if not is_inside_tree():
 		return

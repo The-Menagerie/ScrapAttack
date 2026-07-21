@@ -43,10 +43,10 @@ func prevents_movement() -> bool:
 	return is_action_active
 
 func _start_block_timers() -> void:
-	var parry_timer := get_tree().create_timer(parry_window)
+	var parry_timer := get_tree().create_timer(parry_window, false)
 	parry_timer.timeout.connect(_end_parry_window)
 
-	var block_timer := get_tree().create_timer(block_duration)
+	var block_timer := get_tree().create_timer(block_duration, false)
 	block_timer.timeout.connect(_end_block)
 
 func _end_parry_window() -> void:
@@ -85,7 +85,7 @@ func flash_owner_white(duration: float) -> void:
 	)
 
 	shader_material.set_shader_parameter("flash_amount", 1.0)
-	await get_tree().create_timer(duration).timeout
+	await get_tree().create_timer(duration, false).timeout
 
 	if not is_instance_valid(shader_material):
 		return

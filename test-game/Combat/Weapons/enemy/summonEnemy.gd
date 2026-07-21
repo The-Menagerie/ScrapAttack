@@ -42,6 +42,7 @@ func _perform_attack(_target_position: Vector2) -> void:
 		if scene_root == null:
 			scene_root = get_tree().root
 
+		summon_node.process_mode = Node.PROCESS_MODE_PAUSABLE
 		scene_root.add_child(summon_node)
 		active_summons.append(summon_node)
 

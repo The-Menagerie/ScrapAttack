@@ -50,7 +50,7 @@ func damage(attack: Attack):
 	if not attack.skip_default_hit_flash:
 		flash_red()
 	
-	await get_tree().create_timer(hit_cooldown).timeout
+	await get_tree().create_timer(hit_cooldown, false).timeout
 	can_be_hit = true
 
 func flash_red() -> void:
@@ -59,7 +59,7 @@ func flash_red() -> void:
 
 	damage_visual.modulate = Color.RED
 
-	await get_tree().create_timer(flash_duration).timeout
+	await get_tree().create_timer(flash_duration, false).timeout
 
 	if is_instance_valid(damage_visual):
 		damage_visual.modulate = Color.WHITE

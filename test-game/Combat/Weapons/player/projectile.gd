@@ -28,7 +28,7 @@ func _ready() -> void:
 	damage_tick_elapsed = damage_tick_interval
 
 	if lifetime > 0.0:
-		var timer := get_tree().create_timer(lifetime)
+		var timer := get_tree().create_timer(lifetime, false)
 		timer.timeout.connect(_begin_fade_out)
 
 func _physics_process(delta: float) -> void:
