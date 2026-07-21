@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TestGame"
-run/main_scene="res://Scenes/procedural_room_generation/procedural_room_layout_test.tscn"
+run/main_scene="uid://bq6do16kb2wpq"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

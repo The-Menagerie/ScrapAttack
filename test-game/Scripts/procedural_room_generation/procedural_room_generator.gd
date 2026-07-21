@@ -239,6 +239,7 @@ func _try_place_room(
 ) -> Dictionary:
 	var shuffled_templates := templates.duplicate()
 	_shuffle_array(shuffled_templates)
+	_shuffle_array(frontier)
 
 	for template in shuffled_templates:
 		var candidate_doors: Array[Dictionary] = template["doors"].duplicate()
