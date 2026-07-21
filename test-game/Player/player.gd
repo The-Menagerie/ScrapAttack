@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 @export var dash_multiplier = 2.0
 @export var dash_duration = 0.15
+@export var dash_cooldown: float = 0.5
 @export var dash_smoke_scene: PackedScene
 @export var dash_smoke_distance: float = 12.0
 
@@ -18,6 +19,7 @@ var knockback_velocity:= Vector2.ZERO
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var hitbox: HitboxComponent = $HitboxComponent
+@onready var dash_audio_player: AudioStreamPlayer = $DashAudioPlayer
 @onready var weapon_icon_rect: TextureRect = $WeaponHud/WeaponIcon
 @onready var upgrade_icon_rects: Array[TextureRect] = [
 	$WeaponHud/UpgradeIconRow/UpgradeIcon1,
@@ -30,6 +32,7 @@ var knockback_velocity:= Vector2.ZERO
 ]
 
 var is_dashing = false
+var can_dash: bool = true
 var aim_direction: Vector2 = Vector2.RIGHT
 var last_move_direction: Vector2 = Vector2.DOWN
 var dash_direction_override: Vector2 = Vector2.ZERO
@@ -46,7 +49,7 @@ func _ready():
 
 func _physics_process(_delta):
 	update_weapon_aim()
-	if Input.is_action_just_pressed("dash") and !is_dashing and (weapon == null or not weapon.prevents_movement()):
+	if Input.is_action_just_pressed("dash") and can_dash and !is_dashing and (weapon == null or not weapon.prevents_movement()):
 		dash()
 	if Input.is_action_just_pressed("swapWeapon"):
 		swap_to_next_weapon()
@@ -243,6 +246,8 @@ func dash(
 	multiplier_override: float = -1.0,
 	duration_override: float = -1.0
 ) -> void:
+	play_dash_audio()
+	can_dash = false
 	is_dashing = true
 	dash_direction_override = (
 		direction_override.normalized()
@@ -276,6 +281,20 @@ func dash(
 	is_dashing = false
 	dash_direction_override = Vector2.ZERO
 	hitbox.can_be_hit = true
+
+	var resolved_cooldown := maxf(dash_cooldown, 0.0)
+	if resolved_cooldown <= 0.0:
+		can_dash = true
+		return
+
+	await get_tree().create_timer(resolved_cooldown).timeout
+
+	if is_inside_tree():
+		can_dash = true
+
+func play_dash_audio() -> void:
+	if dash_audio_player != null and dash_audio_player.stream != null:
+		dash_audio_player.play()
 
 func spawn_dash_smoke(smoke_direction: Vector2 = Vector2.ZERO) -> void:
 	if dash_smoke_scene == null:

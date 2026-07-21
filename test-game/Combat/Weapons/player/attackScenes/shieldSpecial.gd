@@ -63,7 +63,7 @@ func _end_block() -> void:
 		weapon.finish_attack()
 
 func _parry_source(source_node: Node2D) -> void:
-	if source_node == null:
+	if source_node == null or not is_instance_valid(source_node):
 		return
 
 	var direction := global_position.direction_to(source_node.global_position)

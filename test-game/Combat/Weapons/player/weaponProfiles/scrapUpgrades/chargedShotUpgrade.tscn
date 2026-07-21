@@ -10,7 +10,7 @@
 script = ExtResource("2_script")
 projectile_scene = ExtResource("3_dqftx")
 charge_effect_scene = ExtResource("4_effect")
-charge_time_max = 1.25
+charge_time_max = 2.0
 charged_projectile_scale_min = 0.5
 charged_projectile_scale_max = 3.0
 charged_damage_multiplier_min = 0.5
@@ -18,4 +18,5 @@ charged_damage_multiplier_max = 10.0
 charged_knockback_multiplier = 0.0
 charged_stun_bonus = 1.0
 max_charge_flash_duration = 0.1
+charge_effect_offset = Vector2(0, 0)
 hud_icon = ExtResource("3_icon")

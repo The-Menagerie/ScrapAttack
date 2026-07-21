@@ -33,6 +33,7 @@ func execute() -> bool:
 
 	is_action_active = true
 	weapon.set_cooldown_override(cooldown)
+	weapon.play_attack_audio()
 	var dash_direction := _get_dash_direction()
 	_set_attack_pose(dash_direction)
 	left_shape.set_deferred("disabled", false)

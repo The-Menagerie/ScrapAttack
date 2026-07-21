@@ -11,8 +11,12 @@ class_name EnemyProjectile
 var lifetime: float = 0.0
 var source_node: Node2D
 
+@onready var animation_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+@onready var animated_sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
+
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
+	_play_spawn_animation()
 
 	if lifetime > 0.0:
 		var timer := get_tree().create_timer(lifetime)
@@ -42,6 +46,24 @@ func configure(
 	stun_duration = new_stun_duration
 	source_node = new_source_node
 
+func _play_spawn_animation() -> void:
+	if animation_player != null:
+		if animation_player.has_animation("Attack"):
+			animation_player.play("Attack")
+			return
+		if animation_player.has_animation("Idle"):
+			animation_player.play("Idle")
+			return
+
+	if animated_sprite != null:
+		if animated_sprite.sprite_frames == null:
+			return
+		if animated_sprite.sprite_frames.has_animation("Attack"):
+			animated_sprite.play("Attack")
+			return
+		if animated_sprite.sprite_frames.has_animation("default"):
+			animated_sprite.play("default")
+
 func _on_area_entered(area: Area2D) -> void:
 	if !(area is HitboxComponent):
 		return
@@ -52,6 +74,7 @@ func _on_area_entered(area: Area2D) -> void:
 	attack.knockback_force = knockback_force
 	attack.attack_position = global_position
 	attack.stun_duration = stun_duration
-	attack.source_node = source_node
+	if is_instance_valid(source_node):
+		attack.source_node = source_node
 	hitbox.damage(attack)
 	queue_free()

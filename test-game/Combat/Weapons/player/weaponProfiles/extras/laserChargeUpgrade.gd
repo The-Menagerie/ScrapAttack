@@ -72,6 +72,7 @@ func release_alt_attack() -> void:
 	if resolved_projectile_scene == null:
 		resolved_projectile_scene = weapon.projectile_scene
 
+	weapon.play_attack_audio()
 	weapon._spawn_projectile(
 		resolved_projectile_scene,
 		weapon.projectile_speed,

@@ -4,6 +4,9 @@
 [ext_resource type="Shader" uid="uid://4fq6g38up1s8" path="res://Combat/flash_white.gdshader" id="2_ncf7h"]
 [ext_resource type="PackedScene" uid="uid://blbq24j6cp5vd" path="res://Combat/health_component.tscn" id="2_q3w6c"]
 [ext_resource type="PackedScene" uid="uid://brfrfpncin1fy" path="res://Combat/hitbox_component.tscn" id="3_l7d8q"]
+[ext_resource type="AudioStream" uid="uid://dpdpltlkp1t0c" path="res://Enemy/LightGargle.wav" id="3_ncf7h"]
+[ext_resource type="AudioStream" uid="uid://cojfdq2v5c0fn" path="res://Enemy/DeepRoar.wav" id="4_glvfu"]
+[ext_resource type="AudioStream" uid="uid://pff0bwy2l2a0" path="res://Enemy/SmallRoar.wav" id="5_0rspp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6jha"]
 shader = ExtResource("2_ncf7h")
@@ -11,6 +14,13 @@ shader_parameter/flash_amount = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_move"]
 size = Vector2(13, 13)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ncf7h"]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("3_ncf7h")
+stream_1/stream = ExtResource("4_glvfu")
+stream_2/stream = ExtResource("5_0rspp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hit"]
 size = Vector2(15, 27)
@@ -179,6 +189,8 @@ y_sort_enabled = true
 collision_layer = 32
 collision_mask = 34
 script = ExtResource("1_7y7d6")
+ambient_sound_interval_min = 2.0
+ambient_sound_hearing_distance = 400.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2074901193]
 material = SubResource("ShaderMaterial_m6jha")
@@ -190,6 +202,13 @@ shape = SubResource("RectangleShape2D_move")
 
 [node name="Timer" type="Timer" parent="." unique_id=1085426115]
 
+[node name="AmbientSoundTimer" type="Timer" parent="." unique_id=1114275668]
+
+[node name="AmbientSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=888667454]
+stream = SubResource("AudioStreamRandomizer_ncf7h")
+volume_db = -4.0
+pitch_scale = 1.0
+
 [node name="HealthComponent" parent="." unique_id=825035799 instance=ExtResource("2_q3w6c")]
 MAX_HEALTH = 80.0
 
@@ -199,8 +218,6 @@ collision_mask = 16
 health_component = NodePath("../HealthComponent")
 knockback_body = NodePath("..")
 damage_visual = NodePath("../Sprite2D")
-hit_cooldown = 0.4
-flash_duration = 0.1
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent" unique_id=175250500]
 position = Vector2(0, -3)

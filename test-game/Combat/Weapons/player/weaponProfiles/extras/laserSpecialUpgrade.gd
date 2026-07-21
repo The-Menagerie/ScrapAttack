@@ -18,6 +18,7 @@ func special_attack() -> void:
 	weapon.can_attack = false
 	weapon.is_attacking = true
 
+	weapon.play_attack_audio()
 	var projectile := weapon._spawn_projectile(
 		projectile_scene,
 		projectile_speed,

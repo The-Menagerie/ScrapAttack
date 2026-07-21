@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://Combat/Weapons/enemy/weaponEnemy.tscn" id="1_base"]
+[ext_resource type="Script" path="res://Combat/Weapons/enemy/summonEnemy.gd" id="2_script"]
+[ext_resource type="AudioStream" path="res://Combat/Weapons/enemy/SummonRoar.wav" id="3_audio"]
+
+[node name="SummonWeaponEnemy" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+attack_windup = 0.5
+attack_cooldown = 4.0
+
+[node name="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("3_audio")

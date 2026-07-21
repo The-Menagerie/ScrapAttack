@@ -26,6 +26,7 @@ func execute() -> bool:
 
 	is_action_active = true
 	weapon.set_cooldown_override(cooldown)
+	play_upgrade_audio()
 	_set_visual_visible(true)
 	hit_shape.set_deferred("disabled", false)
 	animation_player.play("Attack")

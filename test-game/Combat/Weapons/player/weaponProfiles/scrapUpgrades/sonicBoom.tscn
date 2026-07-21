@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bwnw5vg2abjji" path="res://Combat/Weapons/player/weaponProfiles/extras/sonicBoomUpgrade.gd" id="2_script"]
 [ext_resource type="Texture2D" uid="uid://ctvywwhhjtsis" path="res://Combat/Weapons/player/weaponProfiles/extras/SonicBoomIcon.png" id="4_icon"]
 [ext_resource type="Texture2D" uid="uid://mmcvihjn8qgr" path="res://Combat/Weapons/player/weaponProfiles/extras/SonicBoom.png" id="4_tb71i"]
+[ext_resource type="AudioStream" path="res://Combat/Weapons/player/weaponProfiles/extras/SonicBoom.wav" id="5_boom_audio"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_boom"]
 radius = 88.09086
@@ -71,3 +72,6 @@ shape = SubResource("CircleShape2D_boom")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=2033765264]
 libraries/ = SubResource("AnimationLibrary_boom")
+
+[node name="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("5_boom_audio")

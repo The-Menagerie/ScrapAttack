@@ -1,7 +1,75 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bm6wio83sfgus"]
 
-[ext_resource type="Script" path="res://Combat/Weapons/player/attackScenes/shieldAlt.gd" id="1_7qt0u"]
 [ext_resource type="Texture2D" uid="uid://cb6c4ql1v6fdr" path="res://Combat/Weapons/SlashLarge.png" id="2_qgnm5"]
+
+[sub_resource type="GDScript" id="GDScript_nunk1"]
+script/source = "extends MeleeWeaponAction
+class_name ShieldAltAction
+
+@export var attack_damage: float = 35.0
+@export var knockback_force: float = 260.0
+@export var attack_duration: float = 0.5
+@export var stun_duration: float = 0.35
+@export var animation_speed_scale: float = 0.65
+
+@onready var attack_sprite: Sprite2D = $AttackSprite
+@onready var hit_area: Area2D = $HitArea
+@onready var hit_shape: CollisionShape2D = $HitArea/CollisionShape2D
+@onready var attack_timer: Timer = $AttackTimer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+var default_sprite_scale: Vector2 = Vector2.ONE
+var default_hitbox_scale: Vector2 = Vector2.ONE
+
+func _ready() -> void:
+	attack_sprite.visible = false
+	hit_shape.disabled = true
+	default_sprite_scale = attack_sprite.scale
+	default_hitbox_scale = hit_shape.scale
+	attack_timer.one_shot = true
+	attack_timer.timeout.connect(_on_attack_timer_timeout)
+	hit_area.area_entered.connect(_on_hitbox_area_entered)
+
+func execute() -> bool:
+	if weapon == null or not can_execute():
+		return false
+
+	is_action_active = true
+	weapon.set_cooldown_override(cooldown)
+	attack_sprite.visible = true
+	attack_sprite.frame = 0
+	attack_sprite.scale = default_sprite_scale
+	hit_shape.scale = default_hitbox_scale
+	hit_shape.set_deferred(\"disabled\", false)
+	animation_player.speed_scale = animation_speed_scale
+	animation_player.play(\"Attack\")
+	attack_timer.start(attack_duration)
+	return true
+
+func _on_attack_timer_timeout() -> void:
+	hit_shape.set_deferred(\"disabled\", true)
+	attack_sprite.visible = false
+	attack_sprite.scale = default_sprite_scale
+	hit_shape.scale = default_hitbox_scale
+	animation_player.stop()
+	animation_player.speed_scale = 1.0
+	is_action_active = false
+
+	if weapon != null:
+		weapon.finish_attack()
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if weapon == null:
+		return
+
+	weapon.apply_attack_to_hitbox(
+		area,
+		attack_damage,
+		knockback_force,
+		stun_duration,
+		hit_area.global_position
+	)
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmjhg"]
 radius = 15.491962
@@ -28,34 +96,29 @@ _data = {
 &"Attack": SubResource("Animation_6tpeq")
 }
 
-[node name="ShieldAlt" type="Node2D"]
-script = ExtResource("1_7qt0u")
+[node name="ShieldAlt" type="Node2D" unique_id=1407586033]
+script = SubResource("GDScript_nunk1")
 cooldown = 1.0
-attack_damage = 35.0
-knockback_force = 260.0
-attack_duration = 0.5
-stun_duration = 0.35
-animation_speed_scale = 0.65
 
-[node name="AttackSprite" type="Sprite2D" parent="."]
+[node name="AttackSprite" type="Sprite2D" parent="." unique_id=1945387599]
 position = Vector2(10, 1.000001)
 scale = Vector2(0.35, 0.4409091)
 texture = ExtResource("2_qgnm5")
 hframes = 2
 vframes = 2
 
-[node name="HitArea" type="Area2D" parent="."]
+[node name="HitArea" type="Area2D" parent="." unique_id=818255567]
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1349207243]
 visible = false
 position = Vector2(25.999992, -1.9999981)
 rotation = 2.073451
 skew = -0.567232
 shape = SubResource("CapsuleShape2D_fmjhg")
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="AttackTimer" type="Timer" parent="." unique_id=850087399]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=893892356]
 libraries/ = SubResource("AnimationLibrary_dpa63")

@@ -2,7 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://dtx2nm2qu2g3p" path="res://Enemy/enemy.tscn" id="1_peeyx"]
 [ext_resource type="Texture2D" uid="uid://sgku1afq7dra" path="res://Enemy/TurnipGuy/Turnip.png" id="2_q1xjt"]
-[ext_resource type="PackedScene" path="res://Combat/Weapons/enemy/rangedEnemy.tscn" id="3_q1xjt"]
+[ext_resource type="AudioStream" uid="uid://dvkm2nhur7m15" path="res://Enemy/LightMonsterDeath.wav" id="3_ifni0"]
+[ext_resource type="PackedScene" uid="uid://dtfefv4tx56do" path="res://Combat/Weapons/enemy/rangedEnemy.tscn" id="3_q1xjt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1xjt"]
+size = Vector2(13, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifni0"]
+size = Vector2(26, 30)
 
 [sub_resource type="Animation" id="Animation_w1g45"]
 resource_name = "Idle_Left"
@@ -94,6 +101,7 @@ _data = {
 
 [node name="TurnipGuy" unique_id=232309484 instance=ExtResource("1_peeyx")]
 move_speed = 30.0
+detection_radius = 150.0
 attack_range = 100.0
 collides_with_other_enemies = false
 
@@ -102,12 +110,30 @@ texture = ExtResource("2_q1xjt")
 
 [node name="CollisionMovement" parent="." index="1" unique_id=568915233]
 visible = false
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_q1xjt")
 
-[node name="HitboxComponent" parent="." index="4" unique_id=1295468928]
+[node name="HealthComponent" parent="." index="5" unique_id=825035799]
+MAX_HEALTH = 50.0
+
+[node name="HitboxComponent" parent="." index="6" unique_id=1295468928]
+death_sound = ExtResource("3_ifni0")
+
+[node name="CollisionShape2D2" parent="HitboxComponent" index="3" unique_id=175250500]
 visible = false
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_ifni0")
 
-[node name="RangedWeaponEnemy" parent="." index="5" unique_id=170271163 node_paths=PackedStringArray("enemy") instance=ExtResource("3_q1xjt")]
-enemy = NodePath("..")
+[node name="RangedWeaponEnemy" parent="." index="7" unique_id=2013549397 instance=ExtResource("3_q1xjt")]
+projectile_speed = 400.0
+projectile_range = 200.0
+attack_pattern = 0
+radial_projectile_count = 1
+radial_angle_offset_degrees = 0.0
+radial_offset_tracks_target = true
+attack_duration = 0.1
+attack_cooldown = 0.5
+attack_windup = 0.15
 
-[node name="AnimationPlayer" parent="." index="6" unique_id=515217214]
+[node name="AnimationPlayer" parent="." index="8" unique_id=515217214]
 libraries/ = SubResource("AnimationLibrary_ifni0")

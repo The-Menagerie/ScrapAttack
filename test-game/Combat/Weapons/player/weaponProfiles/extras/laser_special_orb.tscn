@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dqcfinx6k3uhw" path="res://Combat/Weapons/player/projectile.tscn" id="1_2w2ux"]
 [ext_resource type="Texture2D" uid="uid://0mv15pyvxnyc" path="res://Combat/Weapons/player/weaponProfiles/extras/TheORB.png" id="2_aiktq"]
+[ext_resource type="AudioStream" path="res://Combat/Weapons/player/weaponProfiles/extras/TheOrb.wav" id="3_orb_audio"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3cp2k"]
 radius = 26.666666
@@ -58,3 +59,6 @@ shape = SubResource("CircleShape2D_3cp2k")
 [node name="AnimationPlayer" parent="." index="2" unique_id=1161279749]
 libraries/ = SubResource("AnimationLibrary_2dqud")
 speed_scale = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("3_orb_audio")
