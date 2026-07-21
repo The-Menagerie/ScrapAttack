@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dcyr0f0thuj2j" path="res://Scripts/building_scene_scripts/chicken_coop.gd" id="1_fny4c"]
 [ext_resource type="Texture2D" uid="uid://372kjpw5pd86" path="res://Resources/Sprout Lands - Sprites - Basic pack/Objects/Chicken_Coop.png" id="1_p4jj1"]
-[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://interaction_zone.gd" id="2_fny4c"]
+[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/interaction_zone.gd" id="2_fny4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4pgv"]
 size = Vector2(29, 24)

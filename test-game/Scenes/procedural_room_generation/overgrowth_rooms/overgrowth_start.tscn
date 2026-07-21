@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cpldudhlvi2i0" path="res://Scenes/procedural_room_generation/footprint_cell_marker.tscn" id="2_4a7p6"]
 [ext_resource type="PackedScene" uid="uid://hie4yi1h3xfy" path="res://Scenes/procedural_room_generation/doorway_marker.tscn" id="3_0i2qd"]
 [ext_resource type="TileSet" uid="uid://u1xc6mbbecly" path="res://Resources/tile_sets/overgrowth.tres" id="4_53ebk"]
-[ext_resource type="Script" uid="uid://1078wmc0ofaf" path="res://exploration_motorbike.gd" id="5_4a7p6"]
-[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://interaction_zone.gd" id="5_ld3wh"]
+[ext_resource type="Script" uid="uid://1078wmc0ofaf" path="res://Scripts/exploration_motorbike.gd" id="5_4a7p6"]
+[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/interaction_zone.gd" id="5_ld3wh"]
 [ext_resource type="Texture2D" uid="uid://dchy4kc4iwg44" path="res://Resources/Temp_Assets/shitty_motorbike.png" id="6_ara8e"]
-[ext_resource type="Script" uid="uid://tj7fgkbr4yic" path="res://leave_route.gd" id="8_0i2qd"]
+[ext_resource type="Script" uid="uid://tj7fgkbr4yic" path="res://Scripts/leave_route.gd" id="8_0i2qd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40fn5"]
 size = Vector2(48, 32)

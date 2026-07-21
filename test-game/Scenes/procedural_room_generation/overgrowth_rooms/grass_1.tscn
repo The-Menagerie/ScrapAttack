@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cpldudhlvi2i0" path="res://Scenes/procedural_room_generation/footprint_cell_marker.tscn" id="2_dtyor"]
 [ext_resource type="PackedScene" uid="uid://hie4yi1h3xfy" path="res://Scenes/procedural_room_generation/doorway_marker.tscn" id="3_qtci8"]
 [ext_resource type="TileSet" uid="uid://u1xc6mbbecly" path="res://Resources/tile_sets/overgrowth.tres" id="4_tu3uv"]
+[ext_resource type="PackedScene" uid="uid://k7hvrkylc1ys" path="res://Scenes/utility_scenes/enemy_generator.tscn" id="5_vx1jc"]
+[ext_resource type="PackedScene" uid="uid://1ivx3cwmbf28" path="res://Enemy/FlyTrap/FlyTrap.tscn" id="6_b1i2w"]
+[ext_resource type="PackedScene" uid="uid://hvhvb88gygwl" path="res://Enemy/MouthMushroom/MouthMushroom.tscn" id="7_3thyp"]
 
 [node name="SingleBlock" type="Node2D" unique_id=1156740841]
 script = ExtResource("1_h8jmg")
@@ -45,3 +48,23 @@ preview_enabled = false
 [node name="grass" type="TileMapLayer" parent="tilemap" unique_id=1309114920]
 tile_map_data = PackedByteArray("AAAAAAAAAQAsAAYAAAAAAAEAAQAsAAcAAAABAAAAAQAtAAYAAAABAAEAAQAtAAcAAAAIAAAAAQAuAAYAAAAJAAAAAQAvAAYAAAAJAAEAAQAvAAcAAAAIAAkAAQAuAAkAAAAJAAgAAQAvAAgAAAAJAAkAAQAvAAkAAAAAAAgAAQAsAAgAAAAAAAkAAQAsAAkAAAABAAkAAQAtAAkAAAABAAgAAQAtAAgAAAAIAAgAAQAuAAgAAAAIAAEAAQAuAAcAAAACAAAAAQAmAAAAAAACAAEAAQAmAAEAAAADAAAAAQAnAAAAAAADAAEAAQAnAAEAAAAEAAAAAQAoAAAAAAAEAAEAAQAoAAEAAAAFAAAAAQApAAAAAAAFAAEAAQApAAEAAAAGAAAAAQAqAAAAAAAGAAEAAQAqAAEAAAAHAAAAAQArAAAAAAAHAAEAAQArAAEAAAACAAgAAQAmAAIAAAACAAkAAQAmAAMAAAADAAgAAQAnAAIAAAADAAkAAQAnAAMAAAAEAAgAAQAoAAIAAAAEAAkAAQAoAAMAAAAFAAgAAQApAAIAAAAFAAkAAQApAAMAAAAGAAgAAQAqAAIAAAAGAAkAAQAqAAMAAAAHAAgAAQAnAAIAAAAHAAkAAQArAAMAAAAAAAIAAQA8AAAAAAAAAAMAAQA8AAEAAAAAAAQAAQA8AAIAAAAAAAUAAQA8AAMAAAAAAAYAAQA8AAQAAAAAAAcAAQA8AAUAAAABAAIAAQA9AAAAAAABAAMAAQA9AAEAAAABAAQAAQA9AAIAAAABAAUAAQA9AAMAAAABAAYAAQA9AAQAAAABAAcAAQA9AAUAAAAIAAIAAQA+AAAAAAAIAAMAAQA+AAEAAAAIAAQAAQA+AAIAAAAIAAUAAQA+AAMAAAAIAAYAAQA+AAQAAAAIAAcAAQA+AAUAAAAJAAIAAQA/AAAAAAAJAAMAAQA/AAEAAAAJAAQAAQA/AAIAAAAJAAUAAQA/AAMAAAAJAAYAAQA/AAQAAAAJAAcAAQA/AAUAAAADAAMAAQA0AAAAAAADAAQAAQA0AAEAAAAEAAMAAQA1AAAAAAAEAAQAAQA1AAEAAAAFAAMAAQA2AAAAAAAFAAQAAQA2AAEAAAAGAAMAAQA3AAAAAAAGAAQAAQA3AAEAAAAFAAUAAQA2AAIAAAAFAAYAAQA2AAMAAAAGAAUAAQA3AAIAAAAGAAYAAQA3AAMAAAADAAUAAQA0AAIAAAADAAYAAQA0AAMAAAAEAAUAAQA1AAIAAAAEAAYAAQA1AAMAAAAHAAQAAQAyAAEAAAAHAAUAAQAyAAIAAAAEAAIAAQAxAAEAAAAFAAIAAQAyAAEAAAACAAQAAQAxAAEAAAACAAUAAQAxAAIAAAAEAAcAAQAxAAIAAAAFAAcAAQAyAAIAAAAHAAYAAQAlAAkAAAAGAAcAAQAlAAkAAAADAAcAAQAiAAgAAAACAAYAAQAiAAgAAAACAAcAAQAxAAMAAAACAAMAAQAxAAAAAAADAAIAAQAxAAAAAAACAAIAAQAwAAAAAAAHAAMAAQAzAAEAAAAGAAIAAQAzAAEAAAAHAAIAAQAwAAAAAAAHAAcAAQAwAAAAAAA=")
 tile_set = ExtResource("4_tu3uv")
+
+[node name="EnemyGenerator" parent="." unique_id=1059269171 instance=ExtResource("5_vx1jc")]
+position = Vector2(29, 36)
+enemy_list = Array[PackedScene]([ExtResource("6_b1i2w"), ExtResource("7_3thyp")])
+
+[node name="EnemyGenerator2" parent="." unique_id=1386985050 instance=ExtResource("5_vx1jc")]
+position = Vector2(84, 76)
+enemy_list = Array[PackedScene]([ExtResource("6_b1i2w"), ExtResource("7_3thyp")])
+
+[node name="EnemyGenerator3" parent="." unique_id=867817387 instance=ExtResource("5_vx1jc")]
+position = Vector2(122, 10)
+enemy_list = Array[PackedScene]([ExtResource("6_b1i2w"), ExtResource("7_3thyp")])
+
+[node name="EnemyGenerator4" parent="." unique_id=2084889763 instance=ExtResource("5_vx1jc")]
+position = Vector2(34, 139)
+enemy_list = Array[PackedScene]([ExtResource("6_b1i2w"), ExtResource("7_3thyp")])
+
+[node name="EnemyGenerator5" parent="." unique_id=2098284491 instance=ExtResource("5_vx1jc")]
+position = Vector2(144, 137)
+enemy_list = Array[PackedScene]([ExtResource("6_b1i2w"), ExtResource("7_3thyp")])

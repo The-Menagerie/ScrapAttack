@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://c1lnsxi7bwjal" path="res://Resources/tile_sets/tall_af_tree.png" id="5_oxs2x"]
 [ext_resource type="Script" uid="uid://cedy25trle4yd" path="res://Scripts/classes/harvestable.gd" id="6_2p1sv"]
 [ext_resource type="Texture2D" uid="uid://c08vdk7jh2bup" path="res://Resources/Utility_Assets/item_images/moving_moss.png" id="7_pprcx"]
-[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://interaction_zone.gd" id="8_1xhkw"]
+[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/interaction_zone.gd" id="8_1xhkw"]
+[ext_resource type="PackedScene" uid="uid://k7hvrkylc1ys" path="res://Scenes/utility_scenes/enemy_generator.tscn" id="9_d445o"]
+[ext_resource type="PackedScene" uid="uid://cr8asunhqkfb2" path="res://Enemy/TurnipGuy/TurnipGuy.tscn" id="10_g7qfm"]
+[ext_resource type="PackedScene" uid="uid://27qt3ow00q45" path="res://Enemy/MushroomCrab/MushroomCrab.tscn" id="11_fpm3a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qd85e"]
 size = Vector2(44.5, 37)
@@ -129,3 +132,28 @@ parent_building = NodePath("..")
 shape = SubResource("RectangleShape2D_qd85e")
 
 [node name="Disjoint" type="Node2D" parent="." unique_id=673562041]
+
+[node name="EnemyGenerator" parent="." unique_id=1059269171 instance=ExtResource("9_d445o")]
+position = Vector2(0, 48)
+enemy_list = Array[PackedScene]([ExtResource("10_g7qfm")])
+spawn_chance = 100.0
+
+[node name="EnemyGenerator2" parent="." unique_id=829437350 instance=ExtResource("9_d445o")]
+position = Vector2(-99, -91)
+enemy_list = Array[PackedScene]([ExtResource("10_g7qfm")])
+spawn_chance = 100.0
+
+[node name="EnemyGenerator3" parent="." unique_id=2142298435 instance=ExtResource("9_d445o")]
+position = Vector2(116, -91)
+enemy_list = Array[PackedScene]([ExtResource("10_g7qfm")])
+spawn_chance = 100.0
+
+[node name="EnemyGenerator4" parent="." unique_id=1276552184 instance=ExtResource("9_d445o")]
+position = Vector2(-112, 97)
+enemy_list = Array[PackedScene]([ExtResource("11_fpm3a")])
+spawn_chance = 100.0
+
+[node name="EnemyGenerator5" parent="." unique_id=1406562545 instance=ExtResource("9_d445o")]
+position = Vector2(128, 56)
+enemy_list = Array[PackedScene]([ExtResource("11_fpm3a")])
+spawn_chance = 100.0

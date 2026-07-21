@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://k7hvrkylc1ys"]
+
+[ext_resource type="Script" uid="uid://c81figiyobm5v" path="res://Scripts/procedural_room_generation/enemy_generator.gd" id="1_a3d5e"]
+
+[node name="EnemyGenerator" type="Node2D" unique_id=1059269171]
+script = ExtResource("1_a3d5e")
