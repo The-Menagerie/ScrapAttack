@@ -31,6 +31,7 @@ var knockback_velocity:= Vector2.ZERO
 	$WeaponHud/UpgradeIconRow/UpgradeIcon2/CooldownOverlay
 ]
 
+
 var is_dashing = false
 var can_dash: bool = true
 var aim_direction: Vector2 = Vector2.RIGHT

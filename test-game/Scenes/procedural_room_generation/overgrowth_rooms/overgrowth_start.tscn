@@ -1,0 +1,94 @@
+[gd_scene format=4 uid="uid://ul61mqse4nn6"]
+
+[ext_resource type="Script" uid="uid://dkdo7jcoqgsx5" path="res://Scripts/procedural_room_generation/procedural_room.gd" id="1_do176"]
+[ext_resource type="PackedScene" uid="uid://cpldudhlvi2i0" path="res://Scenes/procedural_room_generation/footprint_cell_marker.tscn" id="2_4a7p6"]
+[ext_resource type="PackedScene" uid="uid://hie4yi1h3xfy" path="res://Scenes/procedural_room_generation/doorway_marker.tscn" id="3_0i2qd"]
+[ext_resource type="TileSet" uid="uid://u1xc6mbbecly" path="res://Resources/tile_sets/overgrowth.tres" id="4_53ebk"]
+[ext_resource type="Script" uid="uid://1078wmc0ofaf" path="res://exploration_motorbike.gd" id="5_4a7p6"]
+[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://interaction_zone.gd" id="5_ld3wh"]
+[ext_resource type="Texture2D" uid="uid://dchy4kc4iwg44" path="res://Resources/Temp_Assets/shitty_motorbike.png" id="6_ara8e"]
+[ext_resource type="Script" uid="uid://tj7fgkbr4yic" path="res://leave_route.gd" id="8_0i2qd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40fn5"]
+size = Vector2(48, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd85e"]
+size = Vector2(78, 57)
+
+[node name="StartRoom" type="Node2D" unique_id=1156740841]
+script = ExtResource("1_do176")
+room_id = "start_room"
+debug_fill_color = Color(0.25, 0.72, 0.39, 0.22)
+debug_outline_color = Color(0.34901962, 0.9490196, 0.5019608, 0)
+show_footprint_preview = false
+show_doorway_preview = false
+
+[node name="FootprintCellMarker" parent="." unique_id=1227610447 instance=ExtResource("2_4a7p6")]
+debug_fill_color = Color(0.25, 0.72, 0.39, 0.22)
+debug_outline_color = Color(0.34901962, 0.9490196, 0.5019608, 0)
+
+[node name="DoorwayMarker" parent="." unique_id=1141738213 instance=ExtResource("3_0i2qd")]
+position = Vector2(0, 80)
+cell = Vector2i(0, 0)
+direction = Vector2i(-1, 0)
+preview_enabled = false
+
+[node name="DoorwayMarker2" parent="." unique_id=1324051568 instance=ExtResource("3_0i2qd")]
+position = Vector2(160, 80)
+cell = Vector2i(0, 0)
+preview_enabled = false
+
+[node name="DoorwayMarker3" parent="." unique_id=1310715199 instance=ExtResource("3_0i2qd")]
+position = Vector2(80, 160)
+cell = Vector2i(0, 0)
+direction = Vector2i(1, 3)
+preview_enabled = false
+
+[node name="DoorwayMarker4" parent="." unique_id=1902014978 instance=ExtResource("3_0i2qd")]
+position = Vector2(80, 0)
+cell = Vector2i(0, 0)
+direction = Vector2i(1, -2)
+preview_enabled = false
+
+[node name="tilemap" type="Node2D" parent="." unique_id=486181756]
+
+[node name="grass" type="TileMapLayer" parent="tilemap" unique_id=1595672690]
+tile_map_data = PackedByteArray("AAADAAMAAQA0AAYAAAADAAQAAQA9AAAAAAADAAUAAQA9AAEAAAADAAYAAQA0AAkAAAAEAAMAAQAqAAEAAAAEAAQAAQA1AAcAAAAEAAUAAQA1AAgAAAAEAAYAAQAoAAIAAAAFAAMAAQArAAEAAAAFAAQAAQA2AAcAAAAFAAUAAQA2AAgAAAAFAAYAAQApAAIAAAAGAAMAAQA3AAYAAAAGAAQAAQA8AAYAAAAGAAUAAQA8AAcAAAAGAAYAAQA3AAkAAAAHAAQAAQA9AAYAAAAHAAUAAQA9AAcAAAAHAAMAAQA7AAAAAAAGAAIAAQA7AAAAAAAHAAYAAQA3AAMAAAAEAAcAAQAoAAMAAAAFAAcAAQApAAMAAAAGAAcAAQA3AAMAAAAHAAcAAQAlAAkAAAADAAcAAQA4AAMAAAACAAQAAQA8AAAAAAACAAUAAQA8AAEAAAACAAYAAQA0AAMAAAACAAMAAQA4AAAAAAADAAIAAQA0AAAAAAAEAAIAAQAqAAAAAAAFAAIAAQArAAAAAAAIAAQAAQAuAAEAAAAIAAUAAQAuAAIAAAAJAAQAAQA/AAYAAAAJAAUAAQA/AAcAAAABAAQAAQA+AAEAAAABAAUAAQA+AAIAAAABAAMAAQAwAAEAAAACAAIAAQAwAAEAAAAIAAMAAQAzAAEAAAAHAAIAAQAzAAEAAAAEAAEAAQAnAAIAAAAFAAEAAQAoAAIAAAADAAEAAQAxAAAAAAABAAYAAQAxAAAAAAACAAcAAQAxAAMAAAAIAAYAAQAyAAMAAAAGAAEAAQAzAAEAAAAEAAgAAQApAAEAAAAFAAgAAQAqAAEAAAAGAAgAAQAvAAMAAAADAAgAAQAxAAMAAAABAAcAAQA1AAcAAAABAAgAAQA1AAcAAAABAAkAAQA1AAcAAAAAAAkAAQA1AAcAAAAAAAgAAQA1AAcAAAAAAAcAAQA1AAcAAAAAAAYAAQA1AAcAAAAAAAUAAQA1AAcAAAAAAAQAAQA1AAcAAAAAAAMAAQA1AAcAAAAAAAIAAQA1AAcAAAAAAAEAAQA1AAcAAAABAAEAAQA1AAcAAAABAAIAAQA1AAcAAAAAAAAAAQA1AAcAAAABAAAAAQA1AAcAAAACAAAAAQA1AAcAAAADAAAAAQA1AAcAAAAEAAAAAQA1AAcAAAAFAAAAAQA1AAcAAAAGAAAAAQA1AAcAAAAHAAAAAQA1AAcAAAAIAAAAAQA1AAcAAAAIAAEAAQA1AAcAAAAJAAEAAQA1AAcAAAAJAAIAAQA1AAcAAAAJAAMAAQA1AAcAAAAIAAIAAQA1AAcAAAAHAAEAAQA1AAcAAAAJAAAAAQA1AAcAAAACAAEAAQA1AAcAAAAJAAYAAQA1AAcAAAAJAAcAAQA1AAcAAAAJAAgAAQA1AAcAAAAIAAgAAQA1AAcAAAAIAAkAAQA1AAcAAAAHAAkAAQA1AAcAAAAGAAkAAQA1AAcAAAAFAAkAAQA1AAcAAAAEAAkAAQA1AAcAAAADAAkAAQA1AAcAAAACAAkAAQA1AAcAAAACAAgAAQA1AAcAAAAHAAgAAQA1AAcAAAAIAAcAAQA1AAcAAAAJAAkAAQA1AAcAAAA=")
+tile_set = ExtResource("4_53ebk")
+
+[node name="grass_2" type="TileMapLayer" parent="tilemap" unique_id=1840604372]
+tile_map_data = PackedByteArray("AAACAAIAAwAAAA4AAAACAAMAAwAAAA8AAAADAAIAAwABAA4AAAADAAMAAwABAA8AAAAGAAYAAwABAAEAAAAGAAcAAwAAAA8AAAAHAAYAAwACAAoAAAAHAAcAAwACAAsAAAADAAUAAwAAABIAAAADAAYAAwADAAoAAAAEAAUAAwAAAAkAAAAEAAYAAwABABMAAAAGAAEAAwAAABIAAAAGAAIAAwAAABMAAAAHAAEAAwABABIAAAAHAAIAAwABABMAAAAAAAYAAwAAABIAAAAAAAcAAwAAABMAAAABAAYAAwABABIAAAABAAcAAwABABMAAAAAAAAAAwAAAAgAAAAAAAEAAwAAAAkAAAABAAAAAwABAAgAAAABAAEAAwABAAkAAAAEAAQAAwAAAAgAAAAFAAQAAwACAAsAAAAFAAUAAwAAAAAAAAAIAAYAAwADAAoAAAAIAAcAAwADAAsAAAAJAAYAAwABAAgAAAAJAAcAAwABAAkAAAABAAgAAwAAAAgAAAABAAkAAwAAAAkAAAACAAgAAwABAAgAAAACAAkAAwABAAkAAAAHAAgAAwAAAAgAAAAHAAkAAwAAAAkAAAAIAAgAAwABAAgAAAAIAAkAAwABAAkAAAAFAAMAAwACAAoAAAAGAAMAAwADAAoAAAAGAAQAAwADAAsAAAAIAAIAAwACAAoAAAAIAAMAAwACAAsAAAAJAAIAAwADAAoAAAAJAAMAAwADAAsAAAAIAAAAAwACAAoAAAAIAAEAAwACAAsAAAAJAAAAAwADAAoAAAAJAAEAAwADAAsAAAACAAYAAwACAAoAAAACAAcAAwACAAsAAAADAAcAAwADAAsAAAAFAAYAAwAAAAEAAAAGAAUAAwABAAAAAAAAAAIAAwACAAAAAAAAAAMAAwACAAEAAAABAAIAAwADAAAAAAABAAMAAwADAAEAAAA=")
+tile_set = ExtResource("4_53ebk")
+
+[node name="objects" type="TileMapLayer" parent="tilemap" unique_id=2101794769]
+tile_map_data = PackedByteArray("AAAAAAMAAAAFACYAAAAAAAQAAAAFACcAAAAAAAUAAAAFACgAAAAJAAMAAAAFACYAAAAJAAQAAAAFACcAAAAJAAUAAAAFACgAAAADAAAAAAABACYAAAADAAEAAAABACcAAAAEAAAAAAACACYAAAAEAAEAAAACACcAAAAFAAAAAAADACYAAAAFAAEAAAADACcAAAAEAAgAAAABACYAAAAEAAkAAAABACcAAAAFAAgAAAACACYAAAAFAAkAAAACACcAAAAGAAgAAAADACYAAAAGAAkAAAADACcAAAA=")
+tile_set = ExtResource("4_53ebk")
+
+[node name="Motorbike" type="Node2D" parent="." unique_id=1932160409]
+position = Vector2(80, 80)
+script = ExtResource("5_4a7p6")
+
+[node name="Area2D" type="Area2D" parent="Motorbike" unique_id=1065319088 node_paths=PackedStringArray("parent_building")]
+collision_layer = 536870912
+collision_mask = 536870912
+script = ExtResource("5_ld3wh")
+parent_building = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Motorbike/Area2D" unique_id=1682998804]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_40fn5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Motorbike" unique_id=2113174406]
+position = Vector2(0, -14)
+texture = ExtResource("6_ara8e")
+
+[node name="leave_route" type="Area2D" parent="." unique_id=1093828094]
+position = Vector2(81, 73)
+script = ExtResource("8_0i2qd")
+leave_path = "res://Scenes/debug_map.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leave_route" unique_id=626353440]
+position = Vector2(-1, 1.5)
+shape = SubResource("RectangleShape2D_qd85e")
+
+[connection signal="body_entered" from="leave_route" to="leave_route" method="player_nears"]

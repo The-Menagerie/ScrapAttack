@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://hie4yi1h3xfy"]
+
+[ext_resource type="Script" uid="uid://calvc84nmrchr" path="res://Scripts/procedural_room_generation/procedural_room_doorway_marker.gd" id="1_script"]
+
+[node name="DoorwayMarker" type="Node2D" unique_id=1141738213]
+position = Vector2(0, -80)
+script = ExtResource("1_script")
+cell = Vector2i(-1, -1)

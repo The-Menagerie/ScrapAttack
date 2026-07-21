@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://byx58npmtrm5v"]
+
+[ext_resource type="Script" uid="uid://dosm2n2ltbb4n" path="res://Scripts/procedural_room_generation/procedural_room_generator.gd" id="1_gen"]
+[ext_resource type="PackedScene" uid="uid://cqns2ekd1t78t" path="res://Player/Player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://bi10wx4dh0dj" path="res://Scenes/procedural_room_generation/rooms/boss_room.tscn" id="3_noo5q"]
+[ext_resource type="PackedScene" uid="uid://bilpbfapdx40y" path="res://Scenes/procedural_room_generation/rooms/start_room.tscn" id="3_start"]
+[ext_resource type="PackedScene" uid="uid://csemjnso8ah37" path="res://Scenes/procedural_room_generation/rooms/hallway_2x1.tscn" id="4_hall"]
+[ext_resource type="PackedScene" uid="uid://cqusduo6eo8ri" path="res://Scenes/procedural_room_generation/overgrowth_rooms/great_tree_room.tscn" id="4_kes2u"]
+[ext_resource type="PackedScene" uid="uid://lq2oyylijkrg" path="res://Scenes/procedural_room_generation/rooms/corner_l_room.tscn" id="5_corner"]
+[ext_resource type="PackedScene" uid="uid://ff42j6evkn5y" path="res://Scenes/procedural_room_generation/rooms/square_2x2_room.tscn" id="6_square"]
+[ext_resource type="PackedScene" uid="uid://w1xvcuk2h0o8" path="res://Scenes/procedural_room_generation/rooms/t_room.tscn" id="7_troom"]
+[ext_resource type="PackedScene" uid="uid://cklojcuir5l8" path="res://Scenes/procedural_room_generation/rooms/single_block_room.tscn" id="8_vi5mr"]
+
+[node name="ProceduralRoomLayoutTest" type="Node2D" unique_id=1118487022]
+script = ExtResource("1_gen")
+start_room_scene = ExtResource("3_start")
+required_room_scenes = Array[PackedScene]([ExtResource("3_noo5q"), ExtResource("4_kes2u")])
+room_scenes = Array[PackedScene]([ExtResource("5_corner"), ExtResource("6_square"), ExtResource("7_troom"), ExtResource("4_hall"), ExtResource("8_vi5mr")])
+target_room_count = 25
+player_path = NodePath("Player")
+
+[node name="Rooms" type="Node2D" parent="." unique_id=788654634]
+y_sort_enabled = true
+
+[node name="Player" parent="." unique_id=890362631 instance=ExtResource("2_player")]
+position = Vector2(238, 136)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=1223464013]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2075791828]
+position = Vector2(238, 136)
+zoom = Vector2(4, 4)
