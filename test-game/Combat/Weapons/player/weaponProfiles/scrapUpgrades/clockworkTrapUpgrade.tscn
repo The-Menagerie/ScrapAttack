@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://b50knb18boy58"]
 
 [ext_resource type="PackedScene" uid="uid://bhl4txnhpno8p" path="res://Combat/Weapons/player/scrapUpgrade.tscn" id="1_base"]
-[ext_resource type="Script" path="res://Combat/Weapons/player/weaponProfiles/extras/clockworkTrapUpgrade.gd" id="2_script"]
+[ext_resource type="Script" uid="uid://cycmp6ty8k74h" path="res://Combat/Weapons/player/weaponProfiles/extras/clockworkTrapUpgrade.gd" id="2_script"]
 [ext_resource type="PackedScene" uid="uid://dmapju6acnfvv" path="res://Combat/Weapons/player/weaponProfiles/extras/clockworkTrap.tscn" id="3_projectile"]
-[ext_resource type="Texture2D" path="res://Combat/Weapons/player/weaponProfiles/extras/ClockworkTrapIcon.png" id="4_icon"]
+[ext_resource type="Texture2D" uid="uid://b73qe5p2417xk" path="res://Combat/Weapons/player/weaponProfiles/extras/ClockworkTrapIcon.png" id="4_icon"]
+[ext_resource type="AudioStream" path="res://Combat/Weapons/player/weaponProfiles/extras/ClockworkTrap.wav" id="5_trap_audio"]
 
-[node name="clockworkTrapUpgrade" instance=ExtResource("1_base")]
+[node name="clockworkTrapUpgrade" unique_id=318641354 instance=ExtResource("1_base")]
 script = ExtResource("2_script")
-hud_icon = ExtResource("4_icon")
 projectile_scene = ExtResource("3_projectile")
 trap_duration = 3.0
 trap_spawn_distance = 22.0
@@ -15,6 +15,10 @@ trap_damage = 0.0
 trap_knockback_force = 0.0
 trap_stun_duration = 0.75
 trap_tick_interval = 0.35
-trap_scale = Vector2(1, 1)
+trap_scale = Vector2(2, 2)
 upgrade_slot = 1
+hud_icon = ExtResource("4_icon")
 cooldown = 1.25
+
+[node name="AudioStreamPlayer" parent="." index="0"]
+stream = ExtResource("5_trap_audio")

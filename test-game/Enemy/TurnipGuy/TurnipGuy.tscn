@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://cr8asunhqkfb2"]
+
+[ext_resource type="PackedScene" uid="uid://dtx2nm2qu2g3p" path="res://Enemy/enemy.tscn" id="1_peeyx"]
+[ext_resource type="Texture2D" uid="uid://sgku1afq7dra" path="res://Enemy/TurnipGuy/Turnip.png" id="2_q1xjt"]
+[ext_resource type="AudioStream" uid="uid://dvkm2nhur7m15" path="res://Enemy/LightMonsterDeath.wav" id="3_ifni0"]
+[ext_resource type="PackedScene" uid="uid://dtfefv4tx56do" path="res://Combat/Weapons/enemy/rangedEnemy.tscn" id="3_q1xjt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1xjt"]
+size = Vector2(13, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifni0"]
+size = Vector2(26, 30)
+
+[sub_resource type="Animation" id="Animation_w1g45"]
+resource_name = "Idle_Left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7i8ud"]
+resource_name = "Idle_Right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ifni0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nxxx6"]
+resource_name = "Walk_Left"
+length = 0.53333336
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, 1), Vector2(-1, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_q1xjt"]
+resource_name = "Walk_Right"
+length = 0.53333336
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ifni0"]
+_data = {
+&"Idle_Left": SubResource("Animation_w1g45"),
+&"Idle_Right": SubResource("Animation_7i8ud"),
+&"RESET": SubResource("Animation_ifni0"),
+&"Walk_Left": SubResource("Animation_nxxx6"),
+&"Walk_Right": SubResource("Animation_q1xjt")
+}
+
+[node name="TurnipGuy" unique_id=232309484 instance=ExtResource("1_peeyx")]
+move_speed = 30.0
+detection_radius = 150.0
+attack_range = 100.0
+collides_with_other_enemies = false
+
+[node name="Sprite2D" parent="." index="0" unique_id=2074901193]
+texture = ExtResource("2_q1xjt")
+
+[node name="CollisionMovement" parent="." index="1" unique_id=568915233]
+visible = false
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_q1xjt")
+
+[node name="HealthComponent" parent="." index="5" unique_id=825035799]
+MAX_HEALTH = 50.0
+
+[node name="HitboxComponent" parent="." index="6" unique_id=1295468928]
+death_sound = ExtResource("3_ifni0")
+
+[node name="CollisionShape2D2" parent="HitboxComponent" index="3" unique_id=175250500]
+visible = false
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_ifni0")
+
+[node name="RangedWeaponEnemy" parent="." index="7" unique_id=2013549397 instance=ExtResource("3_q1xjt")]
+projectile_speed = 400.0
+projectile_range = 200.0
+attack_pattern = 0
+radial_projectile_count = 1
+radial_angle_offset_degrees = 0.0
+radial_offset_tracks_target = true
+attack_duration = 0.1
+attack_cooldown = 0.5
+attack_windup = 0.15
+
+[node name="AnimationPlayer" parent="." index="8" unique_id=515217214]
+libraries/ = SubResource("AnimationLibrary_ifni0")

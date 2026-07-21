@@ -4,3 +4,5 @@
 
 [node name="ScrapUpgrade" type="Node2D" unique_id=208632813]
 script = ExtResource("1_hlnmi")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

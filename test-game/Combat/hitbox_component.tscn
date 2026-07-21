@@ -8,7 +8,11 @@ collision_layer = 24
 collision_mask = 24
 script = ExtResource("1_hebpo")
 health_component = NodePath("HealthComponent")
-hit_cooldown = null
-flash_duration = null
 
 [node name="HealthComponent" parent="." unique_id=1642405860 instance=ExtResource("2_q78ui")]
+
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=840256430]
+
+[node name="Death" type="AudioStreamPlayer" parent="." unique_id=798077450]
+pitch_scale = 4.0
+max_polyphony = 3

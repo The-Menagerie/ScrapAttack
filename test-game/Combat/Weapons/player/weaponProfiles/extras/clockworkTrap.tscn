@@ -1,17 +1,26 @@
 [gd_scene format=3 uid="uid://dmapju6acnfvv"]
 
 [ext_resource type="PackedScene" uid="uid://dqcfinx6k3uhw" path="res://Combat/Weapons/player/projectile.tscn" id="1_lsbh2"]
-[ext_resource type="Texture2D" uid="uid://dogjgte2fdvxa" path="res://Combat/Weapons/Projectile.png" id="2_gd4ql"]
+[ext_resource type="Texture2D" uid="uid://bwgryoig4d22i" path="res://Combat/Weapons/player/weaponProfiles/extras/clockworkTrap.png" id="2_gd4ql"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jh7sr"]
+radius = 6.0
 
 [node name="clockworkTrap" unique_id=317958916 instance=ExtResource("1_lsbh2")]
+scale = Vector2(2, 2)
 speed = 0.0
 attack_damage = 0.0
 knockback_force = 0.0
 stun_duration = 5.0
 lingers = true
 damage_tick_interval = 0.0
+rotate_to_direction = false
 
 [node name="Sprite2D" parent="." index="0" unique_id=1235838479]
 position = Vector2(2.3841858e-07, 1.1920929e-07)
 scale = Vector2(0.34375006, 0.34375006)
 texture = ExtResource("2_gd4ql")
+hframes = 1
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1596552665]
+shape = SubResource("CircleShape2D_jh7sr")

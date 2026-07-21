@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://1ivx3cwmbf28"]
+
+[ext_resource type="PackedScene" uid="uid://dtx2nm2qu2g3p" path="res://Enemy/enemy.tscn" id="1_6cyra"]
+[ext_resource type="Texture2D" uid="uid://c2s3g6cyuqphs" path="res://Enemy/FlyTrap/FlyTrap.png" id="2_o8xps"]
+[ext_resource type="PackedScene" uid="uid://cxgaf56piafrx" path="res://Combat/Weapons/enemy/lightEnemy.tscn" id="3_qiiiq"]
+[ext_resource type="AudioStream" uid="uid://dvkm2nhur7m15" path="res://Enemy/LightMonsterDeath.wav" id="3_yx4cv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qiiiq"]
+size = Vector2(15, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8xps"]
+size = Vector2(27, 30)
+
+[node name="FlyTrap" unique_id=232309484 instance=ExtResource("1_6cyra")]
+scale = Vector2(0.75, 0.75)
+move_speed = 45.0
+idle_time = 2.0
+walk_time = 5.0
+detection_radius = 150.0
+knockback_decay = 500.0
+attack_range = 5.0
+collides_with_other_enemies = false
+
+[node name="Sprite2D" parent="." index="0" unique_id=2074901193]
+texture = ExtResource("2_o8xps")
+
+[node name="CollisionMovement" parent="." index="1" unique_id=568915233]
+visible = false
+position = Vector2(-3.5, 0.5)
+shape = SubResource("RectangleShape2D_qiiiq")
+
+[node name="HealthComponent" parent="." index="5" unique_id=825035799]
+MAX_HEALTH = 90.0
+
+[node name="HitboxComponent" parent="." index="6" unique_id=1295468928]
+death_sound = ExtResource("3_yx4cv")
+death_sound_volume_db = -15.0
+
+[node name="CollisionShape2D2" parent="HitboxComponent" index="3" unique_id=175250500]
+visible = false
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_o8xps")
+
+[node name="lightEnemy" parent="." index="7" unique_id=397098870 instance=ExtResource("3_qiiiq")]
+attack_damage = 5.0
+knockback_force = 50.0
+stun_duration = 0.0
+attack_duration = 0.1
+attack_cooldown = 0.3

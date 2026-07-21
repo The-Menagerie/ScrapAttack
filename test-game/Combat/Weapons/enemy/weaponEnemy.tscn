@@ -1,21 +1,30 @@
 [gd_scene format=3 uid="uid://dfbmp87rc7wbc"]
 
 [ext_resource type="Script" uid="uid://d1vkmw52l3udh" path="res://Combat/Weapons/enemy/weaponEnemy.gd" id="1_b3uvi"]
+[ext_resource type="Shader" uid="uid://4fq6g38up1s8" path="res://Combat/flash_white.gdshader" id="2_2xm51"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0d8ig"]
+shader = ExtResource("2_2xm51")
+shader_parameter/flash_amount = 0.0
 
 [node name="WeaponEnemy" type="Node2D" unique_id=397098870]
 script = ExtResource("1_b3uvi")
 attack_windup = 0.25
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1695758661]
+material = SubResource("ShaderMaterial_0d8ig")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=95570106]
 collision_layer = 24
 collision_mask = 24
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=773213060]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea" unique_id=553918709]
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1903029938]
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1316107423]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=217388248]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1605851963]
+max_polyphony = 4

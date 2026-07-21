@@ -16,6 +16,7 @@ class_name MeleeWeapon
 @onready var attack_shape: CollisionShape2D = $AttackArea/CollisionShape2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var alt_attack_action: MeleeWeaponAction
 var special_attack_action: MeleeWeaponAction
@@ -66,6 +67,8 @@ func _begin_attack() -> void:
 
 func play_attack_animation() -> void:
 	weapon_sprite.visible = true
+	if audio_player != null and audio_player.stream != null:
+		audio_player.play()
 	animation_player.play("Attack")
 
 func _on_attack_timer_timeout() -> void:
@@ -100,7 +103,9 @@ func apply_attack_to_hitbox(
 		attack.knockback_force = knockback_amount
 		attack.attack_position = attack_position
 		attack.stun_duration = stun_amount
-		attack.source_node = get_parent() as Node2D
+		var source_node := get_parent() as Node2D
+		if is_instance_valid(source_node):
+			attack.source_node = source_node
 		hitbox.damage(attack)
 
 func handle_incoming_attack(attack: Attack) -> bool:

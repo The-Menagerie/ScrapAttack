@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://ye27wjf527fq"]
+
+[ext_resource type="PackedScene" uid="uid://dtx2nm2qu2g3p" path="res://Enemy/enemy.tscn" id="1_4ng16"]
+[ext_resource type="Texture2D" uid="uid://vlitf3h1ht42" path="res://Enemy/Pumpkin/Pumpkin.png" id="2_pq2yu"]
+[ext_resource type="PackedScene" uid="uid://dlr7kf0qrhslm" path="res://Combat/Weapons/enemy/heavyEnemy.tscn" id="3_jl7hw"]
+[ext_resource type="PackedScene" uid="uid://dtfefv4tx56do" path="res://Combat/Weapons/enemy/rangedEnemy.tscn" id="4_ranged"]
+[ext_resource type="AudioStream" uid="uid://bfhx7h332ivkd" path="res://Enemy/HeavyMonsterDeath.wav" id="5_heavy_death"]
+[ext_resource type="PackedScene" path="res://Combat/Weapons/enemy/summonEnemy.tscn" id="7_summon"]
+[ext_resource type="PackedScene" uid="uid://cr8asunhqkfb2" path="res://Enemy/TurnipGuy/TurnipGuy.tscn" id="8_turnip"]
+[ext_resource type="PackedScene" uid="uid://27qt3ow00q45" path="res://Enemy/MushroomCrab/MushroomCrab.tscn" id="9_crab"]
+[ext_resource type="PackedScene" uid="uid://hvhvb88gygwl" path="res://Enemy/MouthMushroom/MouthMushroom.tscn" id="10_mouth"]
+[ext_resource type="PackedScene" uid="uid://1ivx3cwmbf28" path="res://Enemy/FlyTrap/FlyTrap.tscn" id="11_flytrap"]
+[ext_resource type="PackedScene" path="res://Combat/Weapons/enemy/teleportEnemy.tscn" id="12_teleport"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jl7hw"]
+size = Vector2(24, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tf4sg"]
+size = Vector2(30, 30)
+
+[node name="PumpkinBoss" unique_id=232309484 instance=ExtResource("1_4ng16")]
+scale = Vector2(3, 3)
+move_speed = 10.0
+idle_time = 0.0
+walk_time = 0.0
+detection_radius = 150.0
+agro_radius = 600.0
+knockback_decay = 1200.0
+collides_with_other_enemies = false
+
+[node name="Sprite2D" parent="." index="0" unique_id=2074901193]
+texture = ExtResource("2_pq2yu")
+
+[node name="CollisionMovement" parent="." index="1" unique_id=568915233]
+visible = false
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_jl7hw")
+
+[node name="AmbientSoundPlayer" parent="." index="4" unique_id=888667454]
+volume_db = 0.0
+pitch_scale = 6.0
+
+[node name="HealthComponent" parent="." index="5" unique_id=825035799]
+MAX_HEALTH = 500.0
+
+[node name="HitboxComponent" parent="." index="6" unique_id=1295468928]
+death_sound = ExtResource("5_heavy_death")
+
+[node name="CollisionShape2D2" parent="HitboxComponent" index="3" unique_id=175250500]
+visible = false
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_tf4sg")
+
+[node name="HeavyEnemy" parent="." index="7" unique_id=397098870 instance=ExtResource("3_jl7hw")]
+scale = Vector2(0.75, 0.75)
+attack_damage = 30.0
+knockback_force = 500.0
+stun_duration = 0.7
+attack_cooldown = 6.0
+attack_distance_max = 70.0
+
+[node name="RangedWeaponEnemy" parent="." index="8" unique_id=2013549397 instance=ExtResource("4_ranged")]
+position = Vector2(2, -1)
+projectile_speed = 220.0
+projectile_range = 220.0
+attack_pattern = 1
+radial_projectile_count = 8
+radial_angle_offset_degrees = 0.0
+radial_offset_tracks_target = true
+attack_cooldown = 1.2
+attack_windup = 0.25
+attack_distance_min = 70.0
+attack_distance_max = 220.0
+
+[node name="SummonWeaponEnemy" parent="." index="9" unique_id=1182917654 instance=ExtResource("7_summon")]
+summon_pool = Array[PackedScene]([ExtResource("8_turnip"), ExtResource("9_crab"), ExtResource("10_mouth"), ExtResource("11_flytrap")])
+summon_cooldown = 3.0
+summon_count = 1
+max_active_summons = 6
+summon_spawn_radius_min = 36.0
+summon_spawn_radius_max = 80.0
+attack_windup = 0.6
+attack_distance_min = 220.0
+attack_distance_max = 600.0
+
+[node name="TeleportWeaponEnemy" parent="." index="10" unique_id=1914101248 instance=ExtResource("12_teleport")]
+teleport_disappear_time = 0.3
+teleport_offset_distance = 0.0
+teleport_reappear_stun_duration = 0.5
+attack_damage = 25.0
+attack_cooldown = 4.5
+attack_windup = 0.3
+attack_distance_min = 90.0
+attack_distance_max = 260.0

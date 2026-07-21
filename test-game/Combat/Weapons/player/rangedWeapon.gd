@@ -9,7 +9,11 @@ class_name RangedWeapon
 @export var knockback_force: float = 100.0
 @export var stun_duration: float = 0.0
 
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+
 func _begin_attack() -> void:
+	play_attack_audio()
+
 	_spawn_projectile(
 		projectile_scene,
 		projectile_speed,
@@ -65,3 +69,7 @@ func _spawn_projectile(
 	scene_root.add_child(projectile)
 
 	return projectile as Node2D
+
+func play_attack_audio() -> void:
+	if audio_player != null and audio_player.stream != null:
+		audio_player.play()
