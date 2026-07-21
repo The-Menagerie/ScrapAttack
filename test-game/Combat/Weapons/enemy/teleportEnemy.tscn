@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://bu6elhyqftwqi"]
 
-[ext_resource type="PackedScene" path="res://Combat/Weapons/enemy/weaponEnemy.tscn" id="1_base"]
-[ext_resource type="Script" path="res://Combat/Weapons/enemy/teleportEnemy.gd" id="2_script"]
-[ext_resource type="AudioStream" path="res://Combat/Weapons/enemy/Dig.wav" id="3_audio"]
+[ext_resource type="PackedScene" uid="uid://dfbmp87rc7wbc" path="res://Combat/Weapons/enemy/weaponEnemy.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://ceea7p7f6n6wd" path="res://Combat/Weapons/enemy/teleportEnemy.gd" id="2_script"]
+[ext_resource type="AudioStream" uid="uid://bex0p25c7s03i" path="res://Combat/Weapons/enemy/Dig.wav" id="3_audio"]
 
-[node name="TeleportWeaponEnemy" instance=ExtResource("1_base")]
+[node name="TeleportWeaponEnemy" unique_id=1562592175 instance=ExtResource("1_base")]
 script = ExtResource("2_script")
+teleport_disappear_time = 0.25
+teleport_reappear_delay = 0.05
+teleport_reappear_damage_delay = 0.05
+teleport_offset_distance = 0.0
+teleport_reappear_stun_duration = 0.3
 attack_damage = 20.0
 attack_duration = 0.4
 attack_cooldown = 4.0
 attack_windup = 0.35
-teleport_disappear_time = 0.25
-teleport_reappear_delay = 0.05
-teleport_reappear_damage_delay = 0.05
 
-[node name="AudioStreamPlayer" parent="." index="5"]
+[node name="AudioStreamPlayer" parent="." index="5" unique_id=1605851963]
 stream = ExtResource("3_audio")
