@@ -131,7 +131,6 @@ func _fill_remaining_templates(
 		var frontier := open_doors
 		var remaining_slots: int = max(target_room_count, 1) - placements.size()
 		var place_required_now: bool = _should_place_required_room(required_templates.size(), remaining_slots)
-		print(place_required_now)
 		var placement: Dictionary = {}
 
 		if place_required_now and not required_templates.is_empty():
@@ -248,7 +247,6 @@ func _try_place_room(
 		for candidate_door in candidate_doors:
 			for i in frontier:
 				if candidate_door["direction"] != -i["direction"]:
-					print("no proper door direction")
 					continue
 
 				var candidate_origin: Vector2i = (i["world_cell"] + i["direction"]) - candidate_door["cell"]
@@ -266,7 +264,6 @@ func _try_place_room(
 func _can_place_template(template: Dictionary, origin: Vector2i, occupied_cells: Dictionary) -> bool:
 	for local_cell: Vector2i in template["footprint"]:
 		if occupied_cells.has(origin + local_cell):
-			print("sorry, this don't work")
 			return false
 	return true
 

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c1lnsxi7bwjal" path="res://Resources/tile_sets/tall_af_tree.png" id="5_oxs2x"]
 [ext_resource type="Script" uid="uid://cedy25trle4yd" path="res://Scripts/classes/harvestable.gd" id="6_2p1sv"]
 [ext_resource type="Texture2D" uid="uid://c08vdk7jh2bup" path="res://Resources/tile_sets/moving_moss_tile.png" id="7_pprcx"]
-[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/building_scene_scripts/interaction_zone.gd" id="8_1xhkw"]
+[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/interaction_zone.gd" id="8_1xhkw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qd85e"]
 size = Vector2(44.5, 37)

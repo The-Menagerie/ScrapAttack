@@ -9,13 +9,25 @@
 [ext_resource type="PackedScene" uid="uid://1ivx3cwmbf28" path="res://Enemy/FlyTrap/FlyTrap.tscn" id="7_60603"]
 [ext_resource type="PackedScene" uid="uid://ca4m1hc1oublw" path="res://Scenes/ui_scenes/building_menu.tscn" id="8_44j6w"]
 [ext_resource type="PackedScene" uid="uid://chuy825ybb8gf" path="res://Scenes/ui_scenes/building_confirmation.tscn" id="9_ifd14"]
+[ext_resource type="PackedScene" uid="uid://ca4m1hc1oublw" path="res://Scenes/ui_scenes/building_menu.tscn" id="4_6mob1"]
+[ext_resource type="PackedScene" uid="uid://chuy825ybb8gf" path="res://Scenes/ui_scenes/building_confirmation.tscn" id="5_gu212"]
+[ext_resource type="Script" uid="uid://tj7fgkbr4yic" path="res://Scripts/leave_route.gd" id="6_ctkch"]
+[ext_resource type="Texture2D" uid="uid://blssqekjjr8ts" path="res://Resources/Temp_Assets/Porbal.png" id="6_gnyyd"]
+[ext_resource type="Texture2D" uid="uid://dchy4kc4iwg44" path="res://Resources/Temp_Assets/shitty_motorbike.png" id="7_1on00"]
+[ext_resource type="Script" uid="uid://bap5lkryx2xvq" path="res://Scripts/town_motorbike.gd" id="7_60603"]
+[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/interaction_zone.gd" id="9_ctkch"]
 
-[node name="Game" type="Node2D" unique_id=408274446]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40fn5"]
+size = Vector2(78, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd85e"]
+size = Vector2(98, 90)
+
+[node name="debug_map" type="Node2D" unique_id=408274446]
 y_sort_enabled = true
 
 [node name="Player" parent="." unique_id=3829449 instance=ExtResource("2_o67dp")]
-z_index = 0
-position = Vector2(-83, 29)
+position = Vector2(-87, -115)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1909387718]
@@ -29,14 +41,14 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=118655845]
 
-[node name="BuildingMenu" parent="CanvasLayer" unique_id=987986865 instance=ExtResource("8_44j6w")]
+[node name="BuildingMenu" parent="CanvasLayer" unique_id=987986865 instance=ExtResource("4_6mob1")]
 offset_right = 0.0
 
 [node name="BuildingConfirmation" parent="CanvasLayer" unique_id=1863093831 instance=ExtResource("9_ifd14")]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=824404502]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1768003891]
 z_index = 20
-position = Vector2(-83, 29)
+position = Vector2(-87, -115)
 zoom = Vector2(3, 3)
 limit_enabled = false
 
@@ -64,3 +76,40 @@ ambient_sound_hearing_distance = 300.0
 position = Vector2(231, 72)
 ambient_sound_interval_min = 3.0
 ambient_sound_hearing_distance = 300.0
+
+[node name="leave_route" type="Node2D" parent="." unique_id=913900428]
+y_sort_enabled = true
+position = Vector2(-87, -246)
+script = ExtResource("6_ctkch")
+
+[node name="Sprite2D" type="Sprite2D" parent="leave_route" unique_id=2035574033]
+y_sort_enabled = true
+position = Vector2(0, -60)
+texture = ExtResource("6_gnyyd")
+
+[node name="Motorbike" type="Node2D" parent="leave_route" unique_id=1315789325]
+y_sort_enabled = true
+position = Vector2(0, 3)
+script = ExtResource("7_60603")
+
+[node name="Sprite2D" type="Sprite2D" parent="leave_route/Motorbike" unique_id=482984027]
+texture = ExtResource("7_1on00")
+offset = Vector2(0, -10)
+
+[node name="Area2D" type="Area2D" parent="leave_route/Motorbike" unique_id=1430338075 node_paths=PackedStringArray("parent_building")]
+collision_layer = 536870912
+collision_mask = 536870912
+script = ExtResource("9_ctkch")
+parent_building = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leave_route/Motorbike/Area2D" unique_id=162739560]
+position = Vector2(-1, -9.5)
+shape = SubResource("RectangleShape2D_40fn5")
+
+[node name="preperation_zone" type="Area2D" parent="leave_route" unique_id=1886490010]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leave_route/preperation_zone" unique_id=2012526500]
+position = Vector2(-1, -6)
+shape = SubResource("RectangleShape2D_qd85e")
+
+[connection signal="body_entered" from="leave_route/preperation_zone" to="leave_route" method="player_nears"]

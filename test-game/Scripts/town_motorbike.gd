@@ -9,5 +9,6 @@ func _ready() -> void:
 
 func interaction(player: Node) -> void:
 	if SceneManager != null:
-		BuildEnv.enter_build_environment()
+		BuildEnv.exit_build_environment()
 		SceneManager.replace_scene_with_loaded()
+	

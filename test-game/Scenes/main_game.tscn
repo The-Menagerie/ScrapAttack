@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://7pou60whh2pl"]
+
+[ext_resource type="PackedScene" uid="uid://coo0sbcmjcwif" path="res://Scenes/debug_map.tscn" id="1_l756w"]
+[ext_resource type="Script" uid="uid://u84wufjact8v" path="res://Scenes/main_game.gd" id="1_pu3va"]
+
+[sub_resource type="Animation" id="Animation_0e3vx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading_block:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6j5ir"]
+resource_name = "hide"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading_block:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mgc0q"]
+_data = {
+&"RESET": SubResource("Animation_0e3vx"),
+&"hide": SubResource("Animation_6j5ir")
+}
+
+[node name="SceneController" type="Node2D" unique_id=3271671 node_paths=PackedStringArray("current_scene", "load_anim")]
+script = ExtResource("1_pu3va")
+current_scene = NodePath("debug_map")
+load_anim = NodePath("CanvasLayer/AnimationPlayer")
+
+[node name="debug_map" parent="." unique_id=408274446 instance=ExtResource("1_l756w")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1588164061]
+
+[node name="Loading_block" type="ColorRect" parent="CanvasLayer" unique_id=806564832]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=490610809]
+libraries/ = SubResource("AnimationLibrary_mgc0q")

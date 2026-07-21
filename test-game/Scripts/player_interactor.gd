@@ -16,7 +16,6 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed && event.is_action_pressed("interact_1"):
-			print("attempted interactions")
 			var interacted = $Area2D.get_overlapping_areas()
 			if interacted:
 				interacted[0].transmit_interaction(player)
