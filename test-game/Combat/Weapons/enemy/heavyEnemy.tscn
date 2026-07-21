@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dfbmp87rc7wbc" path="res://Combat/Weapons/enemy/weaponEnemy.tscn" id="1_2moeb"]
 [ext_resource type="Texture2D" uid="uid://cb6c4ql1v6fdr" path="res://Combat/Weapons/SlashLarge.png" id="2_0q307"]
+[ext_resource type="AudioStream" uid="uid://ck47emma3nest" path="res://Combat/Weapons/enemy/HeavyMonsterAttack.wav" id="3_xt5bs"]
 
 [sub_resource type="Animation" id="Animation_0q307"]
 resource_name = "Attack"
@@ -40,7 +41,7 @@ _data = {
 &"RESET": SubResource("Animation_xt5bs")
 }
 
-[node name="WeaponEnemy" unique_id=397098870 instance=ExtResource("1_2moeb")]
+[node name="HeavyEnemy" unique_id=397098870 instance=ExtResource("1_2moeb")]
 scale = Vector2(0.5, 0.5)
 attack_damage = 40.0
 knockback_force = 300.0
@@ -62,3 +63,6 @@ polygon = PackedVector2Array(0, 0, 88, -35, 100, -39, 103, -37, 128, 1, 99, 12, 
 
 [node name="AnimationPlayer" parent="." index="4" unique_id=217388248]
 libraries/ = SubResource("AnimationLibrary_aap0d")
+
+[node name="AudioStreamPlayer" parent="." index="5" unique_id=1605851963]
+stream = ExtResource("3_xt5bs")

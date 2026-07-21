@@ -19,10 +19,12 @@ var damage_tick_elapsed: float = 0.0
 @onready var animation_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
 @onready var animated_sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 @onready var collision_shape: CollisionShape2D = get_node_or_null("CollisionShape2D")
+@onready var audio_player: AudioStreamPlayer = get_node_or_null("AudioStreamPlayer")
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	_play_spawn_animation()
+	_play_looping_audio()
 	damage_tick_elapsed = damage_tick_interval
 
 	if lifetime > 0.0:
@@ -79,6 +81,9 @@ func _begin_fade_out() -> void:
 	if collision_shape != null:
 		collision_shape.set_deferred("disabled", true)
 
+	if is_instance_valid(audio_player):
+		audio_player.stop()
+
 	var tween := create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, FADE_OUT_DURATION)
 	tween.finished.connect(queue_free)
@@ -131,4 +136,24 @@ func _on_area_entered(area: Area2D) -> void:
 	attack.attack_position = global_position
 	attack.stun_duration = stun_duration
 	hitbox.damage(attack)
+	if is_instance_valid(audio_player):
+		audio_player.stop()
 	queue_free()
+
+func _play_looping_audio() -> void:
+	if not is_instance_valid(audio_player) or audio_player.stream == null:
+		return
+
+	if not audio_player.finished.is_connected(_on_audio_finished):
+		audio_player.finished.connect(_on_audio_finished)
+
+	audio_player.play()
+
+func _on_audio_finished() -> void:
+	if is_fading_out or not is_inside_tree():
+		return
+
+	if not is_instance_valid(audio_player) or audio_player.stream == null:
+		return
+
+	audio_player.play()

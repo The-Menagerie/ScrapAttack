@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://hvhvb88gygwl"]
+
+[ext_resource type="PackedScene" uid="uid://dtx2nm2qu2g3p" path="res://Enemy/enemy.tscn" id="1_mn0vm"]
+[ext_resource type="Texture2D" uid="uid://caqwxm2kctegt" path="res://Enemy/MouthMushroom/MouthMushroom.png" id="2_mv26q"]
+[ext_resource type="AudioStream" uid="uid://dvkm2nhur7m15" path="res://Enemy/LightMonsterDeath.wav" id="3_a5llc"]
+[ext_resource type="PackedScene" uid="uid://cxgaf56piafrx" path="res://Combat/Weapons/enemy/lightEnemy.tscn" id="3_d5k1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv26q"]
+size = Vector2(22, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5k1d"]
+size = Vector2(27, 30)
+
+[node name="MouthMushroom" unique_id=232309484 instance=ExtResource("1_mn0vm")]
+scale = Vector2(0.75, 0.75)
+collides_with_other_enemies = false
+
+[node name="Sprite2D" parent="." index="0" unique_id=2074901193]
+texture = ExtResource("2_mv26q")
+
+[node name="CollisionMovement" parent="." index="1" unique_id=568915233]
+visible = false
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_mv26q")
+
+[node name="HitboxComponent" parent="." index="6" unique_id=1295468928]
+death_sound = ExtResource("3_a5llc")
+
+[node name="CollisionShape2D2" parent="HitboxComponent" index="3" unique_id=175250500]
+visible = false
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_d5k1d")
+
+[node name="lightEnemy" parent="." index="7" unique_id=397098870 instance=ExtResource("3_d5k1d")]
+attack_damage = 15.0
+knockback_force = 50.0
+stun_duration = 0.1

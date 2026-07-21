@@ -2,9 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://d02q43jtdwo7f" path="res://Scenes/debug_terrain.tscn" id="1_ngmhs"]
 [ext_resource type="PackedScene" uid="uid://cqns2ekd1t78t" path="res://Player/Player.tscn" id="2_o67dp"]
-[ext_resource type="PackedScene" uid="uid://x2k7ot164jgh" path="res://Orc/Orc.tscn" id="3_6mob1"]
-[ext_resource type="PackedScene" uid="uid://ca4m1hc1oublw" path="res://Scenes/ui_scenes/building_menu.tscn" id="4_6mob1"]
-[ext_resource type="PackedScene" uid="uid://chuy825ybb8gf" path="res://Scenes/ui_scenes/building_confirmation.tscn" id="5_gu212"]
+[ext_resource type="PackedScene" uid="uid://cr8asunhqkfb2" path="res://Enemy/TurnipGuy/TurnipGuy.tscn" id="4_6mob1"]
+[ext_resource type="PackedScene" uid="uid://27qt3ow00q45" path="res://Enemy/MushroomCrab/MushroomCrab.tscn" id="4_gu212"]
+[ext_resource type="PackedScene" uid="uid://hvhvb88gygwl" path="res://Enemy/MouthMushroom/MouthMushroom.tscn" id="5_gnyyd"]
+[ext_resource type="PackedScene" uid="uid://ye27wjf527fq" path="res://Enemy/Pumpkin/PumpkinBoss.tscn" id="6_1on00"]
+[ext_resource type="PackedScene" uid="uid://1ivx3cwmbf28" path="res://Enemy/FlyTrap/FlyTrap.tscn" id="7_60603"]
 
 [node name="Game" type="Node2D" unique_id=408274446]
 y_sort_enabled = true
@@ -42,7 +44,26 @@ zoom = Vector2(3, 3)
 limit_enabled = false
 
 [node name="MushroomCrab" parent="." unique_id=414696781 instance=ExtResource("4_gu212")]
-position = Vector2(-175, 191)
+position = Vector2(153, 79)
+ambient_sound_interval_min = 3.0
+ambient_sound_hearing_distance = 300.0
 
 [node name="TurnipGuy" parent="." unique_id=232309484 instance=ExtResource("4_6mob1")]
-position = Vector2(-21, 302)
+position = Vector2(239, -50)
+ambient_sound_interval_min = 3.0
+ambient_sound_hearing_distance = 300.0
+
+[node name="MouthMushroom" parent="." unique_id=678603889 instance=ExtResource("5_gnyyd")]
+position = Vector2(118, -43)
+ambient_sound_interval_min = 3.0
+ambient_sound_hearing_distance = 300.0
+
+[node name="Enemy" parent="." unique_id=2087516646 instance=ExtResource("6_1on00")]
+position = Vector2(-91, 400)
+ambient_sound_interval_min = 3.0
+ambient_sound_hearing_distance = 300.0
+
+[node name="FlyTrap" parent="." unique_id=405143018 instance=ExtResource("7_60603")]
+position = Vector2(231, 72)
+ambient_sound_interval_min = 3.0
+ambient_sound_hearing_distance = 300.0

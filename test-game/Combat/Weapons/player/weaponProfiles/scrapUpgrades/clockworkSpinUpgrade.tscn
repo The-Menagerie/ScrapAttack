@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://crq3i5cf3it10" path="res://Combat/Weapons/player/weaponProfiles/extras/clockworkSpinUpgrade.gd" id="2_script"]
 [ext_resource type="Texture2D" uid="uid://ce5ayd7ownu21" path="res://Combat/Weapons/player/weaponProfiles/extras/ClockworkSpinIcon.png" id="4_icon"]
 [ext_resource type="Texture2D" uid="uid://cb6c4ql1v6fdr" path="res://Combat/Weapons/SlashLarge.png" id="4_kao6b"]
+[ext_resource type="AudioStream" uid="uid://cd8kqh5vnm87q" path="res://Combat/Weapons/player/weaponProfiles/extras/ClockworkSpin.wav" id="5_spin_audio"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_spin"]
 radius = 50.159744
@@ -68,3 +69,8 @@ shape = SubResource("CircleShape2D_spin")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=274961575]
 libraries/ = SubResource("AnimationLibrary_spin")
+
+[node name="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("5_spin_audio")
+volume_db = -7.0
+pitch_scale = 2.0

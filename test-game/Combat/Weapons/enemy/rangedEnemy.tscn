@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dfbmp87rc7wbc" path="res://Combat/Weapons/enemy/weaponEnemy.tscn" id="1_n8m7n"]
 [ext_resource type="Script" uid="uid://bqfy13nn6y44q" path="res://Combat/Weapons/enemy/rangedEnemy.gd" id="2_y2v19"]
 [ext_resource type="PackedScene" uid="uid://bjcwlplnxkvdu" path="res://Combat/Weapons/enemy/projectileEnemy.tscn" id="3_e1n2r"]
+[ext_resource type="AudioStream" uid="uid://uyjxuel3jwp" path="res://Combat/Weapons/enemy/EnemySpit.wav" id="4_6kgpt"]
 
 [node name="RangedWeaponEnemy" unique_id=2013549397 instance=ExtResource("1_n8m7n")]
 script = ExtResource("2_y2v19")
@@ -11,3 +12,8 @@ projectile_speed = 200.0
 projectile_range = 180.0
 projectile_spawn_distance = 16.0
 attack_windup = 0.4
+
+[node name="AudioStreamPlayer" parent="." index="5" unique_id=1605851963]
+stream = ExtResource("4_6kgpt")
+volume_db = -2.0
+pitch_scale = 1.0

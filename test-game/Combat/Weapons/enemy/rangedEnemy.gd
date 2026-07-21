@@ -1,15 +1,46 @@
 extends WeaponEnemy
 class_name RangedWeaponEnemy
 
+enum AttackPattern {
+	AIMED,
+	RADIAL
+}
+
 @export var projectile_scene: PackedScene
 @export var projectile_speed: float = 200.0
 @export var projectile_range: float = 180.0
 @export var projectile_spawn_distance: float = 12.0
+@export var attack_pattern: AttackPattern = AttackPattern.AIMED
+@export_range(1, 32, 1) var radial_projectile_count: int = 6
+@export_range(0.0, 360.0, 1.0) var radial_angle_offset_degrees: float = 0.0
+@export var radial_offset_tracks_target: bool = true
 
 func _perform_attack(target_position: Vector2) -> void:
-	_spawn_projectile(target_position)
+	match attack_pattern:
+		AttackPattern.RADIAL:
+			_spawn_radial_projectiles(target_position)
+		_:
+			var direction := global_position.direction_to(target_position)
+			if direction == Vector2.ZERO:
+				direction = Vector2.RIGHT
 
-func _spawn_projectile(target_position: Vector2) -> Node2D:
+			_spawn_projectile_in_direction(direction)
+
+func _spawn_radial_projectiles(target_position: Vector2) -> void:
+	var projectile_count: int = maxi(radial_projectile_count, 1)
+	var angle_step: float = TAU / float(projectile_count)
+	var start_angle: float = deg_to_rad(radial_angle_offset_degrees)
+
+	if radial_offset_tracks_target:
+		var target_direction: Vector2 = global_position.direction_to(target_position)
+		if target_direction != Vector2.ZERO:
+			start_angle += target_direction.angle()
+
+	for projectile_index in projectile_count:
+		var angle: float = start_angle + (angle_step * float(projectile_index))
+		_spawn_projectile_in_direction(Vector2.RIGHT.rotated(angle))
+
+func _spawn_projectile_in_direction(direction: Vector2) -> Node2D:
 	if projectile_scene == null:
 		return null
 
@@ -17,9 +48,10 @@ func _spawn_projectile(target_position: Vector2) -> Node2D:
 	if not (projectile is Node2D):
 		return null
 
-	var direction := global_position.direction_to(target_position)
 	if direction == Vector2.ZERO:
 		direction = Vector2.RIGHT
+	else:
+		direction = direction.normalized()
 
 	var projectile_lifetime := 0.0
 	if projectile_speed > 0.0:

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cxgaf56piafrx"]
 
 [ext_resource type="PackedScene" uid="uid://dfbmp87rc7wbc" path="res://Combat/Weapons/enemy/weaponEnemy.tscn" id="1_pqf5u"]
+[ext_resource type="AudioStream" uid="uid://bp7duhim6hsvn" path="res://Combat/Weapons/enemy/LightMonsterAttack.wav" id="2_qjflm"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pqf5u"]
 load_path = "res://.godot/imported/Slash.png-53afbb2baabc1d7e085794a4f3c1253d.ctex"
@@ -65,3 +66,6 @@ polygon = PackedVector2Array(-3, 0, 45, -33, 61, -41, 65, -16, 58, -5, 15, 10, 2
 [node name="AnimationPlayer" parent="." index="4" unique_id=217388248]
 libraries/ = SubResource("AnimationLibrary_drmp3")
 speed_scale = 0.5
+
+[node name="AudioStreamPlayer" parent="." index="5" unique_id=1605851963]
+stream = ExtResource("2_qjflm")

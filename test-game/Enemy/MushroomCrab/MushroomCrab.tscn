@@ -3,8 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://dtx2nm2qu2g3p" path="res://Enemy/enemy.tscn" id="1_d5p54"]
 [ext_resource type="Texture2D" uid="uid://nrrs657isbh5" path="res://Enemy/MushroomCrab/MushroomCrab.png" id="2_7ua12"]
 [ext_resource type="PackedScene" uid="uid://dlr7kf0qrhslm" path="res://Combat/Weapons/enemy/heavyEnemy.tscn" id="3_gk6xl"]
+[ext_resource type="AudioStream" uid="uid://bfhx7h332ivkd" path="res://Enemy/HeavyMonsterDeath.wav" id="5_heavy_death"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk6xl"]
+size = Vector2(16, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wfwn"]
+size = Vector2(29, 30)
 
 [node name="MushroomCrab" unique_id=232309484 instance=ExtResource("1_d5p54")]
+move_speed = 25.0
 attack_range = 60.0
 collides_with_other_enemies = false
 
@@ -13,11 +21,18 @@ texture = ExtResource("2_7ua12")
 
 [node name="CollisionMovement" parent="." index="1" unique_id=568915233]
 visible = false
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_gk6xl")
 
-[node name="HealthComponent" parent="." index="3" unique_id=825035799]
+[node name="HealthComponent" parent="." index="5" unique_id=825035799]
 MAX_HEALTH = 180.0
 
-[node name="HitboxComponent" parent="." index="4" unique_id=1295468928]
-visible = false
+[node name="HitboxComponent" parent="." index="6" unique_id=1295468928]
+death_sound = ExtResource("5_heavy_death")
 
-[node name="WeaponEnemy" parent="." index="5" unique_id=397098870 instance=ExtResource("3_gk6xl")]
+[node name="CollisionShape2D2" parent="HitboxComponent" index="3" unique_id=175250500]
+visible = false
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_3wfwn")
+
+[node name="HeavyEnemy" parent="." index="7" unique_id=397098870 instance=ExtResource("3_gk6xl")]

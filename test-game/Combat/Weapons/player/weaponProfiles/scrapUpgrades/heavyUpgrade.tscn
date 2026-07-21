@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bhl4txnhpno8p" path="res://Combat/Weapons/player/scrapUpgrade.tscn" id="1_20aya"]
 [ext_resource type="Script" uid="uid://64265pmdh4sq" path="res://Combat/Weapons/player/weaponProfiles/extras/heavyHandUpgrade.gd" id="2_o2h0d"]
 [ext_resource type="Texture2D" uid="uid://cb6c4ql1v6fdr" path="res://Combat/Weapons/SlashLarge.png" id="3_wpw7v"]
-[ext_resource type="Texture2D" path="res://Combat/Weapons/player/weaponProfiles/extras/HeavyHandedIcon.png" id="4_icon"]
+[ext_resource type="Texture2D" uid="uid://f0nvnycsl0tq" path="res://Combat/Weapons/player/weaponProfiles/extras/HeavyHandedIcon.png" id="4_icon"]
+[ext_resource type="AudioStream" uid="uid://driu2f8r5byp" path="res://Combat/Weapons/player/HeavySwoosh.wav" id="5_d7kka"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmjhg"]
 radius = 15.491962
@@ -32,12 +33,12 @@ _data = {
 
 [node name="heavyHandUpgrade" unique_id=208632813 instance=ExtResource("1_20aya")]
 script = ExtResource("2_o2h0d")
-hud_icon = ExtResource("4_icon")
 attack_damage = 35.0
 knockback_force = 260.0
 attack_duration = 0.5
 stun_duration = 0.35
 animation_speed_scale = 0.65
+hud_icon = ExtResource("4_icon")
 cooldown = 1.0
 
 [node name="AttackSprite" type="Sprite2D" parent="." index="0" unique_id=1221721404]
@@ -62,3 +63,6 @@ shape = SubResource("CapsuleShape2D_fmjhg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1912944937]
 libraries/ = SubResource("AnimationLibrary_dpa63")
+
+[node name="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("5_d7kka")

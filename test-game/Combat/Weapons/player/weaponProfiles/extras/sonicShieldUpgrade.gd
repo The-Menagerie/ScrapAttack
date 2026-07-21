@@ -27,6 +27,7 @@ func execute() -> bool:
 	is_action_active = true
 	is_parry_window_active = true
 	weapon.set_cooldown_override(cooldown)
+	play_upgrade_audio()
 	flash_owner_white(block_flash_duration)
 	_play_block_animation()
 	_start_block_timers()
@@ -74,7 +75,7 @@ func _end_block() -> void:
 		weapon.finish_attack()
 
 func _parry_source(source_node: Node2D) -> void:
-	if source_node == null:
+	if source_node == null or not is_instance_valid(source_node):
 		return
 
 	var direction := global_position.direction_to(source_node.global_position)

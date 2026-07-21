@@ -40,6 +40,7 @@ func execute() -> bool:
 	if projectile.has_method("configure_damage_over_time"):
 		projectile.configure_damage_over_time(trap_tick_interval)
 
+	play_upgrade_audio()
 	projectile_node.global_position = weapon.global_position + (direction * trap_spawn_distance)
 	projectile_node.scale = trap_scale
 
