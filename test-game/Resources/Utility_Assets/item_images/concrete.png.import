@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c08vdk7jh2bup"
-path="res://.godot/imported/moving_moss_tile.png-ebbc06166ec67a06288e3ae9834b32cc.ctex"
+uid="uid://c1w2wqkjjqude"
+path="res://.godot/imported/concrete.png-8795de6974ff47e6b7f1efe0b68bd6a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/tile_sets/moving_moss_tile.png"
-dest_files=["res://.godot/imported/moving_moss_tile.png-ebbc06166ec67a06288e3ae9834b32cc.ctex"]
+source_file="res://Resources/Utility_Assets/item_images/concrete.png"
+dest_files=["res://.godot/imported/concrete.png-8795de6974ff47e6b7f1efe0b68bd6a9.ctex"]
 
 [params]
 

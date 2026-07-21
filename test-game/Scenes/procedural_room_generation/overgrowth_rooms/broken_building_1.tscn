@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://hie4yi1h3xfy" path="res://Scenes/procedural_room_generation/doorway_marker.tscn" id="3_337c3"]
 [ext_resource type="TileSet" uid="uid://u1xc6mbbecly" path="res://Resources/tile_sets/overgrowth.tres" id="4_fgyxs"]
 [ext_resource type="Script" uid="uid://cedy25trle4yd" path="res://Scripts/classes/harvestable.gd" id="5_klgmh"]
-[ext_resource type="Texture2D" uid="uid://c1w2wqkjjqude" path="res://Resources/tile_sets/concrete.png" id="6_v2ckd"]
+[ext_resource type="Texture2D" uid="uid://c1w2wqkjjqude" path="res://Resources/Utility_Assets/item_images/concrete.png" id="6_v2ckd"]
 [ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/interaction_zone.gd" id="7_ek01v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40fn5"]
