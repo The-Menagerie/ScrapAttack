@@ -278,7 +278,7 @@ func dash(
 
 	spawn_dash_smoke(dash_visual_direction)
 
-	await get_tree().create_timer(resolved_duration).timeout
+	await get_tree().create_timer(resolved_duration, false).timeout
 
 	move_speed /= resolved_multiplier
 	is_dashing = false
@@ -290,7 +290,7 @@ func dash(
 		can_dash = true
 		return
 
-	await get_tree().create_timer(resolved_cooldown).timeout
+	await get_tree().create_timer(resolved_cooldown, false).timeout
 
 	if is_inside_tree():
 		can_dash = true
@@ -310,6 +310,7 @@ func spawn_dash_smoke(smoke_direction: Vector2 = Vector2.ZERO) -> void:
 		resolved_direction = last_move_direction
 
 	# Add it to the world rather than making it follow the player.
+	smoke.process_mode = Node.PROCESS_MODE_PAUSABLE
 	get_parent().add_child(smoke)
 
 	# Position it behind the direction the player is moving.
@@ -333,9 +334,7 @@ func pick_new_state():
 
 # DELETE ME LATER
 func _input(event):
-	if Input.is_action_just_pressed("exit"):
-		get_tree().quit()
-	elif Input.is_action_just_pressed("noclip"):
+	if Input.is_action_just_pressed("noclip"):
 		if in_noclip == false:
 			in_noclip = true
 			for i in range(1,33):

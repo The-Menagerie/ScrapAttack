@@ -34,7 +34,7 @@ func attack(target_position: Vector2) -> void:
 	aim_at(target_position)
 
 	flash_white()
-	await get_tree().create_timer(attack_windup).timeout
+	await get_tree().create_timer(attack_windup, false).timeout
 
 	if !is_inside_tree():
 		return
@@ -50,7 +50,7 @@ func attack(target_position: Vector2) -> void:
 	weapon_sprite.visible = false
 	is_attacking = false
 
-	await get_tree().create_timer(attack_cooldown).timeout
+	await get_tree().create_timer(attack_cooldown, false).timeout
 
 	if !is_inside_tree():
 		return
@@ -74,7 +74,7 @@ func flash_white() -> void:
 		1.0
 	)
 
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.1, false).timeout
 
 	if shader_material == null or not is_instance_valid(shader_material):
 		return
@@ -139,7 +139,7 @@ func _wait_for_attack_finish() -> void:
 		await animation_player.animation_finished
 		return
 
-	await get_tree().create_timer(attack_duration).timeout
+	await get_tree().create_timer(attack_duration, false).timeout
 
 func aim_at(target_position: Vector2) -> void:
 	var direction := global_position.direction_to(target_position)

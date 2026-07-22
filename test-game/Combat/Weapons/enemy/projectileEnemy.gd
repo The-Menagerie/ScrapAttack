@@ -19,7 +19,7 @@ func _ready() -> void:
 	_play_spawn_animation()
 
 	if lifetime > 0.0:
-		var timer := get_tree().create_timer(lifetime)
+		var timer := get_tree().create_timer(lifetime, false)
 		timer.timeout.connect(queue_free)
 
 func _physics_process(delta: float) -> void:

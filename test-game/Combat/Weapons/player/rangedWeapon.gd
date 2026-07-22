@@ -58,6 +58,7 @@ func _spawn_projectile(
 
 	if projectile is Node2D:
 		var projectile_node := projectile as Node2D
+		projectile_node.process_mode = Node.PROCESS_MODE_PAUSABLE
 		projectile_node.global_position = global_position + (aim_direction * projectile_spawn_distance)
 		projectile_node.rotation = aim_direction.angle()
 		projectile_node.scale = projectile_scale
