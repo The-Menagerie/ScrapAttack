@@ -795,5 +795,6 @@ script = ExtResource("11_p7tob")
 [connection signal="combat_inventory_open" from="InventoryLayer" to="InventoryLayer/CombatInventoryMain" method="open"]
 [connection signal="town_inventory_close" from="InventoryLayer" to="InventoryLayer/TownInventory" method="close"]
 [connection signal="town_inventory_open" from="InventoryLayer" to="InventoryLayer/TownInventory" method="open"]
+[connection signal="add_to_tinv" from="InventoryLayer/CombatInventoryMain" to="InventoryLayer/TownInventory" method="move_item_c_to_t"]
 [connection signal="tc_inventory_close" from="InventoryLayer/TownInventory" to="InventoryLayer/CombatInventoryMain" method="close"]
 [connection signal="tc_inventory_open" from="InventoryLayer/TownInventory" to="InventoryLayer/CombatInventoryMain" method="open"]

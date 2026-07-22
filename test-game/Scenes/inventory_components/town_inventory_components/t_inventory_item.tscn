@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bk46lf2jbpkpi"]
+
+[ext_resource type="Script" uid="uid://bhk4nhyyp8dvi" path="res://Scripts/inventory/town_inventory/t_inventory_item.gd" id="1_eb6yb"]
+
+[node name="TInventoryItem" type="Sprite2D" unique_id=202599190]
+script = ExtResource("1_eb6yb")

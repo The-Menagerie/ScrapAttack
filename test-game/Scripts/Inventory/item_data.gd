@@ -6,6 +6,7 @@ class_name ItemData extends Resource
 @export var weight: float ##Variable to hold the weight of items.
 @export var quantity: int = 1 ##Variable to keep track of the current quantity of items in a stack.
 @export var max_stack_size: int ##Variable to hold the max stack size of an item.
+@export var category: String ##Variable to hold the category of an item.
 
 var uID: String: ##This variable takes an items name, makes it lower case, replaces all " " with "_" and returns this new name as an ID.
 	get():
