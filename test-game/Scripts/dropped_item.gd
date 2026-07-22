@@ -17,16 +17,22 @@ var item_data = {
 var current_stack = 1
 
 func _ready() -> void:
+	print("readied")
 	anim_player.play_section("idle")
 
 func initialize(item_database_entry, placement_pos, stack_size = 1) -> void:
 	self.position = placement_pos
+	print("I am positioned at ")
+	print(self.position)
 	item_data = item_database_entry
 	current_stack = stack_size
 	
 	var sprite = "res://Resources/Utility_Assets/item_images/"+item_data["sprite"]
 	item_image.texture = load(sprite)
-	item_image.scale = 16/item_image.texture.get_width()
+	var image_width = item_image.texture.get_width()
+	var scale_change = (float(16)/image_width)
+	item_image.scale = Vector2(scale_change,scale_change)
+	print(item_image.scale)
 	pass
 	
 func player_entered(body) -> void:
