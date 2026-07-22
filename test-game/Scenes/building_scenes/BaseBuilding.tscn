@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bflsq268hri2j"]
 
-[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://interaction_zone.gd" id="1_h8q65"]
+[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/interaction_zone.gd" id="1_h8q65"]
 
 [node name="BaseBuilding" type="Node2D" unique_id=261174353]
 

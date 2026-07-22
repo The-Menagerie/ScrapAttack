@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b0kqsfg86ppid"]
 
-[ext_resource type="Script" uid="uid://b55twwsnmq0nq" path="res://dropped_item.gd" id="1_ovie4"]
+[ext_resource type="Script" uid="uid://b55twwsnmq0nq" path="res://Scripts/dropped_item.gd" id="1_ovie4"]
 [ext_resource type="Texture2D" uid="uid://c1w2wqkjjqude" path="res://Resources/Utility_Assets/item_images/concrete.png" id="2_hlg2n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_40fn5"]

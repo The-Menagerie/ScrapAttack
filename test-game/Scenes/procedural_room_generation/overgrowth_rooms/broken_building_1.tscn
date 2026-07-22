@@ -6,7 +6,12 @@
 [ext_resource type="TileSet" uid="uid://u1xc6mbbecly" path="res://Resources/tile_sets/overgrowth.tres" id="4_fgyxs"]
 [ext_resource type="Script" uid="uid://cedy25trle4yd" path="res://Scripts/classes/harvestable.gd" id="5_klgmh"]
 [ext_resource type="Texture2D" uid="uid://c1w2wqkjjqude" path="res://Resources/Utility_Assets/item_images/concrete.png" id="6_v2ckd"]
-[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://interaction_zone.gd" id="7_ek01v"]
+[ext_resource type="Script" uid="uid://dacjhojcf6ts4" path="res://Scripts/interaction_zone.gd" id="7_ek01v"]
+[ext_resource type="PackedScene" uid="uid://k7hvrkylc1ys" path="res://Scenes/utility_scenes/enemy_generator.tscn" id="8_yv21l"]
+[ext_resource type="PackedScene" uid="uid://1ivx3cwmbf28" path="res://Enemy/FlyTrap/FlyTrap.tscn" id="9_boxsd"]
+[ext_resource type="PackedScene" uid="uid://hvhvb88gygwl" path="res://Enemy/MouthMushroom/MouthMushroom.tscn" id="10_fdyat"]
+[ext_resource type="PackedScene" uid="uid://27qt3ow00q45" path="res://Enemy/MushroomCrab/MushroomCrab.tscn" id="11_1wwkj"]
+[ext_resource type="PackedScene" uid="uid://cr8asunhqkfb2" path="res://Enemy/TurnipGuy/TurnipGuy.tscn" id="12_vlwqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40fn5"]
 
@@ -129,3 +134,28 @@ parent_building = NodePath("..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Concrete2/Area2D" unique_id=908309752]
 position = Vector2(176, 183)
 shape = SubResource("RectangleShape2D_40fn5")
+
+[node name="EnemyGenerator" parent="." unique_id=1059269171 instance=ExtResource("8_yv21l")]
+position = Vector2(111, 215)
+enemy_list = Array[PackedScene]([ExtResource("9_boxsd"), ExtResource("10_fdyat")])
+spawn_chance = 50.0
+
+[node name="EnemyGenerator6" parent="." unique_id=1999859635 instance=ExtResource("8_yv21l")]
+position = Vector2(171, 252)
+enemy_list = Array[PackedScene]([ExtResource("9_boxsd"), ExtResource("10_fdyat")])
+spawn_chance = 50.0
+
+[node name="EnemyGenerator7" parent="." unique_id=1005189824 instance=ExtResource("8_yv21l")]
+position = Vector2(339, 282)
+enemy_list = Array[PackedScene]([ExtResource("9_boxsd"), ExtResource("10_fdyat")])
+spawn_chance = 50.0
+
+[node name="EnemyGenerator8" parent="." unique_id=959966418 instance=ExtResource("8_yv21l")]
+position = Vector2(402, 219)
+enemy_list = Array[PackedScene]([ExtResource("9_boxsd"), ExtResource("10_fdyat")])
+spawn_chance = 50.0
+
+[node name="EnemyGenerator3" parent="." unique_id=1375085020 instance=ExtResource("8_yv21l")]
+position = Vector2(233, 194)
+enemy_list = Array[PackedScene]([ExtResource("11_1wwkj"), ExtResource("12_vlwqu")])
+spawn_chance = 75.0

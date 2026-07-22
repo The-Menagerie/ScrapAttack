@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cpldudhlvi2i0" path="res://Scenes/procedural_room_generation/footprint_cell_marker.tscn" id="2_3yv8d"]
 [ext_resource type="PackedScene" uid="uid://hie4yi1h3xfy" path="res://Scenes/procedural_room_generation/doorway_marker.tscn" id="3_e64cu"]
 [ext_resource type="TileSet" uid="uid://u1xc6mbbecly" path="res://Resources/tile_sets/overgrowth.tres" id="4_3yv8d"]
+[ext_resource type="PackedScene" uid="uid://k7hvrkylc1ys" path="res://Scenes/utility_scenes/enemy_generator.tscn" id="5_mqkir"]
+[ext_resource type="PackedScene" uid="uid://1ivx3cwmbf28" path="res://Enemy/FlyTrap/FlyTrap.tscn" id="6_js00d"]
+[ext_resource type="PackedScene" uid="uid://hvhvb88gygwl" path="res://Enemy/MouthMushroom/MouthMushroom.tscn" id="7_m011l"]
 
 [node name="SingleBlock" type="Node2D" unique_id=1156740841]
 y_sort_enabled = true
@@ -57,3 +60,23 @@ tile_set = ExtResource("4_3yv8d")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAEAAMAAAAHACYAAAAEAAQAAAAHACcAAAAEAAUAAAAHACgAAAAFAAMAAAAIACYAAAAFAAQAAAAIACcAAAAFAAUAAAAIACgAAAA=")
 tile_set = ExtResource("4_3yv8d")
+
+[node name="EnemyGenerator" parent="." unique_id=1059269171 instance=ExtResource("5_mqkir")]
+position = Vector2(74, 36)
+enemy_list = Array[PackedScene]([ExtResource("6_js00d"), ExtResource("7_m011l")])
+
+[node name="EnemyGenerator2" parent="." unique_id=1824437362 instance=ExtResource("5_mqkir")]
+position = Vector2(24, 48)
+enemy_list = Array[PackedScene]([ExtResource("6_js00d"), ExtResource("7_m011l")])
+
+[node name="EnemyGenerator3" parent="." unique_id=2066103845 instance=ExtResource("5_mqkir")]
+position = Vector2(24, 106)
+enemy_list = Array[PackedScene]([ExtResource("6_js00d"), ExtResource("7_m011l")])
+
+[node name="EnemyGenerator4" parent="." unique_id=902598185 instance=ExtResource("5_mqkir")]
+position = Vector2(91, 139)
+enemy_list = Array[PackedScene]([ExtResource("6_js00d"), ExtResource("7_m011l")])
+
+[node name="EnemyGenerator5" parent="." unique_id=2106634174 instance=ExtResource("5_mqkir")]
+position = Vector2(144, 81)
+enemy_list = Array[PackedScene]([ExtResource("6_js00d"), ExtResource("7_m011l")])
