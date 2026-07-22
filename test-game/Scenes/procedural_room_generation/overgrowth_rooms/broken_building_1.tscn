@@ -99,11 +99,11 @@ tile_map_data = PackedByteArray("AAAKAAcAAAAIABMAAAAKAAgAAAAIABQAAAAKAAkAAAAIABU
 tile_set = ExtResource("4_fgyxs")
 
 [node name="Concrete" type="Node2D" parent="." unique_id=1046077675]
+position = Vector2(152, 183)
 script = ExtResource("5_klgmh")
 metadata/_custom_type_script = "uid://cedy25trle4yd"
 
 [node name="Sprite2D" type="Sprite2D" parent="Concrete" unique_id=138018318]
-position = Vector2(175, 182)
 texture = ExtResource("6_v2ckd")
 
 [node name="Area2D" type="Area2D" parent="Concrete" unique_id=2093842430 node_paths=PackedStringArray("parent_building")]
@@ -113,16 +113,14 @@ script = ExtResource("7_ek01v")
 parent_building = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Concrete/Area2D" unique_id=2022454416]
-position = Vector2(176, 183)
 shape = SubResource("RectangleShape2D_40fn5")
 
 [node name="Concrete2" type="Node2D" parent="." unique_id=287315992]
-position = Vector2(280, -144)
+position = Vector2(457, 36)
 script = ExtResource("5_klgmh")
 metadata/_custom_type_script = "uid://cedy25trle4yd"
 
 [node name="Sprite2D" type="Sprite2D" parent="Concrete2" unique_id=1112848450]
-position = Vector2(175, 182)
 texture = ExtResource("6_v2ckd")
 
 [node name="Area2D" type="Area2D" parent="Concrete2" unique_id=1189292036 node_paths=PackedStringArray("parent_building")]
@@ -132,7 +130,6 @@ script = ExtResource("7_ek01v")
 parent_building = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Concrete2/Area2D" unique_id=908309752]
-position = Vector2(176, 183)
 shape = SubResource("RectangleShape2D_40fn5")
 
 [node name="EnemyGenerator" parent="." unique_id=1059269171 instance=ExtResource("8_yv21l")]

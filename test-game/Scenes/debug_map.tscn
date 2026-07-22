@@ -54,10 +54,8 @@ limit_enabled = false
 position = Vector2(153, 79)
 
 [node name="TurnipGuy" parent="." unique_id=232309484 instance=ExtResource("8_44j6w")]
-offset_left = 239.0
-offset_top = -50.0
-offset_right = 2159.0007
-offset_bottom = -50.0
+offset_left = 0.0
+offset_right = 1920.0007
 
 [node name="MouthMushroom" parent="." unique_id=678603889 instance=ExtResource("5_gnyyd")]
 position = Vector2(118, -43)
@@ -104,6 +102,6 @@ position = Vector2(-1, -6)
 shape = SubResource("RectangleShape2D_qd85e")
 
 [node name="dropped_item" parent="." unique_id=1957614983 instance=ExtResource("14_gip7s")]
-position = Vector2(0, -60)
+position = Vector2(0, -53)
 
 [connection signal="body_entered" from="leave_route/preperation_zone" to="leave_route" method="player_nears"]

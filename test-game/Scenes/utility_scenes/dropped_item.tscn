@@ -67,12 +67,12 @@ _data = {
 }
 
 [node name="dropped_item" type="Node2D" unique_id=1957614983 node_paths=PackedStringArray("item_image", "anim_player")]
+z_index = 2
 script = ExtResource("1_ovie4")
 item_image = NodePath("Sprite2D")
 anim_player = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=632010914]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_hlg2n")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1697141124]

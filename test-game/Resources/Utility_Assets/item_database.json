@@ -1,63 +1,63 @@
 {
-    "resources": {
-            "concrete": {
-                "name": "concrete",
-                "description": "Durable, lasts well despite magic contamination. Will be useful for building structures",
-                "category": "resources",
-                "rarity": "Common",
-                "sprite": "concrete.png",
-                "weight": 2,
-                "dimensions": {
-                    "width": 1,
-                    "height": 1
-                },
-                "vines": {
-                "name": "vines",
-                "description": "Stolen from living vegetation. Contamination has led to it being stronger than most rope, helpful for construction. Or hurting people as the wild touched found.",
-                "category": "resources",
-                "rarity": "Common",
-                "sprite": "vines.png",
-                "weight": 1,
-                "dimensions": {
-                    "width": 2,
-                    "height": 1
-                },
-                "scrap": {
-                "name": "scrap",
-                "description": "Sometimes it's impossible to fix things. Doesn't mean it can't still be useful though.",
-                "category": "resources",
-                "rarity": "Common",
-                "sprite": "scrap.png",
-                "weight": 0.5,
-                "dimensions": {
-                    "width": 1,
-                    "height": 1
-                },
-                "remnant magic": {
-                "name": "remnant magic",
-                "description": "Hard to extract but more easily shaped than what comes out of coal.",
-                "category": "resources",
-                "rarity": "Common",
-                "sprite": "remnant_magic.png",
-                "weight": 0.1,
-                "dimensions": {
-                    "width": 1,
-                    "height": 1
-                },
-                "moving moss": {
-                "name": "moving moss",
-                "description": "Wild magic doesn't discriminate. Moss especially has turned out to be susceptible to magic. Luckily it's still moss for now.",
-                "category": "resources",
-                "rarity": "Rare",
-                "sprite": "moving_moss.png",
-                "weight": 4,
-                "dimensions": {
-                    "width": 2,
-                    "height": 2
-                }
+	"resources": {
+			"concrete": {
+				"name": "concrete",
+				"description": "Durable, lasts well despite magic contamination. Will be useful for building structures",
+				"category": "resources",
+				"rarity": "Common",
+				"sprite": "concrete.png",
+				"weight": 2,
+				"dimensions": {
+					"width": 1,
+					"height": 1
+				},
+				"vines": {
+				"name": "vines",
+				"description": "Stolen from living vegetation. Contamination has led to it being stronger than most rope, helpful for construction. Or hurting people as the wild touched found.",
+				"category": "resources",
+				"rarity": "Common",
+				"sprite": "vines.png",
+				"weight": 1,
+				"dimensions": {
+					"width": 2,
+					"height": 1
+				},
+				"scrap": {
+				"name": "scrap",
+				"description": "Sometimes it's impossible to fix things. Doesn't mean it can't still be useful though.",
+				"category": "resources",
+				"rarity": "Common",
+				"sprite": "scrap.png",
+				"weight": 0.5,
+				"dimensions": {
+					"width": 1,
+					"height": 1
+				},
+				"remnant magic": {
+				"name": "remnant magic",
+				"description": "Hard to extract but more easily shaped than what comes out of coal.",
+				"category": "resources",
+				"rarity": "Common",
+				"sprite": "remnant_magic.png",
+				"weight": 0.1,
+				"dimensions": {
+					"width": 1,
+					"height": 1
+				},
+				"moving moss": {
+				"name": "moving moss",
+				"description": "Wild magic doesn't discriminate. Moss especially has turned out to be susceptible to magic. Luckily it's still moss for now.",
+				"category": "resources",
+				"rarity": "Rare",
+				"sprite": "moving_moss.png",
+				"weight": 4,
+				"dimensions": {
+					"width": 2,
+					"height": 2
+				}
 
 
-            },
+			},
 
-    }
+	}
 }
