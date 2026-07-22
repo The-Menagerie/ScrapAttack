@@ -6,6 +6,8 @@ const SLOT_SIZE: int = 64
 @export var dimensions: Vector2i
 
 signal remove_item(item_data: ItemData)
+signal add_item(item_data: ItemData, split_bool: bool)
+signal add_item_town(item_data: ItemData)
 
 var slot_data: Array[Node] = []
 var held_item_intersects: bool = false
@@ -41,13 +43,40 @@ func _gui_input(event: InputEvent) -> void:
 				var items = items_in_area(index, held_item.data.dimensions)
 				if items.size():
 					if items.size() == 1:
-						held_item.get_placed(get_coords_from_slot_index(index))
-						remove_item_from_slot_data(items[0])
-						add_item_to_slot_data(index, held_item)
-						items[0].get_picked_up()
+						if items[0].data.uID != held_item.data.uID:
+							held_item.get_placed(get_coords_from_slot_index(index))
+							remove_item_from_slot_data(items[0])
+							add_item_to_slot_data(index, held_item)
+							items[0].get_picked_up()
+						if items[0].data.uID == held_item.data.uID:
+							var quantity_sum = items[0].data.quantity + held_item.data.quantity
+							if quantity_sum > items[0].data.max_stack_size:
+								if items[0].data.quantity < items[0].data.max_stack_size:
+									var diff = items[0].data.max_stack_size - items[0].data.quantity
+									items[0].stack(diff)
+									held_item.data.quantity -= diff
+									held_item.remove_item_in_hand()
+							else:
+								items[0].stack(held_item.data.quantity)
+								held_item.remove_item_in_hand(held_item)
 					return
 				held_item.get_placed(get_coords_from_slot_index(index))
 				add_item_to_slot_data(index, held_item)
+		if event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed():
+			var held_item = get_tree().get_first_node_in_group("held_item")
+			if !held_item:
+				var slot_index = get_slot_index_from_coords(get_global_mouse_position())
+				var item = slot_data[slot_index]
+				if !item:
+					return
+				item.get_picked_up()
+				remove_item_from_slot_data(item)
+				var new_item: ItemData = item.split(item.data)
+				if new_item == null:
+					return
+				var split_bool: bool = true;
+				add_item.emit(new_item, split_bool)
+				
 	if event is InputEventMouseMotion:
 		var held_item = get_tree().get_first_node_in_group("held_item")
 		if held_item:
@@ -60,6 +89,15 @@ func _input(event):
 			var item = slot_data[slot_index]
 			if !item:
 				return
+			remove_item.emit(item.data, item)
+			remove_item_from_slot_data(item)
+	if event.is_action_pressed("move_items_between_inventories"):
+		if get_tree().paused:
+			var slot_index = get_slot_index_from_coords(get_global_mouse_position())
+			var item = slot_data[slot_index]
+			if !item:
+				return
+			add_item_town.emit(item.data)
 			remove_item.emit(item.data, item)
 			remove_item_from_slot_data(item)
 

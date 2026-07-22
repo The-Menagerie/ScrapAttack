@@ -2,6 +2,8 @@ extends Sprite2D
 
 @onready var quantity_label: Label = %QuantityLabel
 
+signal add_item(item_data: ItemData)
+
 var data: ItemData = null
 var is_picked: bool = false
 var size: Vector2:
@@ -48,4 +50,18 @@ func update_quantity_label() -> void:
 func stack(item_stack: int) -> void:
 	data.quantity += item_stack
 	update_quantity_label()
-	
+
+func split(item: ItemData) -> ItemData:
+	if item.quantity > 1:
+		var temp_item = item.duplicate()
+		temp_item.quantity /= 2
+		item.quantity -= temp_item.quantity
+		update_quantity_label()
+		return temp_item
+	else:
+		return null
+
+func remove_item_in_hand(item: Node) -> void:
+	is_picked = false
+	item.queue_free()
+	remove_from_group("held_item")

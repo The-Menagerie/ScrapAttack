@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://bsjhpgojhhbwi"]
+
+[ext_resource type="Script" uid="uid://4s88lodit687" path="res://Scripts/inventory/town_inventory/item_scroll.gd" id="1_005x5"]
+[ext_resource type="Script" uid="uid://dy546i7tksedq" path="res://Scripts/inventory/town_inventory/town_inventory.gd" id="1_j3k5p"]
+[ext_resource type="Script" uid="uid://cxsxebxcv43g2" path="res://Scripts/inventory/item_data.gd" id="3_6jqb5"]
+[ext_resource type="Script" uid="uid://534e7v4fglt8" path="res://Scripts/inventory/town_inventory/item_container.gd" id="3_qwxhf"]
+[ext_resource type="PackedScene" uid="uid://1id2cq1ekd5c" path="res://Scenes/inventory_components/town_inventory_components/inventory_bar.tscn" id="4_8evde"]
+[ext_resource type="Texture2D" uid="uid://d1r7hu3gn2tx1" path="res://Resources/Sprout Lands - Sprites - Basic pack/Objects/Egg_item.png" id="4_htabq"]
+[ext_resource type="Texture2D" uid="uid://dujstnurreoxv" path="res://Resources/Sprout Lands - Sprites - Basic pack/Objects/Simple_Milk_and_grass_item.png" id="5_htabq"]
+
+[sub_resource type="Resource" id="Resource_u0k4t"]
+script = ExtResource("3_6jqb5")
+name = "Egg"
+texture = ExtResource("4_htabq")
+weight = 0.5
+max_stack_size = 15
+category = "Resource"
+metadata/_custom_type_script = "uid://cxsxebxcv43g2"
+
+[sub_resource type="Resource" id="Resource_71j3g"]
+script = ExtResource("3_6jqb5")
+name = "Milk"
+texture = ExtResource("5_htabq")
+category = "Resource"
+metadata/_custom_type_script = "uid://cxsxebxcv43g2"
+
+[node name="TownInventory" type="Control" unique_id=660443647]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -660.0
+offset_top = -350.0
+offset_right = -660.0
+offset_bottom = -350.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j3k5p")
+
+[node name="TownInventoryBackground" type="PanelContainer" parent="." unique_id=1959563190]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1152.0
+offset_bottom = 580.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CategoryScroll" type="ScrollContainer" parent="." unique_id=1259728422]
+process_mode = 2
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 304.0
+offset_bottom = 54.0
+vertical_scroll_mode = 0
+scroll_horizontal_by_default = true
+
+[node name="CategoryConatiner" type="HBoxContainer" parent="CategoryScroll" unique_id=1958380902]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemScroll" type="ScrollContainer" parent="." unique_id=827562520]
+process_mode = 2
+layout_mode = 0
+offset_left = 4.0
+offset_top = 56.0
+offset_right = 304.0
+offset_bottom = 574.0
+script = ExtResource("1_005x5")
+items = Array[ExtResource("3_6jqb5")]([SubResource("Resource_u0k4t"), SubResource("Resource_71j3g")])
+
+[node name="ItemContainer" type="VBoxContainer" parent="ItemScroll" unique_id=305530856]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_qwxhf")
+inventory_bar_scene = ExtResource("4_8evde")
+
+[node name="NameLabel" type="Label" parent="." unique_id=469673632]
+unique_name_in_owner = true
+process_mode = 2
+layout_mode = 0
+offset_left = 310.0
+offset_top = 50.0
+offset_right = 361.0
+offset_bottom = 73.0
+text = "Name:"
+
+[node name="ItemWeightLabel" type="Label" parent="." unique_id=960983701]
+unique_name_in_owner = true
+process_mode = 2
+layout_mode = 0
+offset_left = 310.0
+offset_top = 74.0
+offset_right = 369.0
+offset_bottom = 97.0
+text = "Weight:"
+
+[node name="CategoryLabel" type="Label" parent="." unique_id=902361090]
+unique_name_in_owner = true
+process_mode = 2
+layout_mode = 0
+offset_left = 310.0
+offset_top = 10.0
+offset_right = 384.0
+offset_bottom = 33.0
+text = "Category:"
+
+[node name="DescriptionLabel" type="Label" parent="." unique_id=666194367]
+unique_name_in_owner = true
+process_mode = 2
+layout_mode = 0
+offset_left = 310.0
+offset_top = 98.0
+offset_right = 404.0
+offset_bottom = 121.0
+text = "Description:"
+
+[connection signal="create_bar" from="ItemScroll" to="ItemScroll/ItemContainer" method="create_bar"]
+[connection signal="update_bar" from="ItemScroll" to="ItemScroll/ItemContainer" method="update_bar"]
